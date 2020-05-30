@@ -1,0 +1,32 @@
+\chapter{Problem des kürzesten Pfades}
+
+In diesem Abschnitt wird ein Einstieg in das Problem des kürzesten Pfades (englisch shortest path problem) gegeben. Ein optimaler kürzester Pfad besitzt eine möglichst kurze Distanz von Start zu Ziel[ASoSPP S. 1]. Viele Pfadplanungsverfahren repräsentieren das Problem des kürzesten Pfades als Suchproblem in einem Graphen[A Comprehensive Study on Pathfinding Techniques for Robotics and Video Games].
+
+\section{Begriffsdefinition}
+
+Ein Graph ist eine mathematische Darstellung von Objekten die aus Punkten und Verbindungslinien bestehen. Dabei ist ein Graph G als aus zwei Mengen V und E bestehend definiert. Die Elemente der Menge V werden als Knoten und die Elemente der Menge E werden als Kanten bezeichnet. Einer Kante werden ein oder zwei Knoten als Endpunkte zugewiesen[2]. Kanten können Gewichtungen haben. Diese Gewichtungen wirken sich auf Pfade durch den Graphen aus [missing sourcde]. 
+
+Im Zuge eines Pfadplanungsverfahrens beinhaltet die Menge V einen Startknoten s und einen Endknoten d und eine Menge aus gewichteten Kanten E. Ziel des Verfahrens ist es den Pfad von s nach d mit dem geringsten Gewicht zu finden[ASoSPP S. 4]. 
+
+\section{Übersicht der Pfadplanung Ansätze}
+
+Das Weltmodell kann von Bereich zum Bereich unterschiedlich dargestellt werden. Die Abbildung muss alle Merkmale der reellen erfassen.  Es existieren folgenden Ansätze für die Raumdarstellung, die jeweils das Suchproblem auf das Suchproblem in einem Graphen zurückführen.
+
+\subsection{Geometrische Karten oder Wegkartenverfahren}
+
+\subsubsection{Voronoi Diagram}
+
+Bei Erstellung des Voronoi-Diagramms wird der Raum in Regionen (Voronoi-Regionen) zerlegt. Jeder Region hat sein Zentrum und die Punkte, die zu diesem Zentrum euklidisch näher liegen, als zu jedem anderen Zentrum. \cite{voronoi}
+
+\subsubsection{Sichtbarkeitsgraph} 
+Ein Sichtbarkeitsgraph enthält allen gegenseitig sichtbaren Orten. Eine Kante zwischen zwei Knoten (oder Punkten) existiert genau dann, wenn die gegenseitig sichtbar sind. Das heißt, dass es keine Hindernisse zwischen den Knoten zu sehen sind. \cite{visG1}\cite{visG2}
+
+\subsection{Potentialfeldverfahren}
+Potentialfeldverfahren bietet einen Ansatz, bei dem der Suchraum durch Gradiente überspannt wird. Aus jedem Gradienten wird dann die mögliche Bewegungsrichtung ersichtilich. ?? \cite{potField}
+
+\subsubsection{Zellzerlegungsverfahren oder Cell Decomposition }
+
+Zellzerlegung ist ein bekanntes Hindernisvermeidungsverfahren, das den hindernisfreien Konfigurationsraum in eine endliche Sammlung nicht überlappender(disjunkter) konvexer Polygone, sogenannte Zellen, zerlegt, in denen leicht ein Pfad erzeugt werden kann. Obwohl es rechenintensiv ist, besteht sein Vorteil gegenüber anderen Ansätzen zur Planung von Roboterpfaden, wie z. B. Roadmap oder potenziellen Feldmethoden, darin, dass die Zellzerlegung unter geeigneten Annahmen vollständig aufgelöst ist. \cite{cd}
+
+\subsubsection{Topologische Graphen}
+Diese Gruppe der Verfahren wird in 2 Gruppen klassifiziert: Informierte und uninformierte. Diese unterscheiden sich …., Die beiden Gruppen werden in der folgenden Kapitel näher besprochen.
