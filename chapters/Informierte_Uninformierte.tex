@@ -43,4 +43,23 @@ Der Algorithmus hat allgemein eine Komplexität von O (n²) [4]. Deshalb schluge
 
 Dijkstra und seine Erweiterungen besitzen ein sehr breites Anwendungsspektrum, wie zum Beispiel: Transport Netzwerke in sicheren und unsicheren Umgebungen, \cite{fuzzyDijk} \cite{publicTrans2}, in Satellitennetzwerken \cite{satelite} und in Hardware \cite{hardware}. 
 
-\section{Informierte Algorithmen}
+\section{Informierte Suchalgorithmen anhand von A*}
+
+Die sogenannte Bestensuche (engl. informed best-first search) ist ein verbreiteter Ansatz für Problemlösungen, um die Suchzeit anhand heuristischer Informationen zu verkürzen. Heuristische Informationen werden durch Schätzverfahren angenähert. Dabei wird versucht jedem Kandidaten einen Wert zuzuweisen. Anhand dieser Wertzuweisung wird die Erkundung in einem Graphen in die Richtung des vielversprechendsten Kandidaten fortgeführt.
+
+\subsection{A*} 
+
+Es sei ein gewichteter Graph G gegeben, der den Startknoten s und eine nichtleere Menge aus Zielknoten T habe. Das Problem des optimalen Pfades besteht nun darin, den Pfad vom Startknoten s zu einem Knoten aus der Zielmenge T mit den geringsten Kosten zu finden. Die Kosten bestehen aus den Gewichten, die den Knoten zugewiesen sind\cite{RinaDechterandJudeaPearl.1983}.
+
+Häufig untersucht wurde in diesem Zusammenhang der Algorithmus A*. Um den kürzesten Pfad mit dem geringsten Aufwand zu finden, profitiert ein Suchalgorithmus von informierten Entscheidungen für die Untersuchung der Knotenpunkte. Untersucht er Knotenpunkte, die offensichtlich nicht zum Ziel führen können, verschwendet er Ressourcen. Untersucht er andererseits Knoten nicht, welche zum kürzesten Pfad beitragen, führt der Algorithmus nicht zum richtigen Ergebnis.
+
+Der Algorithmus A* folgt bestimmten Schritten. 
+\begin{itemize}
+\item[1.] Der Startknoten s wird als „offen“ markiert und die Funktion f berechnet. Als “offen” werden Knoten bezeichnet, die von dem Algorithmus besucht und für die Untersuchung freigeschaltet werden.
+\item[2.] Derjenige offene Knoten n wird ausgewählt, für den die Funktion f den geringsten Wert liefert. Anschließend werden beliebige angrenzende Knoten ausgewählt, aber immer zugunsten jedes Knotens aus der Zielmenge T.
+\item[3.] Es wird überprüft ob sich der aktuelle Knoten n in der Zielmenge befindet. Ist das der Fall wird er als „geschlossen“ markiert und der Algorithmus terminiert. Ein Knoten gilt als “geschlossen” sobald die Funktionsberechnung für ihn durchgeführt und ein Ergebnis festgestellt wurde. 
+\item[4.] Andernfalls wird der Knoten n als „geschlossen“ markiert und es werden alle Nachfolger von n erkundet. Dann wird f für jeden Nachfolger berechnet und jeder Nachfolger als „offen“ markiert, der nicht als „geschlossen“ markiert wurde. Gibt es nun Nachfolgeknoten die als „geschlossen“ markiert sind, für welche die Funktion f einen geringeren Wert liefert, werden diese Knoten als „offen“ markiert. Daraufhin wird Schritt zwei wieder ausgeführt. Solange, bis der Algorithmus terminiert und der kürzeste Pfad durch den Graphen gefunden wurde\cite{HartNilssonandRaphael.1968}.
+\end{itemize}
+
+
+A* benutzt eine spezielle Form der Funktion f zusammengesetzt aus der Summe f(n) = g(n) + h(n). g(n) spiegelt die additiven Kosten des momentanen Pfades von dem Startknoten s zu dem jetzigen Knoten n wieder. h(n) liefert eine heuristische Einschätzung, welche die Kosten des Restpfades zum Zielknoten schätzt\cite{RinaDechterandJudeaPearl.1983}.
