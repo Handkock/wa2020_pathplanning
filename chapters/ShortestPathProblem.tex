@@ -1,26 +1,31 @@
 \chapter{Das Problem des kürzesten Pfades}
 
-In diesem Abschnitt wird ein Einstieg in das Problem des kürzesten Pfades (englisch shortest path problem) gegeben. Ein optimaler kürzester Pfad besitzt eine möglichst kurze Distanz von Start zu Ziel\cite{Madkour.2017}. Viele Pfadplanungsverfahren repräsentieren das Problem des kürzesten Pfades als Suchproblem in einem Graphen[?A Comprehensive Study on Pathfinding Techniques for Robotics and Video Games].
+In diesem Abschnitt wird ein Einstieg in das Problem des kürzesten Pfades (englisch shortest path problem) gegeben. Ein optimaler kürzester Pfad besitzt eine möglichst kurze Distanz von Start zu Ziel\cite{Madkour.2017}. Viele Pfadplanungsverfahren repräsentieren das Problem des kürzesten Pfades als Suchproblem in einem Graphen[?A Comprehensive Study on Pathfinding Techniques for Robotics and Video Games]. %todo umformulieren, weil keine Quelle vorhanden, vlt. viele Pfadplanungsverfahren lassen sich einfach auf das graph zurückzuführen
 
 \section{Begriffsdefinitionen}
 
-Ein Graph ist eine mathematische Darstellung von Objekten die aus Punkten und Verbindungslinien bestehen. Dabei ist ein Graph G als aus zwei Mengen V und E bestehend definiert. Die Elemente der Menge V werden als Knoten und die Elemente der Menge E werden als Kanten bezeichnet. Einer Kante werden ein oder zwei Knoten als Endpunkte zugewiesen. Kanten können Gewichtungen haben. Diese Gewichtungen wirken sich auf Pfade durch den Graphen aus\cite{Gross.2004}. Im Zuge eines Pfadplanungsverfahrens beinhaltet die Menge V einen Startknoten s und einen Endknoten d und eine Menge aus gewichteten Kanten E. Ziel des Verfahrens ist es den Pfad von s nach d mit dem geringsten Gewicht zu finden\cite{Madkour.2017}. 
+%todo Graph matematisch beschreiben, eventuell beim Schmitz nachgucken
+%ein Pfad bestimmen, und s und d konsisten nutzen
+Ein Graph ist eine mathematische Darstellung von Objekten, die aus Punkten und Verbindungslinien bestehen. Ein Graph \textit{G} ist ein Tupel zwei disjunkter Mengen \textit{V} und \textit{E}. Die Elemente der Menge V werden als Knoten und die Elemente der Menge E werden als Kanten bezeichnet. Einer Kante können ein oder zwei Knoten als Endpunkte zugewiesen werden. Kanten können Gewichtungen haben. Diese Gewichtungen wirken sich auf Pfade durch den Graphen aus\cite{Gross.2004}. Im Zuge eines Pfadplanungsverfahrens beinhaltet die Menge \textit{V} einen Startknoten \textit{s}, einen Endknoten \textit{d} und eine Menge aus gewichteten Kanten \textit{E}. %todo besser mathematisch, d,e el E
+Ziel des Verfahrens ist es den Pfad von \textit{s} nach \textit{d} mit dem geringsten Gewicht zu finden\cite{Madkour.2017}. 
 
-\section{Eine Übersicht der Pfadplanungsansätze}
+\section{Übersicht der Pfadplanungsansätze}
+Das Weltmodell kann für verschiedene Einsatzbereiche unterschiedlich dargestellt werden. Eine Abbildung der realen Welt muss deren Merkmale möglichst präzis erfassen können. Die folgenden Ansätze für die Raumdarstellung führen jeweils Fragestellungen auf Suchprobleme in Graphen zurück. %todo besser umformulieren in Hinblick auf die folgende Auflistung, hier sind mehr eigentlich spielen&roboter Ansätze
 
-Das Weltmodell kann für verschiedene Einsatzbereiche unterschiedlich dargestellt werden. Eine Abbildung der realen Welt versucht Merkmale aus dieser zu erfassen.  Folgende Ansätze für die Raumdarstellung führen jeweils Fragestellungen auf Suchprobleme in Graphen zurück.
-Eine Methode zur Pfadplanung in geometrischen Karten oder Wegkartenverfahren ist die Suche per Voronoi-Diagramm. Eine anderer Ansatz ist die Suche mit einem Sichtbarkeitsgraphen.
-\subsection{Das Voronoi Diagram}
- Bei Erstellung des Voronoi-Diagramms wird der Raum in Regionen (Voronoi-Regionen) zerlegt. Jede Region enhält ihr Zentrum und die Punkte, die zu diesem Zentrum euklidisch näher liegen, als zu jedem anderen Zentrum. \cite{voronoi}
-\subsection{Sichtbarkeitsgraph} 
-Ein Sichtbarkeitsgraph enthält alle gegenseitig sichtbaren Orte. Eine Kante zwischen zwei Knotenpunkten existiert genau dann, wenn die Knoten sich gegenseitig sehen. Dies ist der Fall, wenn es keine Hindernisse zwischen den Knoten gibt. \cite{visG1}
+\subsection{Geometrische Karten oder Wegkartenverfahren}
+%todo Hinblick auf Spiele hier schaffen, um den Raum oder Fläche als Weltmodell darzustellen, 
 
-\subsection{Potentialfeldverfahren}
-Das Potentialfeldverfahren bietet einen Ansatz, bei dem der Suchraum von Gradienten überspannt wird. Aus den Gradienten werden dann mögliche Bewegungsrichtungen ersichtlich. ?? \cite{potField}
+\textbf{Das Voronoi Diagram}\newline
+Bei Erstellung des Voronoi-Diagramms wird der Raum in Regionen (Voronoi-Regionen) zerlegt. Jede Region enhält ihr Zentrum und die Punkte, die zu diesem Zentrum euklidisch näher liegen, als zu jedem anderen Zentrum \cite{voronoi}. \\
+ 
+\textbf{Sichtbarkeitsgraph} \newline
+Ein Sichtbarkeitsgraph enthält alle gegenseitig sichtbaren Orte. Eine Kante zwischen zwei Knotenpunkten existiert genau dann, wenn die Knoten sich gegenseitig sehen. Dies ist der Fall, wenn es keine Hindernisse zwischen den Knoten gibt\cite{visG1}. \\ 
 
-\subsection{Zellzerlegungsverfahren}
+\textbf{Potentialfeldverfahren} \newline
+Das Potentialfeldverfahren bietet einen Ansatz, bei dem der Suchraum von Gradienten überspannt wird. Aus den Gradienten werden dann mögliche Bewegungsrichtungen ersichtlich ?? \cite{potField}.\\
 
-Die Zellzerlegung ist ein bekanntes Hindernisvermeidungsverfahren, das den hindernisfreien Konfigurationsraum in eine endliche Sammlung nicht überlappender(disjunkter) konvexer Polygone, sogenannte Zellen, zerlegt. In diesen kann leicht ein Pfad gefunden werden. Obwohl dieses Verfahren rechenintensiv ist, besteht sein Vorteil gegenüber anderen Ansätzen zur Planung von Roboterpfaden darin, dass die Zellzerlegung unter geeigneten Annahmen vollständig aufgelöst ist. Andere Verfahren verwenden beispielsweise eine Roadmap oder Potentialfeldverfahren.\cite{cd}
+\textbf{Zellzerlegungsverfahren}\newline
+Die Zellzerlegung ist ein bekanntes Hindernisvermeidungsverfahren, das den hindernisfreien Konfigurationsraum in eine endliche Sammlung nicht überlappender(disjunkter) konvexer Polygone, sogenannte Zellen, zerlegt. In diesen kann leicht ein Pfad gefunden werden. Obwohl dieses Verfahren rechenintensiv ist, besteht sein Vorteil gegenüber anderen Ansätzen zur Planung von Roboterpfaden darin, dass die Zellzerlegung unter geeigneten Annahmen vollständig aufgelöst ist. Andere Verfahren verwenden beispielsweise eine Roadmap oder Potentialfeldverfahren\cite{cd}. \\
 
 \subsection{Topologische Graphen}
 Diese Gruppe der Verfahren wird in zwei Gruppen unterteilt. Es gibt informierte und uninformierte Suchalgorithmen. Die beiden Gruppen werden im folgenden Kapitel näher besprochen.
