@@ -1,32 +1,26 @@
-\chapter{Problem des kürzesten Pfades}
+\chapter{Das Problem des kürzesten Pfades}
 
-In diesem Abschnitt wird ein Einstieg in das Problem des kürzesten Pfades (englisch shortest path problem) gegeben. Ein optimaler kürzester Pfad besitzt eine möglichst kurze Distanz von Start zu Ziel\cite{Madkour.05.05.2017}. Viele Pfadplanungsverfahren repräsentieren das Problem des kürzesten Pfades als Suchproblem in einem Graphen[A Comprehensive Study on Pathfinding Techniques for Robotics and Video Games].
+In diesem Abschnitt wird ein Einstieg in das Problem des kürzesten Pfades (englisch shortest path problem) gegeben. Ein optimaler kürzester Pfad besitzt eine möglichst kurze Distanz von Start zu Ziel\cite{Madkour.2017}. Viele Pfadplanungsverfahren repräsentieren das Problem des kürzesten Pfades als Suchproblem in einem Graphen[?A Comprehensive Study on Pathfinding Techniques for Robotics and Video Games].
 
-\section{Begriffsdefinition}
+\section{Begriffsdefinitionen}
 
-Ein Graph ist eine mathematische Darstellung von Objekten die aus Punkten und Verbindungslinien bestehen. Dabei ist ein Graph G als aus zwei Mengen V und E bestehend definiert. Die Elemente der Menge V werden als Knoten und die Elemente der Menge E werden als Kanten bezeichnet. Einer Kante werden ein oder zwei Knoten als Endpunkte zugewiesen. Kanten können Gewichtungen haben. Diese Gewichtungen wirken sich auf Pfade durch den Graphen aus\cite{Gross.2004}. 
+Ein Graph ist eine mathematische Darstellung von Objekten die aus Punkten und Verbindungslinien bestehen. Dabei ist ein Graph G als aus zwei Mengen V und E bestehend definiert. Die Elemente der Menge V werden als Knoten und die Elemente der Menge E werden als Kanten bezeichnet. Einer Kante werden ein oder zwei Knoten als Endpunkte zugewiesen. Kanten können Gewichtungen haben. Diese Gewichtungen wirken sich auf Pfade durch den Graphen aus\cite{Gross.2004}. Im Zuge eines Pfadplanungsverfahrens beinhaltet die Menge V einen Startknoten s und einen Endknoten d und eine Menge aus gewichteten Kanten E. Ziel des Verfahrens ist es den Pfad von s nach d mit dem geringsten Gewicht zu finden\cite{Madkour.2017}. 
 
-Im Zuge eines Pfadplanungsverfahrens beinhaltet die Menge V einen Startknoten s und einen Endknoten d und eine Menge aus gewichteten Kanten E. Ziel des Verfahrens ist es den Pfad von s nach d mit dem geringsten Gewicht zu finden\cite{Madkour.05.05.2017}. 
+\section{Eine Übersicht der Pfadplanungsansätze}
 
-\section{Übersicht der Pfadplanung Ansätze}
-
-Das Weltmodell kann von Bereich zum Bereich unterschiedlich dargestellt werden. Die Abbildung muss alle Merkmale der reellen erfassen.  Es existieren folgenden Ansätze für die Raumdarstellung, die jeweils das Suchproblem auf das Suchproblem in einem Graphen zurückführen.
-
-\subsection{Geometrische Karten oder Wegkartenverfahren}
-
-\subsubsection{Voronoi Diagram}
-
-Bei Erstellung des Voronoi-Diagramms wird der Raum in Regionen (Voronoi-Regionen) zerlegt. Jeder Region hat sein Zentrum und die Punkte, die zu diesem Zentrum euklidisch näher liegen, als zu jedem anderen Zentrum. \cite{voronoi}
-
-\subsubsection{Sichtbarkeitsgraph} 
-Ein Sichtbarkeitsgraph enthält allen gegenseitig sichtbaren Orten. Eine Kante zwischen zwei Knoten (oder Punkten) existiert genau dann, wenn die gegenseitig sichtbar sind. Das heißt, dass es keine Hindernisse zwischen den Knoten zu sehen sind. \cite{visG1}\cite{visG2}
+Das Weltmodell kann für verschiedene Einsatzbereiche unterschiedlich dargestellt werden. Eine Abbildung der realen Welt versucht Merkmale aus dieser zu erfassen.  Folgende Ansätze für die Raumdarstellung führen jeweils Fragestellungen auf Suchprobleme in Graphen zurück.
+Eine Methode zur Pfadplanung in geometrischen Karten oder Wegkartenverfahren ist die Suche per Voronoi-Diagramm. Eine anderer Ansatz ist die Suche mit einem Sichtbarkeitsgraphen.
+\subsection{Das Voronoi Diagram}
+ Bei Erstellung des Voronoi-Diagramms wird der Raum in Regionen (Voronoi-Regionen) zerlegt. Jede Region enhält ihr Zentrum und die Punkte, die zu diesem Zentrum euklidisch näher liegen, als zu jedem anderen Zentrum. \cite{voronoi}
+\subsection{Sichtbarkeitsgraph} 
+Ein Sichtbarkeitsgraph enthält alle gegenseitig sichtbaren Orte. Eine Kante zwischen zwei Knotenpunkten existiert genau dann, wenn die Knoten sich gegenseitig sehen. Dies ist der Fall, wenn es keine Hindernisse zwischen den Knoten gibt. \cite{visG1}
 
 \subsection{Potentialfeldverfahren}
-Potentialfeldverfahren bietet einen Ansatz, bei dem der Suchraum durch Gradiente überspannt wird. Aus jedem Gradienten wird dann die mögliche Bewegungsrichtung ersichtilich. ?? \cite{potField}
+Das Potentialfeldverfahren bietet einen Ansatz, bei dem der Suchraum von Gradienten überspannt wird. Aus den Gradienten werden dann mögliche Bewegungsrichtungen ersichtlich. ?? \cite{potField}
 
-\subsubsection{Zellzerlegungsverfahren oder Cell Decomposition }
+\subsection{Zellzerlegungsverfahren}
 
-Zellzerlegung ist ein bekanntes Hindernisvermeidungsverfahren, das den hindernisfreien Konfigurationsraum in eine endliche Sammlung nicht überlappender(disjunkter) konvexer Polygone, sogenannte Zellen, zerlegt, in denen leicht ein Pfad erzeugt werden kann. Obwohl es rechenintensiv ist, besteht sein Vorteil gegenüber anderen Ansätzen zur Planung von Roboterpfaden, wie z. B. Roadmap oder potenziellen Feldmethoden, darin, dass die Zellzerlegung unter geeigneten Annahmen vollständig aufgelöst ist. \cite{cd}
+Die Zellzerlegung ist ein bekanntes Hindernisvermeidungsverfahren, das den hindernisfreien Konfigurationsraum in eine endliche Sammlung nicht überlappender(disjunkter) konvexer Polygone, sogenannte Zellen, zerlegt. In diesen kann leicht ein Pfad gefunden werden. Obwohl dieses Verfahren rechenintensiv ist, besteht sein Vorteil gegenüber anderen Ansätzen zur Planung von Roboterpfaden darin, dass die Zellzerlegung unter geeigneten Annahmen vollständig aufgelöst ist. Andere Verfahren verwenden beispielsweise eine Roadmap oder Potentialfeldverfahren.\cite{cd}
 
 \subsection{Topologische Graphen}
-Diese Gruppe der Verfahren wird in 2 Gruppen klassifiziert: Informierte und uninformierte. Diese unterscheiden sich …., Die beiden Gruppen werden in der folgenden Kapitel näher besprochen.
+Diese Gruppe der Verfahren wird in zwei Gruppen unterteilt. Es gibt informierte und uninformierte Suchalgorithmen. Die beiden Gruppen werden im folgenden Kapitel näher besprochen.
