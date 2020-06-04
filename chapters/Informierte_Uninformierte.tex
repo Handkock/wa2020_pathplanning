@@ -9,24 +9,27 @@ Die am meisten verwendeten Algorithmen dieser Gruppe sind die Breitensuche, die 
 
 \subsection{Breitensuche}
 
-Die Breitensuche (engl. Breadth-First Search, BFS) ist einer der einfachsten 
-%todo einfachsten ?
-Algorithmen für die Suche nach dem kürzesten Pfad in einem Graphen. Der Algorithmus hat seinen Namen nach dem Prinzip erst nach allen Knoten mit einer Distanz $k$ zu suchen, bevor im nächsten Schritt nach Knoten mit der Distanz $k + 1$ gesucht wird \cite{Cormen.2009}. %todo besser das Prinzip in Anfüngszeichen oder anders formulieren
-Die Breitensuche ist in der Lage den kürzesten Pfad zwischen zwei Punkten zu bestimmen.%todo gleiche Sinn wie in erstem Satz
-Zusätzlich kann sie einen Pfad bestimmen, der möglichst wenig andere Pfade kreuzt, oder bestmöglich Hindernisse vermeidet \cite{Lee.1961}. BFS dient als Grundmuster für Shortest Path Algorithmen in ungerichteten Graphen \cite{Ottmann.2017}. Die Breitensuche kann jedoch sowohl in gerichteten als auch ungerichteten Graphen genutzt werden. Sie hat eine Laufzeit von $O(V + E)$, also die Summe der Anzahl von Knoten und Kanten \cite{Cormen.2009}.
+Die Breitensuche (engl. Breadth-First Search, BFS) ist ein simpler Suchalgorithmus, welcher in Graphen angewendet werden kann \cite{Cormen.2009}. Der Algorithmus kann den kürzesten Pfad zwischen zwei Punkten zu bestimmen. Dazu ist er in der Lage einen Pfad zu finden, der möglichst wenig andere Pfade kreuzt, oder bestmöglich Hindernisse vermeidet \cite{Lee.1961}. BFS dient als Grundmuster für Shortest Path Algorithmen in ungerichteten Graphen \cite{Ottmann.2017}. Die Breitensuche kann jedoch sowohl in gerichteten als auch ungerichteten Graphen genutzt werden. Sie hat eine Laufzeit von $O(V + E)$, also die Summe der Anzahl Knoten und Kanten \cite{Cormen.2009}.
 
-%todo vlt. als Schitte: wie beim Schmitz
-In einem Graphen $G = (V, E)$ mit einem festgelegten Startknoten $s$ überprüft BFS systematisch alle Kanten. Wird ein Knoten $v$ gefunden, wird die Distanz (Anzahl Kanten) vom Startknoten aus berechnet. %todo nicht die Gewichte?
-Anschließend wird der Knoten zu einem speziellen „Breitensuchbaum“ hinzugefügt, welcher alle vom Startknoten aus erreichbaren Knoten beinhaltet. Der Zweig vom Startknoten $s$ zu einem Knoten $v$ im Breitensuchbaum ist repräsentativ für den kürzesten Pfad zwischen $s$ und $v$ \cite{Cormen.2009}.
+Die Breitensuche durchläuft einen Graphen systematisch und schrittweise in alle Richtungen. Gegeben ist ein Graph $G = (V, E)$, mit einem festgelegten Startknoten $s$, sowie ein Inkrement $k=1$. Nun werden folgende Schritte in einer Schleife ausgeführt:
+\begin{itemize}
+\item[1.] Finde alle Knoten, welche $k$ Kanten von $s$ entfernt sind.
+\item[2.] Rechne $k + 1$.
+\end{itemize}
+Diese Schritte werden so lange wiederholt, bis alle Knoten im Graphen gefunden wurden, die von $s$ erreicht werden können. Wird ein Knoten von BFS entdeckt, so wird die Distanz zum Startknoten $s$ berechnet. Anschließend wird der Knoten zu einem speziellen „Breitensuchbaum“ hinzugefügt, welcher alle vom Startknoten aus erreichbaren Knoten beinhaltet. Die Zweige des Baums stellen den kürzesten Pfad von $s$ zu den Knoten des Baumes dar \cite{Cormen.2009}.
 
 \subsection{Anwendung der Breitensuche}
 Die Breitensuche kann in mehreren Graphen Zusammenhängen verwendet werden.  BFS kann überprüft, ob ein Graph bipartit ist \cite{propTest}. Außerdem liefert der Algorithmus Zusammenhangskomponenten eines Graphen\cite{schmitz}. Die Breitensuche und ihre Hybridversionen\cite{effHyb} werden im Graphikprozessor für Graphentraversierung benutzt\cite{scaleGPU}. %todo anwendung in Pfadplanung fehlt, z.B. Maze Runner Game Paper
 
 \subsection{Tiefensuche}
 
-Die Tiefensuche (engl. Depth-First Search, DFS) stellt das Gegenstück zur Breitensuche dar.  %todo gegenstück inwiefern
-Sie untersucht die Folgeknoten des zuletzt erreichten Knotens. DFS sucht so lange nach tieferliegenden Knoten, bis das Ende der Kette erreicht wurde. Dann wird ein Rücksetzverfahren angewendet, das sogenannte „Backtracking“ \cite{Tarjan.1972}. Hierbei untersucht der Algorithmus die Kette der Knoten schrittweise rückwärts auf unentdeckte Kanten. Wird ein Knoten mit unentdeckten Kanten gefunden, geht DFS wieder so lange in Tiefe, bis das Ende erreicht ist. Diese abwechselnden Phasen des Untersuchens von Kanten und des Rücksetzens wird so lange angewendet, bis alle Knoten des Graphen gefunden wurden \cite{Cormen.2009}. Die Tiefensuche hat, bei einer Tiefe von $d$, eine generelle Laufzeit von $O(e^d)$.%todo was ist e ?
-Die Speicherkomplexität beträgt hingegen $O(d)$ \cite{Korf.1985}. Für das Zwischenspeichern der gefundenen Knoten bietet sich ein Stack an, da der Algorithmus selbst nach dem „first in, first out“ Prinzip funktioniert \cite{Tarjan.1972}.  %todo eine Datenstruktur für BFS auch ?
+Die Tiefensuche (engl. Depth-First Search, DFS) stellt das Gegenstück zur Breitensuche dar. Sie untersucht eine Kette von Folgeknoten bis das Ende der Kette erreicht wurde. Grundlegend lässt sich der Algorithmus in zwei Phasen unterteilen, die „Suche nach tieferliegenden Knoten“[1] und das sogenannte „Backtracking“[2] \cite{Tarjan.1972}:
+\begin{itemize}
+	\item[1] DFS untersucht den zuletzt gefundenen Knoten auf ausgehende Kanten. Existiert eine unentdeckte Kante, folgt DFS der Kante zum nächsten Knoten. Existiert keine weitere Kante, wechselt der Algorithmus in Phase 2.
+	\item[2] DFS setzt zum überliegenden Knoten zurück. Dieser wird auf eine unentdeckte Kante untersucht. Existiert eine weitere Kante, wechselt der Algorithmus zurück in Phase 1. Gibt es keine unentdeckte Kante, setzt DFS erneut zurück.
+\end{itemize}
+Das Verfahren der Tiefensuche endet sobald der Algorithmus zum Startknoten $s$ zurückgesetzt hat und bei $s$ keine unentdeckten Kanten verbleiben. Beim Endecken eines Knoten wird die Distanz zu $s$ berechnet, und der kürzeste Pfad zu $s$ in einen „Tiefensuchbaum“ eingepflegt (vergleiche Breitensuchbaum). Bei der Tiefensuche können jedoch mehrere Bäume entstehen, welche dann einen sogenannten „Tiefensuchwald“ formen \cite{Cormen.2009}. 
+Für das Zwischenspeichern der gefundenen Knoten bietet sich ein Stack an, da der Algorithmus selbst nach dem „first in, first out“ Prinzip funktioniert \cite{Tarjan.1972}. Die Tiefensuche hat eine Laufzeit von $\Theta(V + E)$ \cite{Cormen.2009}.
 
 
 \subsection{Anwendung der Tiefensuche}
