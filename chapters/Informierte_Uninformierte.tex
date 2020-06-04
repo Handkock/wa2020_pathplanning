@@ -84,18 +84,18 @@ Die Kosten bestehen aus den Gewichten, die den Knoten zugewiesen sind\cite{RinaD
 
 %todo hier ist die 
 Der A* Algorithmus wird häufig in diesem Zusammenhang untersucht. Um den kürzesten Pfad mit dem geringsten Aufwand zu finden, profitiert ein Suchalgorithmus von informierten Entscheidungen für die Untersuchung der Knotenpunkte. Untersucht er Knotenpunkte, die offensichtlich nicht zum Ziel führen können, verschwendet er Ressourcen. Untersucht er andererseits Knoten nicht, welche zum kürzesten Pfad beitragen, führt der Algorithmus nicht zum richtigen Ergebnis. %todo letzte 3 Sätze müssen vielleicht nach oben oder überhaupt zur Beschreibung der infomierten Algos
-A* benutzt eine spezielle Form der Funktion $f$ zusammengesetzt aus der Summe $f(n) = g(n) + h(n)$. $g(n)$ spiegelt die additiven Kosten des momentanen Pfades von dem Startknoten $s$ zu dem jetzigen Knoten $n$ wieder. $h(n)$ liefert eine heuristische Einschätzung, welche die Kosten des Restpfades zum Zielknoten schätzt\cite{RinaDechterandJudeaPearl.1983}. %todo wie schon besprochen, die h und g müssen besser aus dem KOntext unterschieden werden können 
+A* benutzt eine spezielle Form der Funktion $f$ zusammengesetzt aus der Summe $f(n) = g(n) + h(n)$. Die Funktion $g(n)$ spiegelt die additiven Kosten des momentanen Pfades von dem Startknoten $s$ zu dem jetzigen Knoten $n$ wieder. Die Funktion $h(n)$ liefert eine heuristische Einschätzung, welche die Kosten des Restpfades zum Zielknoten schätzt\cite{RinaDechterandJudeaPearl.1983}. %todo wie schon besprochen, die h und g müssen besser aus dem KOntext unterschieden werden können 
 
 %todo ich finde n als einzeln Knoten nicht gut, weil n z.B. für eingabelänge bei Laufzeit bei Fredrik benutzt wird, ist besser hier vlt. x oder u 
 
 Der Algorithmus A* folgt bestimmten Schritten. 
 \begin{itemize}
-\item[1.] Der Startknoten $s$ wird als „offen“ markiert und die Funktion $f$ berechnet. Als “offen” werden die Knoten bezeichnet, die von dem Algorithmus besucht und für die Untersuchung freigeschaltet worden sind.
-\item[2.] Derjenige offene Knoten $n$ wird ausgewählt, für den die Funktion $f$ %todo ist schon besser f(n) hier, weil hier Bezug auf n gibt
+\item[1.] Der Startknoten $s$ wird als „offen“ markiert und die Funktion $f(n)$ berechnet. Als “offen” werden die Knoten bezeichnet, die von dem Algorithmus besucht und für die Untersuchung freigeschaltet worden sind.
+\item[2.] Derjenige offene Knoten $n$ wird ausgewählt, für den die Funktion $f(n)$ %todo ist schon besser f(n) hier, weil hier Bezug auf n gibt
 den geringsten Wert liefert. Anschließend werden beliebige angrenzende Knoten ausgewählt, aber immer zugunsten jedes Knotens aus der Zielmenge $T$.
-\item[3.] Es wird überprüft, ob sich der aktuelle Knoten $n$ in der Zielmenge befindet. Ist das der Fall, wird er als „geschlossen“ markiert und der Algorithmus terminiert. Ein Knoten gilt als “geschlossen” sobald die Berechnung der Funktion $f$ für ihn durchgeführt und ein Ergebnis festgestellt wurde. %todo finden ich den Satz nicht wirklich sinnvoll
+\item[3.] Es wird überprüft, ob sich der aktuelle Knoten $n$ in der Zielmenge befindet. Ist das der Fall, wird er als „geschlossen“ markiert und der Algorithmus terminiert. Ein Knoten gilt als “geschlossen” sobald die Berechnung der Funktion $f$ für ihn durchgeführt wurde. %todo finden ich den Satz nicht wirklich sinnvoll
 \item[4.] %todo was ist der Erster Fall ?
-Andernfalls wird der Knoten $n$ als „geschlossen“ markiert und es werden alle Nachfolger von $n$ erkundet. Dann wird $f$ für jeden Nachfolger berechnet und jeder Nachfolger als „offen“ markiert, der nicht als „geschlossen“ markiert wurde. Gibt es nun Nachfolgeknoten die als „geschlossen“ markiert sind, für welche die Funktion $f$ einen geringeren Wert liefert, werden diese Knoten als „offen“ markiert. Daraufhin wird Schritt zwei wieder ausgeführt. Solange, bis der Algorithmus terminiert und der kürzeste Pfad durch den Graphen gefunden wurde\cite{HartNilssonandRaphael.1968}.
+Andernfalls wird der Knoten $n$ als „geschlossen“ markiert und es werden alle Nachfolger von $n$ erkundet. Dann wird $f(n)$ für jeden Nachfolger berechnet und jeder Nachfolger als „offen“ markiert, der nicht als „geschlossen“ markiert wurde. Gibt es nun Nachfolgeknoten die als „geschlossen“ markiert sind, für welche die Funktion $f$ einen geringeren Wert liefert, werden diese Knoten als „offen“ markiert. Daraufhin wird Schritt zwei wieder ausgeführt. Solange, bis der Algorithmus terminiert und der kürzeste Pfad durch den Graphen gefunden wurde\cite{HartNilssonandRaphael.1968}.
 \end{itemize}
 
 
