@@ -18,7 +18,7 @@ Die Breitensuche durchläuft einen Graphen systematisch und schrittweise in alle
 \end{itemize}
 Diese Schritte werden so lange wiederholt, bis alle Knoten im Graphen gefunden wurden, die von $s$ erreicht werden können. Wird ein Knoten von BFS entdeckt, so wird die Distanz zum Startknoten $s$ berechnet. Anschließend wird der Knoten zu einem speziellen „Breitensuchbaum“ hinzugefügt, welcher alle vom Startknoten aus erreichbaren Knoten beinhaltet. Die Zweige des Baums stellen den kürzesten Pfad von $s$ zu den Knoten des Baumes dar \cite{Cormen.2009}.
 
-\subsection{Anwendung der Breitensuche}
+\subsubsection{Anwendung der Breitensuche}
 Die Breitensuche kann in mehreren Graphen Zusammenhängen verwendet werden.  BFS kann überprüft, ob ein Graph bipartit ist \cite{propTest}. Außerdem liefert der Algorithmus Zusammenhangskomponenten eines Graphen\cite{schmitz}. Die Breitensuche und ihre Hybridversionen\cite{effHyb} werden im Graphikprozessor für Graphentraversierung benutzt\cite{scaleGPU}. %todo anwendung in Pfadplanung fehlt, z.B. Maze Runner Game Paper
 
 \subsection{Tiefensuche}
