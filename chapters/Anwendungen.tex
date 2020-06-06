@@ -45,7 +45,21 @@ Bei dem Cooperative A*-Algorithmus sucht jeder Agent mit dem A*-Algorithmus in e
 Bounded Mulit-Agent A* basiert auf Real-time Adaptive A*(RTAA*). RTAA* wird für ein Multiagenten-Setting erweitert. Andere Agenten werden während der Suche als sich bewegende Hindernisse betrachtet. AUßerdem haben Agenten die Möglichkeit andere Agenten dazu aufzufordern Zellen frei zu machen. Der aufgeforderte Agent wird zu einer freien benachbarten Zelle wandern und seine reguläre Such von dort aus fortführen\cite{Sigurdson.2019}.
 
 
+
+\section{Multi-Agent Pathfinding}
+Ein Szenario in dem mehrere Akteure einen Pfad finden müssen, bei dem keine Kollisionen auftreten dürfen, bezeichnet man als Multi-Agent Pathfinding-Problem (MAPF). Es gibt verschiedene MAPF-Algorithmen, darunter Windowed Hierarchical Cooperative A*, Flow Annotated Replanning und Bounded Multi-Agent A*.
+
+\subsubsection{Windowed Hierarchical Cooperative A*}
+Bei dem Cooperative A*-Algorithmus sucht jeder Agent mit dem A*-Algorithmus in einem dreidimensionalen Graphen, um sein Ziel zu erreichen. Das Ergebnis der Suche teilt er mit den anderen Agenten in einer Reservierungstabelle. Auf diese Weise sind die Agenten in der Lage Kollisionen zu vermeiden. Der Hirarchical Cooperative A*-Algorithmus benutzt eine hierarchische Suche. Windowed Hierarchical Cooperative A*(WHCA*) begrenzt die Suchtiefe für jeden Agent zu einem Fenster. Sobald der Teilpfad in dem Fenster gefunden wurde folgt der Agent diesem Pfad und fängt mit der Berechnung des nächsten Teilpfades an. 
+\subsubsection{Flow Annotated Replanning}
+Ähnlich WHCA* nimmt Flow Annotation Replanning (FAR) die Pläne anderer Agentin in die Berechnung auf. Statt aber, wenn ein Pfad blockiert ist, einen neuen Pfad zu berechnen, wartet ein Agent im FAR-Algorithmus einfach auf dem aktuellen Knoten darauf, dass sein Pfad wieder frei wird und er ihn für sich reservieren kann. 
+
+\subsubsection{Bounded Multi-Agent A*}
+Bounded Mulit-Agent A* basiert auf Real-time Adaptive A*(RTAA*). RTAA* wird für ein Multiagenten-Setting erweitert. Andere Agenten werden während der Suche als sich bewegende Hindernisse betrachtet. AUßerdem haben Agenten die Möglichkeit andere Agenten dazu aufzufordern Zellen frei zu machen. Der aufgeforderte Agent wird zu einer freien benachbarten Zelle wandern und seine reguläre Such von dort aus fortführen\cite{Sigurdson.2019}.
+
+
 \section{Verwandte Arbeiten} 
 Pfadplanungsproblem wird oft ebenfalls in Robotik untersucht. Eine Abbildung der realen Welt muss deren Merkmale möglichst präzis erfassen können. In \cite{lozano} und \cite{latombe} wird einer Konfigurationsraum beschrieben. Die Idee besteht darin, dass ein Roboter als ein Punkt betractet wird. Nach Latombe\cite{latombe}, es existieren folgende Ansätze für Pfadpalnung in einem Konfigurationsraum: Wegkartenverfahren, Zellunterteilungsverfahren und Potentialfelderverfahren. 
+
 
 Bei \textbf{Wegkartenverfahren} wird der Konfigurationsraum in Kurven unterteilt. Einige Versionen davon sind z.B Voronoi-Diagramm\cite{voronoi} und der Sichtbarkeitsgraph\cite{visG1}. Das \textbf{Potentialfeldverfahren} bietet einen Ansatz, bei dem der Suchraum von Gradienten überspannt wird. Aus den Gradienten werden dann mögliche Bewegungsrichtungen ersichtlich. Die \textbf{Zellzerlegung}\cite{cd} ist ein bekanntes Hindernisvermeidungsverfahren, das den hindernisfreien Konfigurationsraum in eine endliche Sammlung nicht überlappender(disjunkter) konvexer Polygone, sogenannte Zellen, zerlegt. In diesen kann leicht ein Pfad gefunden werden.
