@@ -1,19 +1,28 @@
+
+
 \chapter{Anwendung von Pfadplanungsalgorithmen}
 
-Algorithmen zur Pfadplanung finden in verschiedenen Bereichen Anwendung. Reale Pfadplanungsszenarien, wie Navigation und Logistik, sind durch Graphen modellierbar, auf die Suchalgorithmen angewendet werden können \cite{Botea.2011}. In Computerspielen werden Pfadplanungsalgorithmen für die Bewegung computergesteuerter Charaktere genutzt. Meist ist es von Interesse in kurzer Zeit ein angenähertes Ergebnis zu finden, damit der Spieler nicht lange warten muss \cite{Krishnaswamy.2009}. Dieses Gebiet birgt die zusätzliche Herausforderung die Bewegungen der Charaktere realistisch zu simulieren. Auch hat der Computer direkten Zugriff auf Umgebungsinformationen, sodass Schätzungen deutlich präziser vorgenommen werden können.
+Algorithmen zur Pfadplanung finden in verschiedenen Bereichen Anwendung. Reale Pfadplanungsszenarien, wie Navigation und Logistik, sind durch Graphen modellierbar, auf die Suchalgorithmen angewendet werden können \cite{Botea.2011}. In Computerspielen werden Pfadplanungsalgorithmen für die Bewegung computergesteuerter Charaktere genutzt \cite{Krishnaswamy.2009}. Dieses Gebiet birgt die zusätzliche Herausforderung die Bewegungen der Charaktere realistisch zu simulieren. Auch hat der Computer direkten Zugriff auf Umgebungsinformationen, sodass Schätzungen präzise  vorgenommen werden können.
 
 
 \section{Vergleich von BFS, Dijkstra und A*}
 
-Der A* Algorithmus wird in vielen Videospielen für die Bewegungskontrolle von Nicht-Spieler Charakteren (engl. non-player character, NPC) genutzt \cite{Stamford.2014}. Der Grund dafür ist die in vielen Fällen schnellere Berechnung des kürzesten Pfads gegenüber uninformierten Algorithmen. In Abbildung 1 werden die Rechenzeiten der Algorithmen BFS, Dijkstra und A* in verschieden großen, quadratischen Umgebungen verglichen.
+Der A* Algorithmus wird in vielen Videospielen für die Bewegungskontrolle von Nicht-Spieler Charakteren (engl. non-player character, NPC) genutzt \cite{Stamford.2014}. Der Grund dafür ist die in vielen Fällen schnellere Berechnung des kürzesten Pfads gegenüber uninformierten Algorithmen. In ihrer Arbeit "Pathfinding Algorithm Efficiency Analysis in 2D Grid" vergleichen Zarembo und Kodors die Laufzeit der Algorithmen BFS, Dijkstra und A*. In der Tabelle \ref{tab:comp} sind die Rechenzeiten der Algorithmen bei verschiedenen Rastergrößen gegenübergestellt. Die Breitensuche benötigt schon bei sehr kleiner Flächengröße deutlich länger als Dijkstra und A*. Je größe die Fläche wird, desto größer wird auch der Unterschied zwischen Dijkstra und A*. Bei einer Flächengröße von 1024x1024 Knoten braucht A* weniger als die Hälfte der Zeit von Dijkstras Algorithmus. Die Breitensuche benötigt hier die 10.000fache Zeit von A*. Das sind knapp vier Stunden, im Gegensatz zu gut einer Sekunde.
 
-
-\begin{figure}[h]
-	\centering
-	\includegraphics{images/Tables}
-	\caption{in Anlehnung an}
-	\label{fig:meine-grafik}
-\end{figure}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\begin{table}[h]
+\centering
+\begin{tabular}[h]{|C{4cm}|C{2cm}|C{2cm}|C{2cm}|} \hline
+	Grid size (nodes) & BFS & Dijkstra & A* \\ \hline
+	64x64 & 150 & 6 & 4 \\ \hline
+	128x128 & 2803 & 25 & 16 \\ \hline
+	256x256 & 48313 & 120 & 77 \\ \hline
+	512x512 & 821598 & 515 & 265 \\ \hline
+	1024x1024 & 13962457 & 2362 & 1148 \\ \hline
+\end{tabular}
+\caption{Rechenzeit in ms, in Anlehnung an \cite{Zarembo.2013}}
+\label{tab:comp}
+\end{table}
 
 
 \section{Erweiterung von A*}
