@@ -48,7 +48,7 @@ Zusätzlich wird eine Baumstruktur angelegt, welche das erste von Dijkstra besch
 
 Zu Beginn des Lösungsprozesses liegen alle Knoten in $C$. Der Startknoten $s$ wird in $A$ abgelegt. Nun werden wiederholend folgende zwei Schritte ausgeführt:
 \begin{itemize}
-	\item[1.] Es werden alle Verbindungen $H = \{h_1, h_2, ...\}$ zwischen dem zuletzt in $A$ abgelegten Knoten $v$ und den Knoten $R$ aus $B$ oder $C$ überprüft. Liegt der Knoten $r$ in $B$, so wird überprüft, ob die Verbindung $h = s \rightarrow v \rightarrow r$ kürzer ist als die im zweiten Zweig befindliche $s \rightarrow r$. Sollte dies der Fall sein, ersetzt $h$ den im zweiten Zweig abgelegten Pfad zwischen $s$ und $r$. Liegt $r$ in $C$, so wird der Knoten in $B$ verschoben und $h$ dem zweiten Zweig hinzugefügt.
+	\item[1.] Es werden alle Verbindungen $H = \{h_1, h_2, ...\}$ zwischen dem zuletzt in $A$ abgelegten Knoten $v$ und den Knoten $R$ aus $B$ oder $C$ überprüft. Liegt der Knoten $r$ in $B$, so wird überprüft, ob die Verbindung $h = \(s, v, r\)$ kürzer ist als die im zweiten Zweig befindliche $\(s, r\)$. Sollte dies der Fall sein, ersetzt $h$ den im zweiten Zweig abgelegten Pfad zwischen $s$ und $r$. Liegt $r$ in $C$, so wird der Knoten in $B$ verschoben und $h$ dem zweiten Zweig hinzugefügt.
 	\item[2.] Werden für die Knoten $B$ lediglich Verbindungen des ersten Zweigs und eine Verbindung des zweiten betrachtet, besitzt jeder Knoten aus $B$ eine feste Länge zu $s$. Der Knoten aus $B$ mit der kürzesten Distanz zu $s$ wird nach $A$ verschoben und seine Verbindung im ersten Zweig des Baums abgelegt.
 \end{itemize}
 Diese Schritte werden so lange wiederholt bis Zielknoten $d$ in $A$ verschoben wurde.
