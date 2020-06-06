@@ -1,10 +1,10 @@
-\chapter{Uninformierte und informierte Suchalgorithmen}
+\chapter{Funktionsprizipien von Pfadplanungsalgorithmen}
 
 Pfadplanung im Hinblick auf Graphentheorie wird in zwei Gruppen unterteilt: informierte und uninformierte Algorithmen. Uninformierte Pfadplanung oder Blindsuche %todo "Uninformierte Pfadplanung (auch Blindsuche genannt)"?
 wird in alle Richtungen durchgeführt. In der informierten Pfadplanung wird die Richtung zum Ziel geschätzt und die Suche in diese Richtung durchgeführt\cite{comAnal}. %todo synonym zum durchführen, weil 2 mal benutzt
 %todo vielleicht "wird zunächst die Richtung zum Ziel geschätzt und dann die Suche in diese Richtung durchgeführt"?
 
-\section{Uninformierte Suchalgorithmen}
+\section{Uninformierte Algorithmen}
 Algorithmen dieser Gruppe werden verwendet, wenn es keine Informationen über die Entfernung vom Startknoten $s$ zum Zielknoten $d$ bekannt sind.
 Sie garantieren, dass der kürzeste Pfad gefunden wird, falls ein solcher Pfad existiert\cite{comAnal}. Weil uninformierte Algorithmen über alle möglichen erreichbaren Knoten gehen, gibt es einen großen Bedarf an Speicherplatz und Leistung. Aus diesem Grund finden diese Verfahren seltenere Anwendung als die informierten \cite{sim}. Die am meisten verwendeten Algorithmen dieser Gruppe sind die Breitensuche, die Tiefensuche und der Algorithmus von Dijkstra.
 
@@ -33,11 +33,11 @@ Das Verfahren der Tiefensuche endet sobald der Algorithmus zum Startknoten $s$ z
 Für das Zwischenspeichern der gefundenen Knoten bietet sich ein Stack an, da der Algorithmus selbst nach dem „first in, first out“ Prinzip funktioniert \cite{Tarjan.1972}. Die Tiefensuche hat eine Laufzeit von $\Theta(V + E)$ \cite{Cormen.2009}.
 
 
-\subsection{Anwendung der Tiefensuche}
+\subsubsection{Anwendung der Tiefensuche}
 Tiefensuche genauso wie die Breitensuche kann die Zusammenhangskomponenten eines Graphen finden. \cite{schmitz} \cite{dfs}. Außerdem kann der Graph auf die Planarität \cite{dfsPlanar} getestet werden und es kann die Topoligsche Sortierung gefunden werden. Es können Irrgärten generiert werden sowie den Weg daraus gefunden werden\cite{examMaze}. %todo noch mehr Pfadplanung anwendungen
 
 
-\subsection{Der Algorithmus von Dijkstra}
+\subsection{Dijkstras Algorithmus}
 %todo am besten auch schrittweise oder so machen, dass man die Punkte aus dem Kotext unterscheiden kann
 In seiner Arbeit „Two Problems in Connexion with Graphs“ stellt Dijkstra zwei Probleme dar \cite{Dijkstra.1959}. Das erste Problem ist die Konstruktion eines Baums mit den kürzesten Wegen zwischen den Knoten eines Graphen (vergleiche Breitensuchbaum). Das andere ist die Suche nach dem kürzesten Weg zwischen zwei Knoten (vergleiche Shortest Path Problem).
 Zur Lösung des Problems des kürzesten Wegs zwischen zwei Knoten $s$ und $d$ wird eine Menge Knoten $R = \{r_1, r_2, ...\}$ definiert, wobei die Knoten R auf dem kürzesten Pfad zwischen $s$ und $d$ liegen. %$R \in min(s \rightarrow d)$ ?
@@ -57,12 +57,12 @@ Der Algorithmus hat eine Komplexität von $O(n^2)$ \cite{Madkour.2017}. Deshalb 
 
 
 
-\subsection{Anwendung des Dijkstra-Algorithmus }
+\subsubsection{Anwendung des Dijkstra-Algorithmus }
 
 Der Suchalgorithmus von Dijkstra und dessen Erweiterungen besitzen ein sehr breites Anwendungsspektrum, zum Beispiel in Transportnetzwerken in sicheren und unsicheren Umgebungen \cite{fuzzyDijk} \cite{publicTrans} %todo eine Quelle weg
 verwendent. Außerdem findet der Algorithmus Verwendung in Satellitennetzwerken \cite{satelite} und in der Entwicklung von Hardware \cite{hardware}.  %todo noch 1-2 Anwendungen, z.B: Maze Runner Paper
 
-\section{Informierte Suchalgorithmen}
+\section{Informierte Algorithmen}
 
 Die sogenannte Bestensuche (engl. informed best-first search)  %todo keine Quelle? 
 ist ein verbreiteter Ansatz für Problemlösungen %todo für alle oder nur für kurz. Pfad?
