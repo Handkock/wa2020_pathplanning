@@ -1,11 +1,12 @@
 \chapter{Uninformierte und informierte Suchalgorithmen}
 
-Pfadplanung im Hinblick auf Graphentheorie wird in zwei Gruppen unterteilt: informierte und uninformierte Algorithmen. Uninformierte Pfadplanung oder Blindsuche wird in alle Richtungen durchgeführt. In der informierten Pfadplanung wird die Richtung zum Ziel geschätzt und die Suche in diese Richtung durchgeführt\cite{comAnal}. %todo synonym zum durchführen, weil 2 mal benutzt
+Pfadplanung im Hinblick auf Graphentheorie wird in zwei Gruppen unterteilt: informierte und uninformierte Algorithmen. Uninformierte Pfadplanung oder Blindsuche %todo "Uninformierte Pfadplanung (auch Blindsuche genannt)"?
+wird in alle Richtungen durchgeführt. In der informierten Pfadplanung wird die Richtung zum Ziel geschätzt und die Suche in diese Richtung durchgeführt\cite{comAnal}. %todo synonym zum durchführen, weil 2 mal benutzt
+%todo vielleicht "wird zunächst die Richtung zum Ziel geschätzt und dann die Suche in diese Richtung durchgeführt"?
 
 \section{Uninformierte Suchalgorithmen}
-Algorithmen dieser Gruppe werden verwendet, wenn es keine Informationen über die Entfernung vom Start zum Ziel bekannt sind. %todo s und d verwenden
-Sie garantieren, dass der kürzeste Pfad gefunden wird, falls ein solcher Pfad existiert\cite{comAnal}. Weil uninformierte Algorithmen über alle möglichen erreichbaren Knoten gehen, gibt es einen großen Bedarf an Speicherplatz und Leistung. Aus diesem Grund finden diese Verfahren seltenere Anwendung als die informierten \cite{sim}\cite{comAnal}. %todo nur eine Quelle lassen
-Die am meisten verwendeten Algorithmen dieser Gruppe sind die Breitensuche, die Tiefensuche und der Algorithmus von Dijkstra.
+Algorithmen dieser Gruppe werden verwendet, wenn es keine Informationen über die Entfernung vom Startknoten $s$ zum Zielknoten $d$ bekannt sind.
+Sie garantieren, dass der kürzeste Pfad gefunden wird, falls ein solcher Pfad existiert\cite{comAnal}. Weil uninformierte Algorithmen über alle möglichen erreichbaren Knoten gehen, gibt es einen großen Bedarf an Speicherplatz und Leistung. Aus diesem Grund finden diese Verfahren seltenere Anwendung als die informierten \cite{sim}. Die am meisten verwendeten Algorithmen dieser Gruppe sind die Breitensuche, die Tiefensuche und der Algorithmus von Dijkstra.
 
 \subsection{Breitensuche}
 
@@ -40,7 +41,7 @@ Tiefensuche genauso wie die Breitensuche kann die Zusammenhangskomponenten eines
 %todo am besten auch schrittweise oder so machen, dass man die Punkte aus dem Kotext unterscheiden kann
 In seiner Arbeit „Two Problems in Connexion with Graphs“ stellt Dijkstra zwei Probleme dar \cite{Dijkstra.1959}. Das erste Problem ist die Konstruktion eines Baums mit den kürzesten Wegen zwischen den Knoten eines Graphen (vergleiche Breitensuchbaum). Das andere ist die Suche nach dem kürzesten Weg zwischen zwei Knoten (vergleiche Shortest Path Problem).
 Zur Lösung des Problems des kürzesten Wegs zwischen zwei Knoten $s$ und $d$ wird eine Menge Knoten $R = \{r_1, r_2, ...\}$ definiert, wobei die Knoten R auf dem kürzesten Pfad zwischen $s$ und $d$ liegen. %$R \in min(s \rightarrow d)$ ?
-Da ein Knoten $r \in R$ Teil des kürzesten Wegs zwischen $s$ und $d$ ist, ist auch der Weg zwischen $s$ und $r$ minimal. Es werden kontinuierlich Knoten aus $R$ gesucht, die weiter von $d$ entfernt sind, bis der Zielknoten $Q$ erreicht wurde.
+Da ein Knoten $r \in R$ Teil des kürzesten Wegs zwischen $s$ und $d$ ist, ist auch der Weg zwischen $s$ und $r$ minimal. Es werden kontinuierlich Knoten aus $R$ gesucht, die weiter von $s$ entfernt sind, bis der Zielknoten $d$ erreicht wurde.
 
 Zur schrittweisen Lösung nutzt der Algorithmus drei verschiedene Mengen von Knoten. Menge $A = \{a_1, a_2, ...\}$ sind die Knoten, für die die minimale Distanz vom Startknoten $s$ aus bekannt ist. Menge $B = \{b_1, b_2, ...\}$ sind jene Knoten, die direkt mit einem Knoten aus $A$ verbunden sind, aber nicht Teil von $A$ sind. In $C = \{c_1, c_2, ...\}$ befinden sich alle übrigen Knoten.
 Zusätzlich wird eine Baumstruktur angelegt, welche das erste von Dijkstra beschriebene Problem löst. Der Baum besitzt drei Hauptzweige. In den ersten beiden Zweigen $Alpha = \{\alpha_1, \alpha_2, ...\}$ und $Beta = \{\beta_1, \beta_2, ...\}$ befinden sich jeweils die Verbindungen vom Startknoten $s$ zu den Knoten der Mengen $A$ und $B$. Pro Knoten der Menge $B$ wird jedoch nur eine Verbindung zu $s$ gespeichert. Im dritten Zweig $Gamma = \{\gamma_1, \gamma_2, ...\}$ befinden sich alle übrigen Verbindungen. 
