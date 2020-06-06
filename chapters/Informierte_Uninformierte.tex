@@ -29,7 +29,7 @@ Die Tiefensuche (engl. Depth-First Search, DFS) stellt das Gegenstück zur Breit
 	\item[2] DFS setzt zum überliegenden Knoten zurück. Dieser wird auf eine unentdeckte Kante untersucht. Existiert eine weitere Kante, wechselt der Algorithmus zurück in Phase 1. Gibt es keine unentdeckte Kante, setzt DFS erneut zurück.
 \end{itemize}
 Das Verfahren der Tiefensuche endet sobald der Algorithmus zum Startknoten $s$ zurückgesetzt hat und bei $s$ keine unentdeckten Kanten verbleiben. Beim Endecken eines Knoten wird die Distanz zu $s$ berechnet, und der kürzeste Pfad zu $s$ in einen „Tiefensuchbaum“ eingepflegt (vergleiche Breitensuchbaum). Bei der Tiefensuche können jedoch mehrere Bäume entstehen, welche dann einen sogenannten „Tiefensuchwald“ formen \cite{Cormen.2009}. 
-Für das Zwischenspeichern der gefundenen Knoten bietet sich ein Stack an, da der Algorithmus selbst nach dem „last in, first out“ Prinzip funktioniert \cite{Tarjan.1972}. Die Tiefensuche hat eine Laufzeit von $\Theta(V + E)$ \cite{Cormen.2009}.
+Für das Zwischenspeichern der gefundenen Knoten bietet sich ein Stack an, da der Algorithmus selbst nach dem „first in, first out“ Prinzip funktioniert \cite{Tarjan.1972}. Die Tiefensuche hat eine Laufzeit von $\Theta(V + E)$ \cite{Cormen.2009}.
 
 
 \subsection{Anwendung der Tiefensuche}
@@ -92,4 +92,6 @@ den geringsten Wert liefert. Anschließend werden beliebige angrenzende Knoten a
 Andernfalls wird der Knoten $n$ als „geschlossen“ markiert und es werden alle Nachfolger von $n$ erkundet. Dann wird $f(n)$ für jeden Nachfolger berechnet und jeder Nachfolger als „offen“ markiert, der nicht als „geschlossen“ markiert wurde. Gibt es nun Nachfolgeknoten die als „geschlossen“ markiert sind, für welche die Funktion $f$ einen geringeren Wert liefert, werden diese Knoten als „offen“ markiert. Daraufhin wird Schritt zwei wieder ausgeführt. Solange, bis der Algorithmus terminiert und der kürzeste Pfad durch den Graphen gefunden wurde\cite{HartNilssonandRaphael.1968}.
 \end{itemize}
 
+
+\subsection{Mtriken}
 

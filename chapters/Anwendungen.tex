@@ -19,26 +19,29 @@ In komplexeren Levels (siehe Abbildung 2 und 3) schafft es A* jedoch schneller a
 [Abb 3][Maze Runner3]
 
 
+\section{Erweiterungen von A*}
+Das Problem der Pfadplanung in Computerspielen muss in Echtzeit gelöst werden, und  häufig unter Einschränkungen des begrenzten Speichers und der begrenzten CPU-Ressourcen. Der Rechenaufwand, der erforderlich ist, um einen Pfad unter Verwendung eines Suchalgorithmus wie A * zu finden, nimmt mit der Größe des Suchraums zu. Daher kann die Pfadfindung auf großen Karten zu schwerwiegenden Leistungsengpässen führen. Daher kann das Reduzieren des Suchraums A * erheblich beschleunigen. Einer Erweiterung von A*-Algorithmus ist HPA*, welcher A* durch Reduzierung des Suchraums optimiert\cite{hpa}. %todo noch besser umschreiben
+
+\subsection{Hierarchical Path-Finding A*}
+Dies ist ein domänenunabhängiger Ansatz. Die Hierarchie kann auf mehr als zwei Ebenen erweitert werden, wodurch sie für große Problembereiche skalierbarer wird. Es wird ein dreistufiger Prozess angewendet. Der erste Schritt besteht darin, zur Grenze der Nachbarschaft zu fahren, die den Startort enthält. Der zweite Schritt besteht dann darin, nach einem Pfad von der Grenze der Startumgebung zur Grenze der Zielumgebung zu suchen. Dieser Schritt erfolgt auf abstrakter Ebene, wo die Suche einfacher und schneller ist. Der letzte Schritt besteht darin, den Pfad zu vervollständigen, indem Sie von der Grenze der Zielumgebung zur Zielposition fahren. HPA * hat bewiesen, dass es zehnmal schneller ist als A*\cite{hpa}
+
+\subsubsection{HPA* Verbesserungen}
+HPA kann auch verbessert werden. Path smoothing, Lazy Edge weight,
+
+\subsubsection{HPA* Anwendung}
+HPA * ist gut für Videospiele geeignet, aber sehr allgemein. In der Praxis kann es sowohl für statische Welten, in denen die Graphhierarchie besser vorbereitet werden kann, erheblich optimiert werden, als auch in typischen dynamischen Welten, um häufige Geländeänderungen zu bewältigen. 
+SHPA, 
+DHPA
 
 
-\section{Übersicht der Pfadplanungsansätze oder Verwandte Arbeiten} %todo besser als Verwandte Arbeite und dann geht das in die Richtung Games und Robotics aber andere Darstellung
 
-Das Weltmodell kann für verschiedene Einsatzbereiche unterschiedlich dargestellt werden. Eine Abbildung der realen Welt muss deren Merkmale möglichst präzis erfassen können. Die folgenden Ansätze für die Raumdarstellung führen jeweils Fragestellungen auf Suchprobleme in Graphen zurück. %todo besser umformulieren in Hinblick auf die folgende Auflistung, hier sind mehr eigentlich spielen&roboter Ansätze
 
-\subsection{Geometrische Karten oder Wegkartenverfahren}
-%todo Hinblick auf Spiele hier schaffen, um den Raum oder Fläche als Weltmodell darzustellen, 
 
-\textbf{Das Voronoi Diagram}\newline
-Bei Erstellung des Voronoi-Diagramms wird der Raum in Regionen (Voronoi-Regionen) zerlegt. Jede Region enhält ihr Zentrum und die Punkte, die zu diesem Zentrum euklidisch näher liegen, als zu jedem anderen Zentrum \cite{voronoi}. \\
 
-\textbf{Sichtbarkeitsgraph} \newline
-Ein Sichtbarkeitsgraph enthält alle gegenseitig sichtbaren Orte. Eine Kante zwischen zwei Knotenpunkten existiert genau dann, wenn die Knoten sich gegenseitig sehen. Dies ist der Fall, wenn es keine Hindernisse zwischen den Knoten gibt\cite{visG1}. \\ 
 
-\textbf{Potentialfeldverfahren} \newline
-Das Potentialfeldverfahren bietet einen Ansatz, bei dem der Suchraum von Gradienten überspannt wird. Aus den Gradienten werden dann mögliche Bewegungsrichtungen ersichtlich ?? \cite{potField}.\\
 
-\textbf{Zellzerlegungsverfahren}\newline
-Die Zellzerlegung ist ein bekanntes Hindernisvermeidungsverfahren, das den hindernisfreien Konfigurationsraum in eine endliche Sammlung nicht überlappender(disjunkter) konvexer Polygone, sogenannte Zellen, zerlegt. In diesen kann leicht ein Pfad gefunden werden. Obwohl dieses Verfahren rechenintensiv ist, besteht sein Vorteil gegenüber anderen Ansätzen zur Planung von Roboterpfaden darin, dass die Zellzerlegung unter geeigneten Annahmen vollständig aufgelöst ist. Andere Verfahren verwenden beispielsweise eine Roadmap oder Potentialfeldverfahren\cite{cd}. \\
 
-\subsection{Topologische Graphen}
-Diese Gruppe der Verfahren wird in zwei Gruppen unterteilt. Es gibt informierte und uninformierte Suchalgorithmen. Die beiden Gruppen werden im folgenden Kapitel näher besprochen.
+\section{Verwandte Arbeiten} 
+Pfadplanungsproblem wird oft ebenfalls in Robotik untersucht. Eine Abbildung der realen Welt muss deren Merkmale möglichst präzis erfassen können. In \cite{lozano} und \cite{latombe} wird einer Konfigurationsraum beschrieben. Die Idee besteht darin, dass ein Roboter als ein Punkt betractet wird. Nach Latombe\cite{latombe}, es existieren folgende Ansätze für Pfadpalnung in einem Konfigurationsraum: Wegkartenverfahren, Zellunterteilungsverfahren und Potentialfelderverfahren. 
+
+Bei \textbf{Wegkartenverfahren} wird der Konfigurationsraum in Kurven unterteilt. Einige Versionen davon sind z.B Voronoi-Diagramm\cite{voronoi} und der Sichtbarkeitsgraph\cite{visG1}. Das \textbf{Potentialfeldverfahren} bietet einen Ansatz, bei dem der Suchraum von Gradienten überspannt wird. Aus den Gradienten werden dann mögliche Bewegungsrichtungen ersichtlich. Die \textbf{Zellzerlegung}\cite{cd} ist ein bekanntes Hindernisvermeidungsverfahren, das den hindernisfreien Konfigurationsraum in eine endliche Sammlung nicht überlappender(disjunkter) konvexer Polygone, sogenannte Zellen, zerlegt. In diesen kann leicht ein Pfad gefunden werden.
