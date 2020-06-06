@@ -42,3 +42,16 @@ Die Zellzerlegung ist ein bekanntes Hindernisvermeidungsverfahren, das den hinde
 
 \subsection{Topologische Graphen}
 Diese Gruppe der Verfahren wird in zwei Gruppen unterteilt. Es gibt informierte und uninformierte Suchalgorithmen. Die beiden Gruppen werden im folgenden Kapitel näher besprochen.
+
+\subsection{Multi-Agent Pathfinding}%TODO: überarbeiten
+
+Ein Szenario in dem mehrere Akteure einen Pfad finden müssen, bei dem keine Kollisionen auftreten dürfen, bezeichnet man als Multi-Agent Pathfinding-Problem (MAPF). Es gibt verschiedene MAPF-Algorithmen, darunter Windowed Hierarchical Cooperative A*, Flow Annotated Replanning und Bounded Multi-Agent A*.
+
+\subsection{Windowed Hierarchical Cooperative A*}
+Bei dem Cooperative A*-Algorithmus sucht jeder Agent mit dem A*-Algorithmus in einem dreidimensionalen Graphen, um sein Ziel zu erreichen. Das Ergebnis der Suche teilt er mit den anderen Agenten in einer Reservierungstabelle. Auf diese Weise sind die Agenten in der Lage Kollisionen zu vermeiden. Der Hirarchical Cooperative A*-Algorithmus benutzt eine hierarchische Suche. Windowed Hierarchical Cooperative A*(WHCA*) begrenzt die Suchtiefe für jeden Agent zu einem Fenster. Sobald der Teilpfad in dem Fenster gefunden wurde folgt der Agent diesem Pfad und fängt mit der Berechnung des nächsten Teilpfades an. 
+\subsection{Flow Annotated Replanning}
+Ähnlich WHCA* nimmt Flow Annotation Replanning (FAR) die Pläne anderer Agentin in die Berechnung auf. Statt aber, wenn ein Pfad blockiert ist, einen neuen Pfad zu berechnen, wartet ein Agent im FAR-Algorithmus einfach auf dem aktuellen Knoten darauf, dass sein Pfad wieder frei wird und er ihn für sich reservieren kann. 
+
+\subsection{Bounded Multi-Agent A*}
+Bounded Mulit-Agent A* basiert auf Real-time Adaptive A*.
+\cite{Sigurdson.2019}
