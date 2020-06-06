@@ -91,5 +91,15 @@ den geringsten Wert liefert. Anschließend werden beliebige angrenzende Knoten a
 \item[4.] %todo was ist der Erster Fall ?
 Andernfalls wird der Knoten $n$ als „geschlossen“ markiert und es werden alle Nachfolger von $n$ erkundet. Dann wird $f(n)$ für jeden Nachfolger berechnet und jeder Nachfolger als „offen“ markiert, der nicht als „geschlossen“ markiert wurde. Gibt es nun Nachfolgeknoten die als „geschlossen“ markiert sind, für welche die Funktion $f$ einen geringeren Wert liefert, werden diese Knoten als „offen“ markiert. Daraufhin wird Schritt zwei wieder ausgeführt. Solange, bis der Algorithmus terminiert und der kürzeste Pfad durch den Graphen gefunden wurde\cite{HartNilssonandRaphael.1968}.
 \end{itemize}
+\subsection{Metriken}
+Für die Distanzabschätzung der heuristischen Methoden gibt es verschiedene Ansätze. Verwendet werden hauptsächlich folgende Metriken.
+\subsection{Manhattandistanz}
+Die Manhattendistanz misst den Abstand zwischen zwei Knotenpunkten in einem Raster indem sie die horizontale und vertikale Distanz aufeinanderaddiert.
+\subsection{Diagonaldistanz}
+Die Diagonaldistanz arbeitet mit der Annahme, dass Agenten sich in die diagonale genauso wie in die horizontale und vertikale Richtung bewegen können. 
+\subsection{Chebyshev-Abstand}
+Der Chebyshev-Abstand ist eine Variante der Diagonaldistanz. Bei ihr wird angenommen das die Kosten für die diagonale Traversierung der horizontalen oder vertikalen entsprechen. 
+\subsection{Euklidische Distanz}
+Es gibt zwei Varianten der euklidischen Distanz. Es gibt die einfache und die quadrierte euklidische Distanz. Die euklidische Distanz berechnet den Abstand zwischen zwei Knoten als Punkte in einem kartesisches Koordinatensystem. Da die Berechnung der Wurzel für die Abstandsberechnung rechenintensiv ist, wird in der alternativen Variante auf die Ziehung der Wurzel verzichtet und der quadrierte euklidische Abstand verwendet\cite{YouSurLuhu}.
 
 
