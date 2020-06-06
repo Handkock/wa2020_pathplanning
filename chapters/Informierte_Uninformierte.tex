@@ -1,11 +1,12 @@
 \chapter{Uninformierte und informierte Suchalgorithmen}
 
-Pfadplanung im Hinblick auf Graphentheorie wird in zwei Gruppen unterteilt: informierte und uninformierte Algorithmen. Uninformierte Pfadplanung oder Blindsuche wird in alle Richtungen durchgeführt. In der informierten Pfadplanung wird die Richtung zum Ziel geschätzt und die Suche in diese Richtung durchgeführt\cite{comAnal}. %todo synonym zum durchführen, weil 2 mal benutzt
+Pfadplanung im Hinblick auf Graphentheorie wird in zwei Gruppen unterteilt: informierte und uninformierte Algorithmen. Uninformierte Pfadplanung oder Blindsuche %todo "Uninformierte Pfadplanung (auch Blindsuche genannt)"?
+wird in alle Richtungen durchgeführt. In der informierten Pfadplanung wird die Richtung zum Ziel geschätzt und die Suche in diese Richtung durchgeführt\cite{comAnal}. %todo synonym zum durchführen, weil 2 mal benutzt
+%todo vielleicht "wird zunächst die Richtung zum Ziel geschätzt und dann die Suche in diese Richtung durchgeführt"?
 
 \section{Uninformierte Suchalgorithmen}
-Algorithmen dieser Gruppe werden verwendet, wenn es keine Informationen über die Entfernung vom Start zum Ziel bekannt sind. %todo s und d verwenden
-Sie garantieren, dass der kürzeste Pfad gefunden wird, falls ein solcher Pfad existiert\cite{comAnal}. Weil uninformierte Algorithmen über alle möglichen erreichbaren Knoten gehen, gibt es einen großen Bedarf an Speicherplatz und Leistung. Aus diesem Grund finden diese Verfahren seltenere Anwendung als die informierten \cite{sim}\cite{comAnal}. %todo nur eine Quelle lassen
-Die am meisten verwendeten Algorithmen dieser Gruppe sind die Breitensuche, die Tiefensuche und der Algorithmus von Dijkstra.
+Algorithmen dieser Gruppe werden verwendet, wenn es keine Informationen über die Entfernung vom Startknoten $s$ zum Zielknoten $d$ bekannt sind.
+Sie garantieren, dass der kürzeste Pfad gefunden wird, falls ein solcher Pfad existiert\cite{comAnal}. Weil uninformierte Algorithmen über alle möglichen erreichbaren Knoten gehen, gibt es einen großen Bedarf an Speicherplatz und Leistung. Aus diesem Grund finden diese Verfahren seltenere Anwendung als die informierten \cite{sim}. Die am meisten verwendeten Algorithmen dieser Gruppe sind die Breitensuche, die Tiefensuche und der Algorithmus von Dijkstra.
 
 \subsection{Breitensuche}
 
