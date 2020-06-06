@@ -71,14 +71,25 @@ anhand heuristischer Informationen zu verkürzen. Diese %todo wer ?
 werden durch Schätzverfahren angenähert. Dabei wird versucht jedem Kandidaten %todo was für Kandidat ?
 einen Wert zuzuweisen. Anhand dieser Wertzuweisung wird die Erkundung in einem Graphen in die Richtung des vielversprechendsten Kandidaten fortgeführt. 
 %todo hier muss auf jedem Fall eine Herleitung zu A* stehen
+\subsection{Heuristiken}
+Um die Suche nach einer Lösung schneller zu machen werden heuristische Methoden in Verbindung mit unterschiedlichen Metriken angewendet. 
+\subsubsection{Metriken}
+Für die Distanzabschätzung der heuristischen Methoden gibt es verschiedene Ansätze. Verwendet werden hauptsächlich folgende Metriken.
+
+Die Manhattendistanz misst den Abstand zwischen zwei Knotenpunkten in einem Raster indem sie die horizontale und vertikale Distanz aufeinanderaddiert.
+
+Die Diagonaldistanz arbeitet mit der Annahme, dass Agenten sich in die diagonale genauso wie in die horizontale und vertikale Richtung bewegen können. 
+
+Der Chebyshev-Abstand ist eine Variante der Diagonaldistanz. Bei ihr wird angenommen das die Kosten für die diagonale Traversierung der horizontalen und vertikalen entsprechen. 
+
+Es gibt zwei Varianten der euklidischen Distanz. Es gibt die einfache und die quadrierte euklidische Distanz. Die euklidische Distanz berechnet den Abstand zwischen zwei Knoten als Punkte in einem kartesisches Koordinatensystem. Da die Berechnung der Wurzel für die Abstandsberechnung rechenintensiv ist, wird in der alternativen Variante auf die Ziehung der Wurzel verzichtet und der quadrierte euklidische Abstand verwendet\cite{YouSurLuhu}.
 
 \subsection{A*} 
+In diesem Zusammenhang wird häufig der A* Algorithmus untersucht. Um den kürzesten Pfad mit dem geringsten Aufwand zu finden, profitiert ein Suchalgorithmus von informierten Entscheidungen für die Untersuchung der Knotenpunkte. Untersucht er Knotenpunkte, die offensichtlich nicht zum Ziel führen können, verschwendet er Ressourcen. Untersucht er andererseits Knoten nicht, welche zum kürzesten Pfad beitragen, führt der Algorithmus nicht zum richtigen Ergebnis.
 
 Es sei ein gewichteter Graph $G$ gegeben, der den Startknoten $s$ und eine nichtleere Menge aus Zielknoten $T$ habe. Das Problem des optimalen Pfades besteht nun darin, den Pfad vom Startknoten $s$ zu einem Knoten aus der Zielmenge $T$ mit den geringsten Kosten zu finden. %todo Wiederholung des Shortest Path Problems, was eigentlich am Anfang richtig definiert werden muss und hier einfach verlinkt
 Die Kosten bestehen aus den Gewichten, die den Knoten zugewiesen sind\cite{RinaDechterandJudeaPearl.1983}.
 
-%todo hier ist die 
-Der A* Algorithmus wird häufig in diesem Zusammenhang untersucht. Um den kürzesten Pfad mit dem geringsten Aufwand zu finden, profitiert ein Suchalgorithmus von informierten Entscheidungen für die Untersuchung der Knotenpunkte. Untersucht er Knotenpunkte, die offensichtlich nicht zum Ziel führen können, verschwendet er Ressourcen. Untersucht er andererseits Knoten nicht, welche zum kürzesten Pfad beitragen, führt der Algorithmus nicht zum richtigen Ergebnis. %todo letzte 3 Sätze müssen vielleicht nach oben oder überhaupt zur Beschreibung der infomierten Algos
 A* benutzt eine spezielle Form der Funktion $f$ zusammengesetzt aus der Summe $f(n) = g(n) + h(n)$. Die Funktion $g(n)$ spiegelt die additiven Kosten des momentanen Pfades von dem Startknoten $s$ zu dem jetzigen Knoten $n$ wieder. Die Funktion $h(n)$ liefert eine heuristische Einschätzung, welche die Kosten des Restpfades zum Zielknoten schätzt\cite{RinaDechterandJudeaPearl.1983}. %todo wie schon besprochen, die h und g müssen besser aus dem KOntext unterschieden werden können 
 
 %todo ich finde n als einzeln Knoten nicht gut, weil n z.B. für eingabelänge bei Laufzeit bei Fredrik benutzt wird, ist besser hier vlt. x oder u 
@@ -86,22 +97,9 @@ A* benutzt eine spezielle Form der Funktion $f$ zusammengesetzt aus der Summe $f
 Der Algorithmus A* folgt bestimmten Schritten. 
 \begin{itemize}
 \item[1.] Der Startknoten $s$ wird als „offen“ markiert und die Funktion $f(n)$ berechnet. Als “offen” werden die Knoten bezeichnet, die von dem Algorithmus besucht und für die Untersuchung freigeschaltet worden sind.
-\item[2.] Derjenige offene Knoten $n$ wird ausgewählt, für den die Funktion $f(n)$ %todo ist schon besser f(n) hier, weil hier Bezug auf n gibt
+\item[2.] Derjenige offene Knoten $n$ wird ausgewählt, für den die Funktion $f(n)$
 den geringsten Wert liefert. Anschließend werden beliebige angrenzende Knoten ausgewählt, aber immer zugunsten jedes Knotens aus der Zielmenge $T$.
-\item[3.] Es wird überprüft, ob sich der aktuelle Knoten $n$ in der Zielmenge befindet. Ist das der Fall, wird er als „geschlossen“ markiert und der Algorithmus terminiert. Ein Knoten gilt als “geschlossen” sobald die Berechnung der Funktion $f$ für ihn durchgeführt wurde. %todo finden ich den Satz nicht wirklich sinnvoll
-\item[4.] %todo was ist der Erster Fall ?
+\item[3.] Es wird überprüft, ob sich der aktuelle Knoten $n$ in der Zielmenge befindet. Ist das der Fall, wird er als „geschlossen“ markiert und der Algorithmus terminiert. Ein Knoten $n$ gilt als “geschlossen” sobald die Berechnung der Funktion $f(n)$ für ihn durchgeführt wurde.
+\item[4.]
 Andernfalls wird der Knoten $n$ als „geschlossen“ markiert und es werden alle Nachfolger von $n$ erkundet. Dann wird $f(n)$ für jeden Nachfolger berechnet und jeder Nachfolger als „offen“ markiert, der nicht als „geschlossen“ markiert wurde. Gibt es nun Nachfolgeknoten die als „geschlossen“ markiert sind, für welche die Funktion $f$ einen geringeren Wert liefert, werden diese Knoten als „offen“ markiert. Daraufhin wird Schritt zwei wieder ausgeführt. Solange, bis der Algorithmus terminiert und der kürzeste Pfad durch den Graphen gefunden wurde\cite{HartNilssonandRaphael.1968}.
 \end{itemize}
-
-\subsection{Metriken}
-Für die Distanzabschätzung der heuristischen Methoden gibt es verschiedene Ansätze. Verwendet werden hauptsächlich folgende Metriken.
-\subsubsection{Manhattandistanz}
-Die Manhattendistanz misst den Abstand zwischen zwei Knotenpunkten in einem Raster indem sie die horizontale und vertikale Distanz aufeinanderaddiert.
-\subsubsection{Diagonaldistanz}
-Die Diagonaldistanz arbeitet mit der Annahme, dass Agenten sich in die diagonale genauso wie in die horizontale und vertikale Richtung bewegen können. 
-\subsubsection{Chebyshev-Abstand}
-Der Chebyshev-Abstand ist eine Variante der Diagonaldistanz. Bei ihr wird angenommen das die Kosten für die diagonale Traversierung der horizontalen und vertikalen entsprechen. 
-\subsubsection{Euklidische Distanz}
-Es gibt zwei Varianten der euklidischen Distanz. Es gibt die einfache und die quadrierte euklidische Distanz. Die euklidische Distanz berechnet den Abstand zwischen zwei Knoten als Punkte in einem kartesisches Koordinatensystem. Da die Berechnung der Wurzel für die Abstandsberechnung rechenintensiv ist, wird in der alternativen Variante auf die Ziehung der Wurzel verzichtet und der quadrierte euklidische Abstand verwendet\cite{YouSurLuhu}.
-
-
