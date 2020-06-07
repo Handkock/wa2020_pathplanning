@@ -1,8 +1,6 @@
 \chapter{Funktionsprizipien von Pfadplanungsalgorithmen}
 
-Pfadplanung im Hinblick auf Graphentheorie wird in zwei Gruppen unterteilt: informierte und uninformierte Algorithmen. Uninformierte Pfadplanung oder Blindsuche %todo "Uninformierte Pfadplanung (auch Blindsuche genannt)"?
-wird in alle Richtungen durchgeführt. In der informierten Pfadplanung wird die Richtung zum Ziel geschätzt und die Suche in diese Richtung durchgeführt\cite{comAnal}. %todo synonym zum durchführen, weil 2 mal benutzt
-%todo vielleicht "wird zunächst die Richtung zum Ziel geschätzt und dann die Suche in diese Richtung durchgeführt"?
+Pfadplanung im Hinblick auf Graphentheorie wird in zwei Gruppen unterteilt: informierte und uninformierte Algorithmen. Uninformierte Pfadplanung, auch ``Blindsuche`` genannt, wird in alle Richtungen durchgeführt. In der informierten Pfadplanung, im Gegensatz, wird die Richtung zum Ziel geschätzt und die in diese Richtung weitergesucht\cite{comAnal}. %todo klingt gut ?
 
 %todo Formulierung fast identisch mit dem Ende des vorherigen Kapitels
 
@@ -22,7 +20,7 @@ Die Breitensuche durchläuft einen Graphen systematisch und schrittweise in alle
 Diese Schritte werden so lange wiederholt, bis alle Knoten im Graphen gefunden wurden, die von $s$ erreicht werden können. Wird ein Knoten von BFS entdeckt, so wird die Distanz zum Startknoten $s$ berechnet. Anschließend wird der Knoten zu einem speziellen „Breitensuchbaum“ hinzugefügt, welcher alle vom Startknoten aus erreichbaren Knoten beinhaltet. Die Zweige des Baums stellen den kürzesten Pfad von $s$ zu den Knoten des Baumes dar \cite{Cormen.2009}.
 
 \subsubsection{Anwendung der Breitensuche}
-Die Breitensuche kann in mehreren Graphen Zusammenhängen verwendet werden.  BFS kann überprüft, ob ein Graph bipartit ist \cite{propTest}. Außerdem liefert der Algorithmus Zusammenhangskomponenten eines Graphen\cite{schmitz}. Die Breitensuche und ihre Hybridversionen\cite{effHyb} werden im Graphikprozessor für Graphentraversierung benutzt\cite{scaleGPU}. %todo anwendung in Pfadplanung fehlt, z.B. Maze Runner Game Paper
+Die Breitensuche kann bei Pfadfindung in einem Irrgärten-Spiel verwendet werden\cite{Permana.2018}. Außerdem können BFS und ihre Hybridversionen\cite{effHyb} im Graphendarstellung von Graphikprozessor für Graphentraversierung benutzt werden\cite{scaleGPU}. %todo umformulieren richtig, wie es in der Quelle ist
 
 \subsection{Tiefensuche}
 
@@ -36,7 +34,7 @@ Für das Zwischenspeichern der gefundenen Knoten bietet sich ein Stack an, da de
 
 
 \subsubsection{Anwendung der Tiefensuche}
-Tiefensuche genauso wie die Breitensuche kann die Zusammenhangskomponenten eines Graphen finden. \cite{schmitz} \cite{dfs}. Außerdem kann der Graph auf die Planarität \cite{dfsPlanar} getestet werden und es kann die Topoligsche Sortierung gefunden werden. Es können Irrgärten generiert werden sowie den Weg daraus gefunden werden\cite{examMaze}. %todo noch mehr Pfadplanung anwendungen
+Neben der Breitensuche wird die Tiefensuche wegen ihres blinden Prinzips selten für Pfadplanung angewendet. DFS kann Irrgärten generieren und einen Weg daraus finden\cite{examMaze}. Darüber hinaus kann DFS für Pfadfindung in einem Gitter verwendet werden\cite{compare}. %todo mark in pdf the text
 
 
 \subsection{Dijkstras Algorithmus}
@@ -62,7 +60,7 @@ Der Algorithmus hat eine Komplexität von $O(n^2)$ \cite{Madkour.2017}. Deshalb 
 \subsubsection{Anwendung des Dijkstra-Algorithmus }
 
 Der Suchalgorithmus von Dijkstra und dessen Erweiterungen besitzen ein sehr breites Anwendungsspektrum, zum Beispiel in Transportnetzwerken in sicheren und unsicheren Umgebungen \cite{fuzzyDijk} \cite{publicTrans} %todo eine Quelle weg
-verwendent. Außerdem findet der Algorithmus Verwendung in Satellitennetzwerken \cite{satelite} und in der Entwicklung von Hardware \cite{hardware}.  %todo noch 1-2 Anwendungen, z.B: Maze Runner Paper
+. Außerdem findet der Algorithmus Verwendung in Satellitennetzwerken \cite{satelite} und in der Entwicklung von Hardware \cite{hardware}.  %todo noch 1-2 Anwendungen, z.B: Maze Runner Paper
 
 \section{Informierte Algorithmen}
 
