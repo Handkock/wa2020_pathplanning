@@ -38,7 +38,7 @@ Neben der Breitensuche wird die Tiefensuche wegen ihres blinden Prinzips selten 
 
 
 \subsection{Dijkstras Algorithmus}
-In seiner Arbeit „Two Problems in Connexion with Graphs“ stellt Dijkstra zwei Probleme dar \cite{Dijkstra.1959}. Das erste Problem ist die Konstruktion eines Baums mit den kürzesten Wegen zwischen den Knoten eines Graphen (vergleiche Breitensuchbaum). Das andere ist die Suche nach dem kürzesten Weg zwischen zwei Knoten (vergleiche Shortest Path Problem).
+In seiner Arbeit „Two Problems in Connexion with Graphs“ stellt Dijkstra zwei Probleme dar \cite{Dijkstra.1959}. Das erste Problem ist die Konstruktion eines Baums mit den kürzesten Wegen zwischen den Knoten eines Graphen (vergleiche Breitensuchbaum). Das andere ist die Suche nach dem kürzesten Weg zwischen zwei Knoten (vergleiche Problem des kürzesten Pfads).
 Zur Lösung des Problems des kürzesten Wegs zwischen zwei Knoten $s$ und $d$ wird eine Menge Knoten $R = \{r_1, r_2, ...\}$ definiert, wobei die Knoten R auf dem kürzesten Pfad zwischen $s$ und $d$ liegen. %$R \in min(s \rightarrow d)$ ?
 Da ein Knoten $r \in R$ Teil des kürzesten Wegs zwischen $s$ und $d$ ist, ist auch der Weg zwischen $s$ und $r$ minimal. Es werden kontinuierlich Knoten aus $R$ gesucht, die weiter von $s$ entfernt sind, bis der Zielknoten $d$ erreicht wurde.
 
