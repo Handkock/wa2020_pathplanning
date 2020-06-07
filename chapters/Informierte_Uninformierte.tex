@@ -1,8 +1,8 @@
+%todo Warum Anwendung im Funktionsprinzipienteil?
+
 \chapter{Funktionsprizipien von Pfadplanungsalgorithmen}
 
-Pfadplanung im Hinblick auf Graphentheorie wird in zwei Gruppen unterteilt: informierte und uninformierte Algorithmen. Uninformierte Pfadplanung, auch ``Blindsuche`` genannt, wird in alle Richtungen durchgeführt. In der informierten Pfadplanung, im Gegensatz, wird die Richtung zum Ziel geschätzt und die in diese Richtung weitergesucht\cite{comAnal}. %todo klingt gut ?
-
-%todo Formulierung fast identisch mit dem Ende des vorherigen Kapitels
+Pfadplanung im Hinblick auf Graphentheorie werden in informierte und uninformierte Algorithmen unterteilt. Uninformierte Pfadplanung, auch ``Blindsuche`` genannt, wird in alle Richtungen durchgeführt. In der informierten Pfadplanung, im Gegensatz, wird die Richtung zum Ziel geschätzt und in diese Richtung weitergesucht\cite{comAnal}. %todo klingt gut ?
 
 \section{Uninformierte Algorithmen}
 Algorithmen dieser Gruppe werden verwendet, wenn keine Informationen über die Entfernung vom Startknoten $s$ zum Zielknoten $d$ bekannt sind.
@@ -20,7 +20,7 @@ Die Breitensuche durchläuft einen Graphen systematisch und schrittweise in alle
 Diese Schritte werden so lange wiederholt, bis alle Knoten im Graphen gefunden wurden, die von $s$ erreicht werden können. Wird ein Knoten von BFS entdeckt, so wird die Distanz zum Startknoten $s$ berechnet. Anschließend wird der Knoten zu einem speziellen „Breitensuchbaum“ hinzugefügt, welcher alle vom Startknoten aus erreichbaren Knoten beinhaltet. Die Zweige des Baums stellen den kürzesten Pfad von $s$ zu den Knoten des Baumes dar \cite{Cormen.2009}.
 
 \subsubsection{Anwendung der Breitensuche}
-Die Breitensuche kann bei Pfadfindung in einem Irrgärten-Spiel verwendet werden\cite{Permana.2018}. Außerdem können BFS und ihre Hybridversionen\cite{effHyb} im Graphendarstellung von Graphikprozessor für Graphentraversierung benutzt werden\cite{scaleGPU}. %todo umformulieren richtig, wie es in der Quelle ist
+Die Breitensuche kann bei Pfadfindung in einem Irrgärten-Spiel verwendet werden\cite{Permana.2018}. Außerdem können BFS und ihre Hybridversionen\cite{effHyb} in der Graphendarstellung von Graphikprozessor für Graphentraversierung benutzt werden\cite{scaleGPU}. %todo umformulieren richtig, wie es in der Quelle ist
 
 \subsection{Tiefensuche}
 
@@ -30,7 +30,7 @@ Die Tiefensuche (engl. Depth-First Search, DFS) stellt das Gegenstück zur Breit
 	\item[2] DFS setzt zum überliegenden Knoten zurück. Dieser wird auf eine unentdeckte Kante untersucht. Existiert eine weitere Kante, wechselt der Algorithmus zurück in Phase 1. Gibt es keine unentdeckte Kante, setzt DFS erneut zurück.
 \end{itemize}
 Das Verfahren der Tiefensuche endet sobald der Algorithmus zum Startknoten $s$ zurückgesetzt hat und bei $s$ keine unentdeckten Kanten verbleiben. Beim Endecken eines Knoten wird die Distanz zu $s$ berechnet, und der kürzeste Pfad zu $s$ in einen „Tiefensuchbaum“ eingepflegt (vergleiche Breitensuchbaum). Bei der Tiefensuche können jedoch mehrere Bäume entstehen, welche dann einen sogenannten „Tiefensuchwald“ formen \cite{Cormen.2009}. 
-Für das Zwischenspeichern der gefundenen Knoten bietet sich ein Stack an, da der Algorithmus selbst nach dem „first in, first out“ Prinzip funktioniert \cite{Tarjan.1972}. Die Tiefensuche hat eine Laufzeit von $\Theta(V + E)$ \cite{Cormen.2009}.
+Für das Zwischenspeichern der gefundenen Knoten bietet sich ein Stack an, da der Algorithmus selbst nach dem „last in, first out“ Prinzip funktioniert \cite{Tarjan.1972}. Die Tiefensuche hat eine Laufzeit von $\Theta(V + E)$ \cite{Cormen.2009}.
 
 
 \subsubsection{Anwendung der Tiefensuche}
@@ -38,7 +38,6 @@ Neben der Breitensuche wird die Tiefensuche wegen ihres blinden Prinzips selten 
 
 
 \subsection{Dijkstras Algorithmus}
-%todo am besten auch schrittweise oder so machen, dass man die Punkte aus dem Kotext unterscheiden kann
 In seiner Arbeit „Two Problems in Connexion with Graphs“ stellt Dijkstra zwei Probleme dar \cite{Dijkstra.1959}. Das erste Problem ist die Konstruktion eines Baums mit den kürzesten Wegen zwischen den Knoten eines Graphen (vergleiche Breitensuchbaum). Das andere ist die Suche nach dem kürzesten Weg zwischen zwei Knoten (vergleiche Shortest Path Problem).
 Zur Lösung des Problems des kürzesten Wegs zwischen zwei Knoten $s$ und $d$ wird eine Menge Knoten $R = \{r_1, r_2, ...\}$ definiert, wobei die Knoten R auf dem kürzesten Pfad zwischen $s$ und $d$ liegen. %$R \in min(s \rightarrow d)$ ?
 Da ein Knoten $r \in R$ Teil des kürzesten Wegs zwischen $s$ und $d$ ist, ist auch der Weg zwischen $s$ und $r$ minimal. Es werden kontinuierlich Knoten aus $R$ gesucht, die weiter von $s$ entfernt sind, bis der Zielknoten $d$ erreicht wurde.
