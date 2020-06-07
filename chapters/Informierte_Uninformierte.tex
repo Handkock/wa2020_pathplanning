@@ -64,8 +64,8 @@ Der Suchalgorithmus von Dijkstra und dessen Erweiterungen besitzen ein sehr brei
 \section{Informierte Algorithmen}
 
 Die sogenannte Bestensuche (engl. informed best-first search)  %todo keine Quelle? 
-ist ein verbreiteter Ansatz für Problemlösungen %todo für alle oder nur für kurz. Pfad?
-, um die Suchzeit %todo von shortest Path ?
+ist ein verbreiteter Ansatz für Problemlösungen, %todo für alle oder nur für kurz. Pfad?
+um die Suchzeit %todo von shortest Path ?
 anhand heuristischer Informationen zu verkürzen. Diese %todo wer ?
 werden durch Schätzverfahren angenähert. Dabei wird versucht jedem Kandidaten %todo was für Kandidat ?
 einen Wert zuzuweisen. Anhand dieser Wertzuweisung wird die Erkundung in einem Graphen in die Richtung des vielversprechendsten Kandidaten fortgeführt. 
@@ -75,13 +75,13 @@ Um die Suche nach einer Lösung schneller zu machen werden heuristische Methoden
 \subsubsection{Metriken}
 Für die Distanzabschätzung der heuristischen Methoden gibt es verschiedene Ansätze. Verwendet werden hauptsächlich folgende Metriken.
 
-Die Manhattendistanz misst den Abstand zwischen zwei Knotenpunkten in einem Raster indem sie die horizontale und vertikale Distanz aufeinanderaddiert.
+Die \textbf{Manhattendistanz} misst den Abstand zwischen zwei Knotenpunkten in einem Raster indem sie die horizontale und vertikale Distanz aufeinanderaddiert.
 
-Die Diagonaldistanz arbeitet mit der Annahme, dass Agenten sich in die diagonale genauso wie in die horizontale und vertikale Richtung bewegen können. 
+Die \textbf{Diagonaldistanz} arbeitet mit der Annahme, dass Agenten sich in die diagonale genauso wie in die horizontale und vertikale Richtung bewegen können. 
 
-Der Chebyshev-Abstand ist eine Variante der Diagonaldistanz. Bei ihr wird angenommen das die Kosten für die diagonale Traversierung der horizontalen und vertikalen entsprechen. 
+Der \textbf{Chebyshev-Abstand} ist eine Variante der Diagonaldistanz. Bei ihr wird angenommen das die Kosten für die diagonale Traversierung der horizontalen und vertikalen entsprechen. 
 
-Es gibt zwei Varianten der euklidischen Distanz. Es gibt die einfache und die quadrierte euklidische Distanz. Die euklidische Distanz berechnet den Abstand zwischen zwei Knoten als Punkte in einem kartesisches Koordinatensystem. Da die Berechnung der Wurzel für die Abstandsberechnung rechenintensiv ist, wird in der alternativen Variante auf die Ziehung der Wurzel verzichtet und der quadrierte euklidische Abstand verwendet\cite{YouSurLuhu}.
+Es gibt zwei Varianten der \textbf{euklidischen Distanz}. Es gibt die einfache und die quadrierte euklidische Distanz. Die euklidische Distanz berechnet den Abstand zwischen zwei Knoten als Punkte in einem kartesisches Koordinatensystem. Da die Berechnung der Wurzel für die Abstandsberechnung rechenintensiv ist, wird in der alternativen Variante auf die Ziehung der Wurzel verzichtet und der quadrierte euklidische Abstand verwendet\cite{YouSurLuhu}.
 
 \subsection{A*} 
 In diesem Zusammenhang wird häufig der A* Algorithmus untersucht. Um den kürzesten Pfad mit dem geringsten Aufwand zu finden, profitiert ein Suchalgorithmus von informierten Entscheidungen für die Untersuchung der Knotenpunkte. Untersucht er Knotenpunkte, die offensichtlich nicht zum Ziel führen können, verschwendet er Ressourcen. Untersucht er andererseits Knoten nicht, welche zum kürzesten Pfad beitragen, führt der Algorithmus nicht zum richtigen Ergebnis.
