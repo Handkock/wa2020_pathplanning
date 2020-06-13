@@ -2,11 +2,10 @@
 
 \chapter{Funktionsprizipien von Pfadplanungsalgorithmen}
 
-Pfadplanung im Hinblick auf Graphentheorie kann informiert und uninformiert sein. Uninformierte Pfadplanung, auch ``Blindsuche`` genannt, wird in alle Richtungen durchgeführt. In der informierten Pfadplanung, im Gegensatz, wird die Richtung zum Ziel geschätzt und in diese Richtung weitergesucht\cite{comAnal}. %todo klingt gut ?
+Pfadplanung im Hinblick auf Graphentheorie kann informiert und uninformiert sein. Uninformierte Pfadplanung, auch ``Blindsuche`` genannt, wird in alle Richtungen durchgeführt. In der informierten Pfadplanung, im Gegensatz, wird die Richtung zum Ziel geschätzt und in diese Richtung weitergesucht \cite{Man18}. %todo klingt gut ?
 
 \section{Uninformierte Algorithmen}
-Algorithmen dieser Gruppe werden verwendet, wenn keine Informationen über die Entfernung vom Startknoten $s$ zum Zielknoten $d$ bekannt sind.
-Sie garantieren, dass der kürzeste Pfad gefunden wird, falls ein solcher Pfad existiert\cite{comAnal}. Weil uninformierte Algorithmen über alle möglichen erreichbaren Knoten gehen, gibt es einen großen Bedarf an Speicherplatz und Leistung. Aus diesem Grund finden diese Verfahren seltenere Anwendung als die informierten \cite{sim}. Die am meisten verwendeten Algorithmen dieser Gruppe sind die Breitensuche, die Tiefensuche und der Algorithmus von Dijkstra.
+Algorithmen dieser Gruppe werden verwendet, wenn keine Informationen über die Entfernung vom Startknoten $s$ zum Zielknoten $d$ bekannt sind. Sie garantieren, dass der kürzeste Pfad gefunden wird, falls ein solcher Pfad existiert. Weil uninformierte Algorithmen über alle möglichen erreichbaren Knoten gehen, gibt es einen großen Bedarf an Speicherplatz und Leistung \cite{Noo15}. Die am meisten verwendeten Algorithmen dieser Gruppe sind die Breitensuche, die Tiefensuche und der Algorithmus von Dijkstra.
 
 \subsection{Breitensuche}
 
@@ -19,7 +18,7 @@ Die Breitensuche durchläuft einen Graphen systematisch und schrittweise in alle
 \end{itemize}
 Diese Schritte werden so lange wiederholt, bis alle Knoten im Graphen gefunden wurden, die von $s$ erreicht werden können. Wird ein Knoten von BFS entdeckt, so wird die Distanz zum Startknoten $s$ berechnet. Anschließend wird der Knoten zu einem speziellen „Breitensuchbaum“ hinzugefügt, welcher alle vom Startknoten aus erreichbaren Knoten beinhaltet. Die Zweige des Baums stellen den kürzesten Pfad von $s$ zu den Knoten des Baumes dar \cite[S.594]{Cormen.2009}.
 
-Die Breitensuche kann bei Pfadfindung in einem Irrgärten-Spiel verwendet werden\cite{Permana.2018}. Außerdem können BFS und ihre Hybridversionen\cite{effHyb} in der Graphendarstellung von Graphikprozessor für Graphentraversierung benutzt werden\cite{scaleGPU}. %todo umformulieren richtig, wie es in der Quelle ist
+Die Breitensuche kann bei Pfadfindung in einem Irrgärten-Spiel verwendet werden. Dieser Algorithmus sichert aber nicht die schnellte Suche \cite{PBAS18}. Außerdem können BFS und ihre Hybridversionen \cite{HT13} für die Graphentraversierung der Graphendarstellungen von Graphikprozessor benutzt werden \cite{MGG12}.
 
 \subsection{Tiefensuche}
 
@@ -28,10 +27,10 @@ Die Tiefensuche (engl. Depth-First Search, DFS) stellt das Gegenstück zur Breit
 	\item[(1)] DFS untersucht den zuletzt gefundenen Knoten auf ausgehende Kanten. Existiert eine unentdeckte Kante, folgt DFS der Kante zum nächsten Knoten. Existiert keine weitere Kante, wechselt der Algorithmus in Phase 2.
 	\item[(2)] DFS setzt zum überliegenden Knoten zurück. Dieser wird auf eine unentdeckte Kante untersucht. Existiert eine weitere Kante, wechselt der Algorithmus zurück in Phase 1. Gibt es keine unentdeckte Kante, setzt DFS erneut zurück.
 \end{itemize}
-Das Verfahren der Tiefensuche endet sobald der Algorithmus zum Startknoten $s$ zurückgesetzt hat und bei $s$ keine unentdeckten Kanten verbleiben. Beim Endecken eines Knoten wird die Distanz zu $s$ berechnet, und der kürzeste Pfad zu $s$ in einen „Tiefensuchbaum“ eingepflegt (vergleiche Breitensuchbaum). Bei der Tiefensuche können jedoch mehrere Bäume entstehen, welche dann einen sogenannten „Tiefensuchwald“ formen \cite[S.603]{Cormen.2009}. 
+Das Verfahren der Tiefensuche endet sobald der Algorithmus zum Startknoten $s$ zurückgesetzt hat und bei $s$ keine unentdeckten Kanten verbleiben. Beim Endecken eines Knoten wird die Distanz zu $s$ berechnet, und der kürzeste Pfad zu $s$ in einen „Tiefensuchbaum“ eingepflegt (vergleiche Breitensuchbaum). Bei der Tiefensuche können jedoch mehrere Bäume entstehen, welche dann einen sogenannten „Tiefensuchwald“ formen \cite[S.603]{Cormen.2009}.
 Für das Zwischenspeichern der gefundenen Knoten bietet sich ein Stack an, da der Algorithmus selbst nach dem „last in, first out“ Prinzip funktioniert \cite{Tarjan.1972}. Die Tiefensuche hat eine Laufzeit von $\Theta(V + E)$ \cite[S.606]{Cormen.2009}.
 
-Neben der Breitensuche wird die Tiefensuche wegen ihres blinden Prinzips selten für Pfadplanung angewendet. DFS kann Irrgärten generieren und einen Weg daraus finden\cite{examMaze}. Darüber hinaus kann DFS für Pfadfindung in einem Gitter verwendet werden\cite{compare}. %todo mark in pdf the text
+Neben der Breitensuche wird die Tiefensuche wegen ihres blinden Prinzips selten für Pfadplanung angewendet. DFS kann Irrgärten generieren und einen Weg daraus finden \cite{KB15}. 
 
 
 \subsection{Dijkstras Algorithmus}
@@ -40,7 +39,7 @@ Zur Lösung des Problems des kürzesten Wegs zwischen zwei Knoten $s$ und $d$ wi
 Da ein Knoten $r \in R$ Teil des kürzesten Wegs zwischen $s$ und $d$ ist, ist auch der Weg zwischen $s$ und $r$ minimal. Es werden kontinuierlich Knoten aus $R$ gesucht, die weiter von $s$ entfernt sind, bis der Zielknoten $d$ erreicht wurde.
 
 Zur schrittweisen Lösung nutzt der Algorithmus drei verschiedene Mengen von Knoten. Menge $A = \{a_1, a_2, ...\}$ sind die Knoten, für die die minimale Distanz vom Startknoten $s$ aus bekannt ist. Menge $B = \{b_1, b_2, ...\}$ sind jene Knoten, die direkt mit einem Knoten aus $A$ verbunden sind, aber nicht Teil von $A$ sind. In $C = \{c_1, c_2, ...\}$ befinden sich alle übrigen Knoten.
-Zusätzlich wird eine Baumstruktur angelegt, welche das erste von Dijkstra beschriebene Problem löst. Der Baum besitzt drei Hauptzweige. In den ersten beiden Zweigen $Alpha = \{\alpha_1, \alpha_2, ...\}$ und $Beta = \{\beta_1, \beta_2, ...\}$ befinden sich jeweils die Verbindungen vom Startknoten $s$ zu den Knoten der Mengen $A$ und $B$. Pro Knoten der Menge $B$ wird jedoch nur eine Verbindung zu $s$ gespeichert. Im dritten Zweig $Gamma = \{\gamma_1, \gamma_2, ...\}$ befinden sich alle übrigen Verbindungen. 
+Zusätzlich wird eine Baumstruktur angelegt, welche das erste von Dijkstra beschriebene Problem löst. Der Baum besitzt drei Hauptzweige. In den ersten beiden Zweigen $Alpha = \{\alpha_1, \alpha_2, ...\}$ und $Beta = \{\beta_1, \beta_2, ...\}$ befinden sich jeweils die Verbindungen vom Startknoten $s$ zu den Knoten der Mengen $A$ und $B$. Pro Knoten der Menge $B$ wird jedoch nur eine Verbindung zu $s$ gespeichert. Im dritten Zweig $Gamma = \{\gamma_1, \gamma_2, ...\}$ befinden sich alle übrigen Verbindungen.
 
 Zu Beginn des Lösungsprozesses liegen alle Knoten in $C$. Der Startknoten $s$ wird in $A$ abgelegt. Nun werden wiederholend folgende zwei Schritte ausgeführt:
 \begin{itemize}
@@ -51,26 +50,25 @@ Diese Schritte werden so lange wiederholt bis Zielknoten $d$ in $A$ verschoben w
 
 Der Algorithmus hat eine Komplexität von $O(n^2)$ \cite[S.5]{Madkour.2017}. Deshalb schlugen Fredman und Tarjan 1984 die Nutzung eines Fibonacci Heaps zur Verbesserung des Dijkstra Algorithmus vor \cite{Fredman.1987}. Unter Anwendung eines solche F-Heaps stellt der Dijkstra Algorithmus den asymptotisch schnellsten bekannten Algorithmus zur Lösung des Shortest Path Problems in gerichteten Graphen dar \cite{Schmitz.2019}.  Die Komplexität beträgt $O(n\ log\ n + m)$ \cite[S.5]{Madkour.2017}. %todo n und m unterscheiden ?
 
-Der Suchalgorithmus von Dijkstra und dessen Erweiterungen besitzen ein sehr breites Anwendungsspektrum, zum Beispiel in Transportnetzwerken in sicheren und unsicheren Umgebungen \cite{fuzzyDijk} \cite{publicTrans} %todo eine Quelle weg
-. Außerdem findet der Algorithmus Verwendung in Satellitennetzwerken \cite{satelite} und in der Entwicklung von Hardware \cite{hardware}.  %todo noch 1-2 Anwendungen, z.B: Maze Runner Paper
+Der Suchalgorithmus von Dijkstra und dessen Erweiterungen besitzen ein sehr breites Anwendungsspektrum, zum Beispiel in Transportnetzwerken in sicheren \cite{BAN17} und unsicheren Umgebungen \cite{DCZM12}. Außerdem kann der Algorithmus Verwendung in Satellitennetzwerken \cite{HH15} und in Anwendungsnetzwerken \cite{JYA14} verwendet werden.
 
 \section{Informierte Algorithmen}
 
-Die sogenannte Bestensuche (engl. informed best-first search) 
+Die sogenannte Bestensuche (engl. informed best-first search)
 ist ein verbreiteter Ansatz für Problemlösungen, um die Suchzeit für die Suche nach dem kürzesten Pfad
-anhand heuristischer Informationen zu verkürzen. Dabei wird versucht jedem Punkt in einem Graphen einen Wert zuzuweisen. Anhand dieser Wertzuweisung wird die Erkundung in einem Graphen in die Richtung des vielversprechendsten Kandidaten fortgeführt\cite{RinaDechterandJudeaPearl.1983}. 
+anhand heuristischer Informationen zu verkürzen. Dabei wird versucht jedem Punkt in einem Graphen einen Wert zuzuweisen. Anhand dieser Wertzuweisung wird die Erkundung in einem Graphen in die Richtung des vielversprechendsten Kandidaten fortgeführt\cite{RinaDechterandJudeaPearl.1983}.
 
 \subsection{Heuristiken}
-Um die Suche nach einer Lösung schneller zu machen werden heuristische Methoden in Verbindung mit unterschiedlichen Metriken angewendet. Dabei werden Schätzwerte angenähert, mit denen die Algorithmen schneller zum Ziel kommen, indem sie nur einen Teil der verfügbaren Pfade untersuchen\cite{RinaDechterandJudeaPearl.1983}. 
+Um die Suche nach einer Lösung schneller zu machen werden heuristische Methoden in Verbindung mit unterschiedlichen Metriken angewendet. Dabei werden Schätzwerte angenähert, mit denen die Algorithmen schneller zum Ziel kommen, indem sie nur einen Teil der verfügbaren Pfade untersuchen\cite{RinaDechterandJudeaPearl.1983}.
 \subsubsection{Metriken}
 Für die Distanzabschätzung der heuristischen Methoden gibt es verschiedene Ansätze. Verwendet werden hauptsächlich folgende Metriken.
 
 \begin{itemize}
 \item[1.] Die Manhattendistanz misst den Abstand zwischen zwei Knotenpunkten in einem Raster indem sie die horizontale und vertikale Distanz aufeinanderaddiert.
 
-\item[2.] Die Diagonaldistanz arbeitet mit der Annahme, dass Agenten sich in die diagonale genauso wie in die horizontale und vertikale Richtung bewegen können. 
+\item[2.] Die Diagonaldistanz arbeitet mit der Annahme, dass Agenten sich in die diagonale genauso wie in die horizontale und vertikale Richtung bewegen können.
 
-\item[3.] Der Chebyshev-Abstand ist eine Variante der Diagonaldistanz. Bei ihr wird angenommen das die Kosten für die diagonale Traversierung der horizontalen und vertikalen entsprechen. 
+\item[3.] Der Chebyshev-Abstand ist eine Variante der Diagonaldistanz. Bei ihr wird angenommen das die Kosten für die diagonale Traversierung der horizontalen und vertikalen entsprechen.
 
 \item[4.] Es gibt zwei Varianten der euklidischen Distanz. Es gibt die einfache und die quadrierte euklidische Distanz. Die euklidische Distanz berechnet den Abstand zwischen zwei Knoten als Punkte in einem kartesisches Koordinatensystem. Da die Berechnung der Wurzel für die Abstandsberechnung rechenintensiv ist, wird in der alternativen Variante auf die Ziehung der Wurzel verzichtet und der quadrierte euklidische Abstand verwendet\cite{astar}.
 
@@ -81,13 +79,13 @@ In diesem Zusammenhang wird häufig der A* Algorithmus untersucht. Um den kürze
 Es sei ein gewichteter Graph $G$ gegeben, der den Startknoten $s$ und eine nichtleere Menge aus Zielknoten $T$ habe. Das Problem des optimalen Pfades besteht nun darin, den Pfad vom Startknoten $s$ zu einem Knoten aus der Zielmenge $T$ mit den geringsten Kosten zu finden. %todo Wiederholung des Shortest Path Problems, was eigentlich am Anfang richtig definiert werden muss und hier einfach verlinkt
 Die Kosten bestehen aus den Gewichten, die den Knoten zugewiesen sind\cite{RinaDechterandJudeaPearl.1983}.
 
-A* benutzt eine spezielle Form der Funktion $f$ zusammengesetzt aus der Summe $f(n) = g(n) + h(n)$. 
-Die Funktion $g(n)$ spiegelt die additiven Kosten des momentanen Pfades von dem Startknoten $s$ zu dem jetzigen Knoten $n$ wieder. 
-Die Funktion $h(n)$ liefert eine heuristische Einschätzung, welche die Kosten des Restpfades zum Zielknoten schätzt\cite{RinaDechterandJudeaPearl.1983}. %todo wie schon besprochen, die h und g müssen besser aus dem KOntext unterschieden werden können 
+A* benutzt eine spezielle Form der Funktion $f$ zusammengesetzt aus der Summe $f(n) = g(n) + h(n)$.
+Die Funktion $g(n)$ spiegelt die additiven Kosten des momentanen Pfades von dem Startknoten $s$ zu dem jetzigen Knoten $n$ wieder.
+Die Funktion $h(n)$ liefert eine heuristische Einschätzung, welche die Kosten des Restpfades zum Zielknoten schätzt\cite{RinaDechterandJudeaPearl.1983}. %todo wie schon besprochen, die h und g müssen besser aus dem KOntext unterschieden werden können
 
-%todo ich finde n als einzeln Knoten nicht gut, weil n z.B. für eingabelänge bei Laufzeit bei Fredrik benutzt wird, ist besser hier vlt. x oder u 
+%todo ich finde n als einzeln Knoten nicht gut, weil n z.B. für eingabelänge bei Laufzeit bei Fredrik benutzt wird, ist besser hier vlt. x oder u
 
-Der Algorithmus A* folgt bestimmten Schritten. 
+Der Algorithmus A* folgt bestimmten Schritten.
 \begin{itemize}
 \item[1.] Der Startknoten $s$ wird als „offen“ markiert und die Funktion $f(n)$ berechnet. Als “offen” werden die Knoten bezeichnet, die von dem Algorithmus besucht und für die Untersuchung freigeschaltet worden sind.
 \item[2.] Derjenige offene Knoten $n$ wird ausgewählt, für den die Funktion $f(n)$

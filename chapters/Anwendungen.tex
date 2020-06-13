@@ -24,25 +24,25 @@ Der A* Algorithmus wird in vielen Videospielen für die Bewegungskontrolle von N
 \label{tab:comp}
 \end{table}
 
-A* überprüft bei der Suche nach dem kürzesten Pfad in vielen Fällen deutlich weniger Knoten als Dijkstra \cite[S.20f]{compare}. In einer Umgebung mit vielen Hindernissen kommt A* schneller zu einem Ergebnis als Dijkstra. Die Speicher- und Recheneffizienz von A* hängt von der genutzten heuristischen Funktion ab \cite[S.237]{sim}. Es ist sinnvoll den A* Algorithmus an die Umgebung anzupassen, in der er genutzt werden soll.
+A* überprüft bei der Suche nach dem kürzesten Pfad in vielen Fällen deutlich weniger Knoten als Dijkstra \cite[S.20f]{compare}. In einer Umgebung mit vielen Hindernissen kommt A* schneller zu einem Ergebnis als Dijkstra. Die Speicher- und Recheneffizienz von A* hängt von der genutzten heuristischen Funktion ab \cite[S.237]{Noo15}. Es ist sinnvoll den A* Algorithmus an die Umgebung anzupassen, in der er genutzt werden soll.
 
 \section{Erweiterung von A*}
-Das Problem Pfadfindung in modernen Spielen muss in Echtzeit gelöst werden. Außerdem sind die Speicher und CPU-Ressourcen oft begrenzt. A* hat Worst-case Komplexität wie BFS\cite{astar} und die Pfadfindung mit großen Datensätze kann zu schwerwiegenden Leistungsengpässen führen. 
+Das Problem Pfadfindung in modernen Spielen muss in Echtzeit gelöst werden. Außerdem sind die Speicher und CPU-Ressourcen oft begrenzt. A* hat Worst-case Komplexität wie BFS \cite{You19} und die Pfadfindung mit großen Datensätze kann zu schwerwiegenden Leistungsengpässen führen.
 
 
 %todo besserer Einleitungssatz
 \subsection{Hierarchical Path-Finding A*}
-HPA* ist eine Erweiterung von A*, welcher den durch Abstraktion des Suchraums optimiert\cite{hpa}. Es wird eine bessere Laufzeit erreicht, indem das Spielwelt hierarchisch aufgeteilt wird. 
+HPA* ist eine Erweiterung von A*, welcher den durch Abstraktion des Suchraums optimiert \cite{Bot04}. Es wird eine bessere Laufzeit erreicht, indem das Spielwelt hierarchisch aufgeteilt wird.
 
 Es wird das Problem der Reise aus eine Spielstadt nach andere betrachtet. Gegeben sei ein detaillierte Karte mit allen Fahrstrecken und deren Längen in den Städten und zwischen den Städte. HPA* arbeitet nicht mit einem geringen Detaillierungsgrad, wie die einzelne interne Stadtpfaden. Das oben beschriebene Problem kann effizienter gelöst werden, indem zuerst den Pfad auf der Stadtebene und erst dann die Zwischenpfade in jeder durchlaufenden Stadt gesucht werden. Die Hierarchie kann auf mehrere Ebene erweitert werden, wodurch diese Lösung für größere Problembereiche skalierbar wird. HPA funktioniert wie folgt:\\
 
 1. In erstem Schritt wird zur Grenze des Bereichs, der den Startort enthält, fahren.
 
-2. In zweitem wird der Pfad von Startbereich zum Zielbereich gesucht. Das Passiert aber auf eine höhere Abstraktionsebene, wo die Suche schneller ist. 
+2. In zweitem wird der Pfad von Startbereich zum Zielbereich gesucht. Das Passiert aber auf eine höhere Abstraktionsebene, wo die Suche schneller ist.
 
 3. In letztem Schritt wird der Pfad vervollständigt, indem man den Bereich, der das Zielstandort, enthält.\\
 \begin{sloppypar}
-HPA* läuft durchschnittlich 10 mal schneller als der standard A*-Algorithmus \cite{hpa} und wird daher breit in dem Spieleinbereich angewendet \cite{LeDuc.2008}. HPA* ist aber sehr allgemein. ``In der Praxis kann HPA sowohl für statische Welten, wo die Graphenhierarchie besser vorbereitet werden kann, als auch in typischen dynamischen Welten, um häufige Umgebungsänderungen zu bewältigen, erheblich optimiert werden``\cite{dshpa}. Aus diesem Grund existieren unterschiedliche  HPA*-Erweiterungen wie: SHPA und DHPA vorgeschlagen von Kring et.al.\cite{dshpa} oder Path Smoothing und Lazy Edge Weight Computation, die in allgemeinen die Leistung erhöhen\cite{hpaEnch}.
+HPA* läuft durchschnittlich 10 mal schneller als der standard A*-Algorithmus \cite{Bot04} und wird daher breit in dem Spieleinbereich angewendet \cite{LSC08}\cite{Kri10}. HPA* ist aber sehr allgemein. ``In der Praxis kann HPA sowohl für statische Welten, wo die Graphenhierarchie besser vorbereitet werden kann, als auch in typischen dynamischen Welten, um häufige Umgebungsänderungen zu bewältigen, erheblich optimiert werden`` \cite{Kri10}. Aus diesem Grund existieren unterschiedliche  HPA*-Erweiterungen wie: SHPA und DHPA vorgeschlagen von Kring et al.\cite{Kri10} oder Path Smoothing und Lazy Edge Weight Computation, die in allgemeinen die Leistung erhöhen \cite{JB07}.
 \end{sloppypar}
 
 
@@ -51,16 +51,20 @@ HPA* läuft durchschnittlich 10 mal schneller als der standard A*-Algorithmus \c
 Bisher wurden Lösungen für die Problemstellung mit einem einzelnen Agenten betrachtet. Ein Szenario in dem mehrere Akteure einen Pfad finden müssen, bei dem keine Kollisionen auftreten dürfen, bezeichnet man als Multi-Agent Pathfinding-Problem (MAPF). Es gibt verschiedene MAPF-Algorithmen, die versuchen mit dieser Problemstellung umzugehen. Darunter gibt es Windowed Hierarchical Cooperative A*, Flow Annotated Replanning und Bounded Multi-Agent A*.
 
 \subsection{Windowed Hierarchical Cooperative A*}
-Bei dem Cooperative A*-Algorithmus sucht jeder Agent mit dem A*-Algorithmus in einem dreidimensionalen Graphen, um sein Ziel zu erreichen. Das Ergebnis der Suche teilt er mit den anderen Agenten in einer Reservierungstabelle. Auf diese Weise sind die Agenten in der Lage Kollisionen zu vermeiden. Der Hierarchical Cooperative A*-Algorithmus benutzt eine hierarchische Suche (siehe Oben: 4.2.1 Hierarchical Path-Finding A*). Windowed Hierarchical Cooperative A*(WHCA*) begrenzt die Suchtiefe für jeden Agent zu einem Fenster. Sobald der Teilpfad in dem Fenster gefunden wurde folgt der Agent diesem Pfad und fängt mit der Berechnung des nächsten Teilpfades an. 
+Bei dem Cooperative A*-Algorithmus sucht jeder Agent mit dem A*-Algorithmus in einem dreidimensionalen Graphen, um sein Ziel zu erreichen. Das Ergebnis der Suche teilt er mit den anderen Agenten in einer Reservierungstabelle. Auf diese Weise sind die Agenten in der Lage Kollisionen zu vermeiden. Der Hierarchical Cooperative A*-Algorithmus benutzt eine hierarchische Suche (siehe Oben: 4.2.1 Hierarchical Path-Finding A*). Windowed Hierarchical Cooperative A*(WHCA*) begrenzt die Suchtiefe für jeden Agent zu einem Fenster. Sobald der Teilpfad in dem Fenster gefunden wurde folgt der Agent diesem Pfad und fängt mit der Berechnung des nächsten Teilpfades an.
 \subsection{Flow Annotated Replanning}
-Ähnlich WHCA* nimmt Flow Annotation Replanning (FAR) die Pläne anderer Agenten in die Berechnung auf. Statt aber, wenn ein Pfad blockiert ist, einen neuen Pfad zu berechnen, wartet ein Agent im FAR-Algorithmus einfach auf dem aktuellen Knoten darauf, dass sein Pfad wieder frei wird und er ihn für sich reservieren kann. 
+Ähnlich WHCA* nimmt Flow Annotation Replanning (FAR) die Pläne anderer Agenten in die Berechnung auf. Statt aber, wenn ein Pfad blockiert ist, einen neuen Pfad zu berechnen, wartet ein Agent im FAR-Algorithmus einfach auf dem aktuellen Knoten darauf, dass sein Pfad wieder frei wird und er ihn für sich reservieren kann.
 
 \subsection{Bounded Multi-Agent A*}
 Bounded Mulit-Agent A* basiert auf Real-time Adaptive A*(RTAA*). RTAA* wird für ein Multiagenten-Setting erweitert. Andere Agenten werden während der Suche als sich bewegende Hindernisse betrachtet. Außerdem haben Agenten die Möglichkeit andere Agenten dazu aufzufordern Zellen frei zu machen. Der aufgeforderte Agent wird zu einer freien benachbarten Zelle wandern und seine reguläre Such von dort aus fortführen\cite{Sigurdson.2019}.
 
-\section{Verwandte Arbeiten} 
-Pfadplanungsproblem wird oft ebenfalls in Robotik Kontext untersucht. In \cite{lozano} und \cite{latombe} wird einer Konfigurationsraum beschrieben. Die Idee besteht darin, dass ein Roboter als ein Punkt betractet wird in diesem Raum betrachtet wird. Nach Latombe\cite{latombe}, es existieren folgende Ansätze für Pfadpalnung in einem Konfigurationsraum: Wegkartenverfahren, Zellunterteilungsverfahren und Potentialfelderverfahren.
+\section{Verwandte Arbeiten}
+
+\begin{sloppypar}
+Pfadplanungsproblem wird oft ebenfalls in Robotik Kontext untersucht. In \cite{LP80} wird der Konfigurationsraum beschrieben. Die Idee besteht darin, dass ein Roboter als ein Punkt betractet wird in diesem Raum betrachtet wird. Nach Latombe\cite{latombe}, %todo check
+es existieren folgende Ansätze für Pfadpalnung in einem Konfigurationsraum: Wegkartenverfahren, Zellunterteilungsverfahren und Potentialfelderverfahren.
 
 
-Bei \textbf{Wegkartenverfahren} wird der Konfigurationsraum in Kurven unterteilt. Einige Versionen davon sind z.B Voronoi-Diagramm\cite{voronoi} und der \linebreak Sichtbarkeitsgraph\cite{visG1}. Das \textbf{Potentialfeldverfahren} bietet einen Ansatz, bei dem der Suchraum von Gradienten überspannt wird. Aus den Gradienten werden dann mögliche Bewegungsrichtungen ersichtlich. Die \textbf{Zellzerlegung}\cite{cd} kann als Hindernisvermeidungsverfahren bezeichnet werden, das den Konfigurationsraum in eine endliche Sammlung nicht überlappender(disjunkter) konvexer Polygone, sogenannte Zellen, zerlegt.
-%todo noch überarbeiten
+Bei \textbf{Wegkartenverfahren} wird der Konfigurationsraum in Kurven unterteilt. Einige Versionen davon sind z.B Voronoi-Diagramm \cite{voronoi} %todo check
+und der Sichtbarkeitsgraph \cite{LPAW79}. Das \textbf{Potentialfeldverfahren} bietet einen Ansatz, bei dem der Suchraum von Gradienten überspannt wird. Aus den Gradienten werden dann mögliche Bewegungsrichtungen ersichtlich. Die \textbf{Zellzerlegung} \cite{Cai09} kann als Hindernisvermeidungsverfahren bezeichnet werden, das den Konfigurationsraum in eine endliche Sammlung nicht überlappender(disjunkter) konvexer Polygone, sogenannte Zellen, zerlegt.
+\end{sloppypar}
