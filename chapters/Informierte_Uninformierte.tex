@@ -10,14 +10,14 @@ Sie garantieren, dass der kürzeste Pfad gefunden wird, falls ein solcher Pfad e
 
 \subsection{Breitensuche}
 
-Die Breitensuche (engl. Breadth-First Search, BFS) ist ein simpler Suchalgorithmus, welcher in Graphen angewendet werden kann \cite{Cormen.2009}. Der Algorithmus kann den kürzesten Pfad zwischen zwei Punkten zu bestimmen. Dazu ist er in der Lage einen Pfad zu finden, der möglichst wenig andere Pfade kreuzt, oder bestmöglich Hindernisse vermeidet \cite{Lee.1961}. BFS dient als Grundmuster für Shortest Path Algorithmen in ungerichteten Graphen \cite{Ottmann.2017}. Die Breitensuche kann jedoch sowohl in gerichteten als auch ungerichteten Graphen genutzt werden. Sie hat eine Laufzeit von $O(V + E)$, also die Summe der Anzahl Knoten und Kanten \cite{Cormen.2009}.
+Die Breitensuche (engl. Breadth-First Search, BFS) ist ein simpler Suchalgorithmus, welcher in Graphen angewendet werden kann \cite[S.594]{Cormen.2009}. Der Algorithmus kann den kürzesten Pfad zwischen zwei Punkten zu bestimmen. Dazu ist er in der Lage einen Pfad zu finden, der möglichst wenig andere Pfade kreuzt, oder bestmöglich Hindernisse vermeidet \cite{Lee.1961}. BFS dient als Grundmuster für Shortest Path Algorithmen in ungerichteten Graphen \cite{Ottmann.2017}. Die Breitensuche kann jedoch sowohl in gerichteten als auch ungerichteten Graphen genutzt werden. Sie hat eine Laufzeit von $O(V + E)$, also die Summe der Anzahl Knoten und Kanten \cite[S.597]{Cormen.2009}.
 
 Die Breitensuche durchläuft einen Graphen systematisch und schrittweise in alle Richtungen. Gegeben ist ein Graph $G = (V, E)$, mit einem festgelegten Startknoten $s$, sowie ein Inkrement $k=1$. Nun werden folgende Schritte in einer Schleife ausgeführt:
 \begin{itemize}
 \item[1.] Finde alle Knoten, welche $k$ Kanten von $s$ entfernt sind.
 \item[2.] Rechne $k + 1$.
 \end{itemize}
-Diese Schritte werden so lange wiederholt, bis alle Knoten im Graphen gefunden wurden, die von $s$ erreicht werden können. Wird ein Knoten von BFS entdeckt, so wird die Distanz zum Startknoten $s$ berechnet. Anschließend wird der Knoten zu einem speziellen „Breitensuchbaum“ hinzugefügt, welcher alle vom Startknoten aus erreichbaren Knoten beinhaltet. Die Zweige des Baums stellen den kürzesten Pfad von $s$ zu den Knoten des Baumes dar \cite{Cormen.2009}.
+Diese Schritte werden so lange wiederholt, bis alle Knoten im Graphen gefunden wurden, die von $s$ erreicht werden können. Wird ein Knoten von BFS entdeckt, so wird die Distanz zum Startknoten $s$ berechnet. Anschließend wird der Knoten zu einem speziellen „Breitensuchbaum“ hinzugefügt, welcher alle vom Startknoten aus erreichbaren Knoten beinhaltet. Die Zweige des Baums stellen den kürzesten Pfad von $s$ zu den Knoten des Baumes dar \cite[S.594]{Cormen.2009}.
 
 Die Breitensuche kann bei Pfadfindung in einem Irrgärten-Spiel verwendet werden\cite{Permana.2018}. Außerdem können BFS und ihre Hybridversionen\cite{effHyb} in der Graphendarstellung von Graphikprozessor für Graphentraversierung benutzt werden\cite{scaleGPU}. %todo umformulieren richtig, wie es in der Quelle ist
 
@@ -28,8 +28,8 @@ Die Tiefensuche (engl. Depth-First Search, DFS) stellt das Gegenstück zur Breit
 	\item[(1)] DFS untersucht den zuletzt gefundenen Knoten auf ausgehende Kanten. Existiert eine unentdeckte Kante, folgt DFS der Kante zum nächsten Knoten. Existiert keine weitere Kante, wechselt der Algorithmus in Phase 2.
 	\item[(2)] DFS setzt zum überliegenden Knoten zurück. Dieser wird auf eine unentdeckte Kante untersucht. Existiert eine weitere Kante, wechselt der Algorithmus zurück in Phase 1. Gibt es keine unentdeckte Kante, setzt DFS erneut zurück.
 \end{itemize}
-Das Verfahren der Tiefensuche endet sobald der Algorithmus zum Startknoten $s$ zurückgesetzt hat und bei $s$ keine unentdeckten Kanten verbleiben. Beim Endecken eines Knoten wird die Distanz zu $s$ berechnet, und der kürzeste Pfad zu $s$ in einen „Tiefensuchbaum“ eingepflegt (vergleiche Breitensuchbaum). Bei der Tiefensuche können jedoch mehrere Bäume entstehen, welche dann einen sogenannten „Tiefensuchwald“ formen \cite{Cormen.2009}. 
-Für das Zwischenspeichern der gefundenen Knoten bietet sich ein Stack an, da der Algorithmus selbst nach dem „last in, first out“ Prinzip funktioniert \cite{Tarjan.1972}. Die Tiefensuche hat eine Laufzeit von $\Theta(V + E)$ \cite{Cormen.2009}.
+Das Verfahren der Tiefensuche endet sobald der Algorithmus zum Startknoten $s$ zurückgesetzt hat und bei $s$ keine unentdeckten Kanten verbleiben. Beim Endecken eines Knoten wird die Distanz zu $s$ berechnet, und der kürzeste Pfad zu $s$ in einen „Tiefensuchbaum“ eingepflegt (vergleiche Breitensuchbaum). Bei der Tiefensuche können jedoch mehrere Bäume entstehen, welche dann einen sogenannten „Tiefensuchwald“ formen \cite[S.603]{Cormen.2009}. 
+Für das Zwischenspeichern der gefundenen Knoten bietet sich ein Stack an, da der Algorithmus selbst nach dem „last in, first out“ Prinzip funktioniert \cite{Tarjan.1972}. Die Tiefensuche hat eine Laufzeit von $\Theta(V + E)$ \cite[S.606]{Cormen.2009}.
 
 Neben der Breitensuche wird die Tiefensuche wegen ihres blinden Prinzips selten für Pfadplanung angewendet. DFS kann Irrgärten generieren und einen Weg daraus finden\cite{examMaze}. Darüber hinaus kann DFS für Pfadfindung in einem Gitter verwendet werden\cite{compare}. %todo mark in pdf the text
 
@@ -49,7 +49,7 @@ Zu Beginn des Lösungsprozesses liegen alle Knoten in $C$. Der Startknoten $s$ w
 \end{itemize}
 Diese Schritte werden so lange wiederholt bis Zielknoten $d$ in $A$ verschoben wurde.
 
-Der Algorithmus hat eine Komplexität von $O(n^2)$ \cite{Madkour.2017}. Deshalb schlugen Fredman und Tarjan 1984 die Nutzung eines Fibonacci Heaps zur Verbesserung des Dijkstra Algorithmus vor \cite{Fredman.1987}. Unter Anwendung eines solche F-Heaps stellt der Dijkstra Algorithmus den asymptotisch schnellsten bekannten Algorithmus zur Lösung des Shortest Path Problems in gerichteten Graphen dar \cite{Schmitz.2019}.  Die Komplexität beträgt $O(n\ log\ n + m)$ \cite{Madkour.2017}. %todo n und m unterscheiden ?
+Der Algorithmus hat eine Komplexität von $O(n^2)$ \cite[S.5]{Madkour.2017}. Deshalb schlugen Fredman und Tarjan 1984 die Nutzung eines Fibonacci Heaps zur Verbesserung des Dijkstra Algorithmus vor \cite{Fredman.1987}. Unter Anwendung eines solche F-Heaps stellt der Dijkstra Algorithmus den asymptotisch schnellsten bekannten Algorithmus zur Lösung des Shortest Path Problems in gerichteten Graphen dar \cite{Schmitz.2019}.  Die Komplexität beträgt $O(n\ log\ n + m)$ \cite[S.5]{Madkour.2017}. %todo n und m unterscheiden ?
 
 Der Suchalgorithmus von Dijkstra und dessen Erweiterungen besitzen ein sehr breites Anwendungsspektrum, zum Beispiel in Transportnetzwerken in sicheren und unsicheren Umgebungen \cite{fuzzyDijk} \cite{publicTrans} %todo eine Quelle weg
 . Außerdem findet der Algorithmus Verwendung in Satellitennetzwerken \cite{satelite} und in der Entwicklung von Hardware \cite{hardware}.  %todo noch 1-2 Anwendungen, z.B: Maze Runner Paper
