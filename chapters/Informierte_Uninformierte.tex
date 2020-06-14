@@ -80,9 +80,10 @@ Es sei ein gewichteter Graph $G$ gegeben, der den Startknoten $s$ und eine nicht
 Die Kosten bestehen aus den Gewichten, die den Knoten zugewiesen sind\cite{RinaDechterandJudeaPearl.1983}.
 
 A* benutzt eine spezielle Form der Funktion $f$ zusammengesetzt aus der Summe $f(n) = g(n) + h(n)$.
-Die Funktion $g(n)$ spiegelt die additiven Kosten des momentanen Pfades von dem Startknoten $s$ zu dem jetzigen Knoten $n$ wieder.
-Die Funktion $h(n)$ liefert eine heuristische Einschätzung, welche die Kosten des Restpfades zum Zielknoten schätzt\cite{RinaDechterandJudeaPearl.1983}. %todo wie schon besprochen, die h und g müssen besser aus dem KOntext unterschieden werden können
-
+\begin{itemize}
+\item Die Funktion $g(n)$ spiegelt die additiven Kosten des momentanen Pfades von dem Startknoten $s$ zu dem jetzigen Knoten $n$ wieder.
+\item Die Funktion $h(n)$ liefert eine heuristische Einschätzung, welche die Kosten des Restpfades zum Zielknoten schätzt\cite{RinaDechterandJudeaPearl.1983}. %todo wie schon besprochen, die h und g müssen besser aus dem KOntext unterschieden werden können
+\end{itemize}
 %todo ich finde n als einzeln Knoten nicht gut, weil n z.B. für eingabelänge bei Laufzeit bei Fredrik benutzt wird, ist besser hier vlt. x oder u
 
 Der Algorithmus A* folgt bestimmten Schritten.
