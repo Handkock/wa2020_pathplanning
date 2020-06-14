@@ -2,7 +2,7 @@
 
 \chapter{Anwendung von Pfadplanungsalgorithmen}
 
-Algorithmen zur Pfadplanung finden in verschiedenen Bereichen Anwendung. Reale Pfadplanungsszenarien, wie Navigation und Logistik, sind durch Graphen modellierbar, auf die Suchalgorithmen angewendet werden können \cite{Botea.2011}. In Computerspielen werden Pfadplanungsalgorithmen für die Bewegung computergesteuerter Charaktere genutzt \cite[S.2]{compare}. Dieses Gebiet birgt die zusätzliche Herausforderung die Bewegungen der Charaktere realistisch zu simulieren. Auch hat der Computer direkten Zugriff auf Umgebungsinformationen, sodass Schätzungen präzise  vorgenommen werden können.
+Algorithmen zur Pfadplanung finden in verschiedenen Bereichen Anwendung. Reale Pfadplanungsszenarien, wie Navigation und Logistik, sind durch Graphen modellierbar, auf die Suchalgorithmen angewendet werden können \cite{Botea.2011}. In Computerspielen werden Pfadplanungsalgorithmen für die Bewegung computergesteuerter Charaktere genutzt \cite[S.2]{Kri09}. Dieses Gebiet birgt die zusätzliche Herausforderung die Bewegungen der Charaktere realistisch zu simulieren. Auch hat der Computer direkten Zugriff auf Umgebungsinformationen, sodass Schätzungen präzise  vorgenommen werden können.
 
 
 \section{Vergleich von BFS, Dijkstra und A*}
@@ -24,7 +24,7 @@ Der A* Algorithmus wird in vielen Videospielen für die Bewegungskontrolle von N
 \label{tab:comp}
 \end{table}
 
-A* überprüft bei der Suche nach dem kürzesten Pfad in vielen Fällen deutlich weniger Knoten als Dijkstra \cite[S.20f]{compare}. In einer Umgebung mit vielen Hindernissen kommt A* schneller zu einem Ergebnis als Dijkstra. Die Speicher- und Recheneffizienz von A* hängt von der genutzten heuristischen Funktion ab \cite[S.237]{Noo15}. Es ist sinnvoll den A* Algorithmus an die Umgebung anzupassen, in der er genutzt werden soll.
+A* überprüft bei der Suche nach dem kürzesten Pfad in vielen Fällen deutlich weniger Knoten als Dijkstra \cite[S.20f]{Kri09}. In einer Umgebung mit vielen Hindernissen kommt A* schneller zu einem Ergebnis als Dijkstra. Die Speicher- und Recheneffizienz von A* hängt von der genutzten heuristischen Funktion ab \cite[S.237]{Noo15}. Es ist sinnvoll den A* Algorithmus an die Umgebung anzupassen, in der er genutzt werden soll.
 
 \section{Erweiterung von A*}
 Das Problem Pfadfindung in modernen Spielen muss in Echtzeit gelöst werden. Außerdem sind die Speicher und CPU-Ressourcen oft begrenzt. A* hat Worst-case Komplexität wie BFS \cite{You19} und die Pfadfindung mit großen Datensätze kann zu schwerwiegenden Leistungsengpässen führen.
@@ -61,10 +61,9 @@ Bounded Mulit-Agent A* basiert auf Real-time Adaptive A*(RTAA*). RTAA* wird für
 \section{Verwandte Arbeiten}
 
 \begin{sloppypar}
-Pfadplanungsproblem wird oft ebenfalls in Robotik Kontext untersucht. In \cite{LP80} wird der Konfigurationsraum beschrieben. Die Idee besteht darin, dass ein Roboter als ein Punkt betractet wird in diesem Raum betrachtet wird. Nach Latombe\cite{latombe}, %todo check
+Pfadplanungsproblem wird oft ebenfalls in Robotik Kontext untersucht. In \cite{LP80} wird der Konfigurationsraum beschrieben. Die Idee besteht darin, dass ein Roboter als ein Punkt in diesem Raum betrachtet wird. Nach Latombe\cite{LB91}, %todo wo ist wegkarten in der Quelle
 es existieren folgende Ansätze für Pfadpalnung in einem Konfigurationsraum: Wegkartenverfahren, Zellunterteilungsverfahren und Potentialfelderverfahren.
 
 
-Bei \textbf{Wegkartenverfahren} wird der Konfigurationsraum in Kurven unterteilt. Einige Versionen davon sind z.B Voronoi-Diagramm \cite{voronoi} %todo check
-und der Sichtbarkeitsgraph \cite{LPAW79}. Das \textbf{Potentialfeldverfahren} bietet einen Ansatz, bei dem der Suchraum von Gradienten überspannt wird. Aus den Gradienten werden dann mögliche Bewegungsrichtungen ersichtlich. Die \textbf{Zellzerlegung} \cite{Cai09} kann als Hindernisvermeidungsverfahren bezeichnet werden, das den Konfigurationsraum in eine endliche Sammlung nicht überlappender(disjunkter) konvexer Polygone, sogenannte Zellen, zerlegt.
+Bei \textbf{Wegkartenverfahren} wird der Konfigurationsraum in Kurven unterteilt. Einige Versionen davon sind z.B Voronoi-Diagramm \cite{Lee82} und der Sichtbarkeitsgraph \cite{LPAW79} \cite{AOD17}. Das \textbf{Potentialfeldverfahren} bietet einen Ansatz, bei dem der Suchraum von Gradienten überspannt wird. Aus den Gradienten werden dann mögliche Bewegungsrichtungen ersichtlich. Die \textbf{Zellzerlegung} \cite{Cai09} kann als Hindernisvermeidungsverfahren bezeichnet werden, das den Konfigurationsraum in eine endliche Sammlung nicht überlappender(disjunkter) konvexer Polygone, sogenannte Zellen, zerlegt.
 \end{sloppypar}
