@@ -46,9 +46,7 @@ Zu Beginn des Lösungsprozesses liegen alle Knoten in $C$. Der Startknoten $s$ w
 	\item[1.] Es werden alle Verbindungen $H = \{h_1, h_2, ...\}$ zwischen dem zuletzt in $A$ abgelegten Knoten $v$ und den Knoten $R$ aus $B$ oder $C$ überprüft.\\ Liegt der Knoten $r$ in $B$, so wird überprüft, ob die Verbindung $h = \left(s, v, r\right)$ kürzer ist als die im zweiten Zweig befindliche $\left(s, r\right)$. Es wird also überprüft, ob die Verbindung $h$ über den neuen Knoten kürzer ist als die bislang kürzeste bekannte Verbindung zwischen $s$ und $r$. Sollte dies der Fall sein, ersetzt $h$ den im zweiten Zweig abgelegten Pfad zwischen $s$ und $r$. \\Liegt $r$ in $C$, so wird der Knoten in $B$ verschoben und $h$ dem zweiten Zweig hinzugefügt.
 	\item[2.] Werden für die Knoten $B$ lediglich Verbindungen aus $Alpha$ und $Beta$ betrachtet, besitzt jeder Knoten aus $B$ eine feste Länge zu $s$. Der Knoten aus $B$ mit der kürzesten Distanz zu $s$ wird nach $A$ verschoben und seine Verbindung aus $Beta$ im ersten Zweig des Baums abgelegt.
 \end{itemize}
-Diese Schritte werden so lange wiederholt bis Zielknoten $d$ in $A$ verschoben wurde.	%todo als footnote oder parskip
-
-
+Diese Schritte werden so lange wiederholt bis Zielknoten $d$ in $A$ verschoben wurde. \\ \\	
 Der Algorithmus hat eine Komplexität von $O(n^2)$ \cite[S.5]{Madkour.2017}.1984 schlugen Fredman und Tarjan die Nutzung eines Fibonacci Heaps zur Verbesserung der Laufzeit des Dijkstra Algorithmus vor \cite{Fredman.1987}. Unter Anwendung eines solche F-Heaps stellt der Dijkstra Algorithmus den asymptotisch schnellsten bekannten Algorithmus zur Lösung des Shortest Path Problems in gerichteten Graphen dar \cite{Schmitz.2019}.  Die Komplexität beträgt $O(n\ log\ n + m)$ \cite[S.5]{Madkour.2017}. %todo n und m unterscheiden ?
 
 Der Suchalgorithmus von Dijkstra und dessen Erweiterungen besitzen ein sehr breites Anwendungsspektrum, zum Beispiel in Transportnetzwerken in sicheren \cite{BAN17} und unsicheren Umgebungen \cite{DCZM12}. Außerdem kann der Algorithmus Verwendung in Satellitennetzwerken \cite{HH15} und in Anwendungsnetzwerken \cite{JYA14} finden.
