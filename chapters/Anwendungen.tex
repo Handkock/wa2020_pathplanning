@@ -32,6 +32,7 @@ Pfadplanungsprobleme müssen in modernen Spielen in Echtzeit gelöst werden. Au�
 
 %todo besserer Einleitungssatz
 \subsection{Hierarchical Path-Finding A*}
+\label{sec:hpa}
 Hierarchical Path-Finding A* (HPA*) ist eine Erweiterung von A*, welche diesen durch die Abstraktion des Suchraums optimiert \cite{Bot04}. Es wird eine bessere Laufzeit erreicht, indem die Spielwelt hierarchisch aufgeteilt wird.
 
 Es wird das Problem einer Reise aus einer Spielstadt in eine andere betrachtet. Gegeben sei ein detaillierte Karte mit allen Fahrstrecken in und zwischen den Städten, sowie deren Längen. Das Problem kann effizienter gelöst werden, indem zuerst der Pfad auf der Stadtebene gesucht wird und erst dann die Zwischenpfade in jeder Stadt durchlaufen werden. HPA* arbeitet auf einem höherem Abstraktionsstufe und vernachlässigt einzelne interne Stadtpfade. %todo umformulieren
@@ -56,7 +57,7 @@ Bisher wurden Lösungen für die Problemstellung mit einem einzelnen Agenten bet
 \subsection{Windowed Hierarchical Cooperative A*}
 Bei dem Cooperative A*-Algorithmus sucht jeder Agent in einem dreidimensionalen Graphen - bestehend aus der x- und der y-Koordinatenachse und einer Zeitachse - mit dem A*-Algorithmus nach seinem Ziel. 
 Das Ergebnis der Suche teilt er den anderen Agenten in einer Reservierungstabelle mit. Auf diese Weise sind die Agenten in der Lage Kollisionen zu vermeiden. 
-Der Hierarchical Cooperative A*-Algorithmus benutzt eine hierarchische Suche (siehe Oben: 4.2.1 Hierarchical Path-Finding A*). Windowed Hierarchical Cooperative A*(WHCA*) begrenzt die Suchtiefe für jeden Agent zu einem Fenster. Sobald der Teilpfad in dem Fenster gefunden wurde folgt der Agent diesem Pfad und fängt mit der Berechnung des nächsten Teilpfades an.
+Der Hierarchical Cooperative A*-Algorithmus benutzt eine hierarchische Suche (siehe Oben: \hyperref[sec:hpa]{4.2.1 Hierarchical Path-Finding A*}). Windowed Hierarchical Cooperative A*(WHCA*) begrenzt die Suchtiefe für jeden Agent zu einem Fenster. Sobald der Teilpfad in dem Fenster gefunden wurde folgt der Agent diesem Pfad und fängt mit der Berechnung des nächsten Teilpfades an.
 \subsection{Flow Annotated Replanning}
 Ähnlich WHCA* nimmt Flow Annotation Replanning (FAR) die Pläne anderer Agenten in die Berechnung auf. Statt aber, wenn ein Pfad blockiert ist, einen neuen Pfad zu berechnen, wartet ein Agent im FAR-Algorithmus einfach auf dem aktuellen Knoten darauf, dass sein Pfad wieder frei wird und er ihn für sich reservieren kann.
 
