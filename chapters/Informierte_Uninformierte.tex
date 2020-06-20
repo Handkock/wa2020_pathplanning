@@ -96,4 +96,6 @@ den geringsten Wert liefert. Anschließend werden beliebige angrenzende Knoten a
 \item[4.]
 Andernfalls wird der Knoten $n$ als \textit{geschlossen} markiert und es werden alle Nachfolger von $n$ erkundet. Dann wird $f(n)$ für jeden Nachfolger berechnet und jeder Nachfolger als \textit{offen} markiert, der nicht als \textit{geschlossen} markiert wurde. Gibt es nun Nachfolgeknoten die als \textit{geschlossen} markiert sind, für welche die Funktion $f$ einen geringeren Wert liefert, werden diese Knoten als \textit{offen} markiert. Daraufhin wird Schritt zwei wieder ausgeführt. Solange, bis der Algorithmus terminiert und der kürzeste Pfad durch den Graphen gefunden wurde \cite{HartNilssonandRaphael.1968}.
 \end{itemize}
+
+A* kann als optimal angesehen werden, da der Algorthmus nicht mehr Knotenpunkte als andere Algorithmen untersuchen muss, um auf eine Lösung zu kommen\cite{HartNilssonandRaphael.1968}.
 %todo Komplexität ?
