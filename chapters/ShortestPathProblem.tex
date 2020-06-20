@@ -1,6 +1,6 @@
 \chapter{Das Problem des kürzesten Pfades}
 
-In diesem Abschnitt wird ein Einstieg in das Problem des kürzesten Pfades (engl. Shortest Path Problem, SSP) gegeben. In vielen Bereichen lassen sich Pfadplanungsproblem e als Suchprobleme in einem Graphen darstellen \cite{HartNilssonandRaphael.1968}. Ein optimaler kürzester Pfad besitzt eine möglichst kurze Distanz vom Start zum Ziel. Das Problem des kürzesten Pfades ist ein gut untersuchtes Thema der Informatik \cite[S.1]{Madkour.2017}.
+In diesem Abschnitt wird ein Einstieg in das Problem des kürzesten Pfades (engl. Shortest Path Problem, SSP) gegeben. In vielen Bereichen lassen sich Pfadplanungsprobleme als Suchprobleme in einem Graphen darstellen \cite{HartNilssonandRaphael.1968}. Ein optimaler kürzester Pfad besitzt eine möglichst kurze Distanz vom Start zum Ziel. Das Problem des kürzesten Pfades ist ein gut untersuchtes Thema der Informatik \cite[S.1]{Madkour.2017}.
 
 
 \section{Varianten des Problems}
@@ -14,9 +14,29 @@ Das \textit{single-destination shortest path} Problem (SDSP)  beschreibt die Suc
 Ein Graph ist eine mathematische Darstellung von Objekten, die aus Punkten und Verbindungen zwischen den Punkten bestehen. 
 Ein Graph ist ein Tupel zwei disjunkter Mengen: $G_{def}= (V,E)$. Die Elemente $v \in V$ heißen Knoten (engl. vertices) und die Elemente $e \in E$ heißen Kanten (engl. edges) \cite[S.15]{Gross.2004}. 
 Graphen können gewichtet oder ungewichtet sein. Bei gewichteten Graphen ist jeder Kante eine Gewichtung zugeordnet. 
-Diese Gewichtungen wirken sich auf Pfade durch den Graphen aus\cite[S.18]{Gross.2004}. 
+Diese Gewichtungen wirken sich auf Pfade durch den Graphen aus \cite[S.18]{Gross.2004}. 
 Ein Pfad in einem Graphen wird als Tupel dargestellt $\left ( x_{0}, x_{1}, x_{2}, ..., x_{n} \right )$, mit $x_{i} \in V$. 
 Im Hinblick auf das Problem des kürzesten Pfades wird ein gewichteter Graph mit einem Startknoten $s \in V$ und den Zielknoten $d \in V$ betrachtet. 
 Ziel ist es, den Pfad  $\left ( s, ..., d \right )$ mit dem geringsten Gewicht zu finden \cite[S.4]{Madkour.2017}.
+
+
+\begin{figure}[!tbp]
+	\centering
+	\begin{minipage}[b]{0.4\textwidth}
+		\includegraphics[width=\linewidth]{images/undirGraph.png}
+		\caption{Ungerichteter Graph}
+		\label{fig:undirGraph}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{0.4\textwidth}
+		\includegraphics[width=\linewidth]{images/dirGraph.png}
+		\caption{Gerichteter Graph}
+		\label{fig:dirGraph}
+	\end{minipage}
+\end{figure}
+
+
+
+
 
 Zum Lösen des Problems des kürzesten Pfades in einem Graphen werden Suchalgorithmen benutzt. Diese lassen sich in informierte und uninformierte Algorithmen unterteilen. Die beiden Gruppen werden im folgenden Kapitel näher besprochen.

@@ -35,9 +35,7 @@ Pfadplanungsprobleme müssen in modernen Spielen in Echtzeit gelöst werden. Au�
 \label{sec:hpa}
 Hierarchical Path-Finding A* (HPA*) ist eine Erweiterung von A*, welche diesen durch die Abstraktion des Suchraums optimiert \cite{Bot04}. Es wird eine bessere Laufzeit erreicht, indem die Spielwelt hierarchisch aufgeteilt wird.
 
-Es wird das Problem einer Reise aus einer Spielstadt in eine andere betrachtet. Gegeben sei ein detaillierte Karte mit allen Fahrstrecken in und zwischen den Städten, sowie deren Längen. Das Problem kann effizienter gelöst werden, indem zuerst der Pfad auf der Stadtebene gesucht wird und erst dann die Zwischenpfade in jeder Stadt durchlaufen werden. HPA* arbeitet auf einem höherem Abstraktionsstufe und vernachlässigt einzelne interne Stadtpfade. %todo umformulieren
-
- Die Hierarchie kann auf mehrere Ebene erweitert werden, wodurch diese Lösung für größere Problembereiche skalierbar wird. HPA* funktioniert wie folgt:\\
+Es wird das Problem einer Reise aus einer Spielstadt in eine andere betrachtet. Gegeben sei ein detaillierte Karte mit allen Fahrstrecken in und zwischen den Städten, sowie deren Längen. Der A*-Algorithmus kann den optimalen Pfad berechnen, dies kann jedoch aufgrund der Größe Kartengröße viele Rechenressourcen verbrauchen. Das Problem kann effizienter gelöst werden, indem zuerst der Pfad auf der Stadtebene gesucht wird und erst dann die Zwischenpfade in jeder Stadt durchlaufen werden. HPA* arbeitet auf eine höhere Abstraktionsstufe und vernachlässigt einzelne interne Stadtpfade. Die Hierarchie kann auf mehrere Ebene erweitert werden, wodurch diese Lösung für größere Problembereiche skalierbar wird. HPA* funktioniert wie folgt:\\
 
 1. Fahre zur Grenze des Bereichs, der den Standort enthält
 
@@ -67,10 +65,8 @@ Bounded Mulit-Agent A* basiert auf Real-time Adaptive A*(RTAA*). RTAA* wird für
 \section{Verwandte Arbeiten}
 
 \begin{sloppypar}
-Das Problem des kürzesten Pfades wird ebenfalls häufig im Kontext der Robotik untersucht. In Automatic Planning of Manipulator Transfer Movements \cite{LP80} wird der Konfigurationsraum beschrieben, in dem ein Roboter als ein Punkt betrachtet wird. Nach Latombe et. al.\cite{LB91} %todo wo ist wegkarten in der Quelle
-existieren folgende Ansätze für Pfadplanung in einem Konfigurationsraum: Wegkartenverfahren, Zellunterteilungsverfahren und Potentialfelderverfahren.
-%todo umformulieren
+	
+Bellman-Ford-Algorithmus ist ein weiterer Pfadplanungsalgorithmus, der, im Gegensatz zu Dijkstra-Algorithmus, den kürzesten Pfad in einem Graphen mit negativen Kantenkosten finden kann \cite{Bel58}. Er wird beispielsweise in Routing-Protokollen wie Routing Information Protocol (RIP) benutzt \cite{Hed88}.
 
-Bei \textit{Wegkartenverfahren} wird der Konfigurationsraum in Kurven unterteilt. Einige Versionen davon sind zum Beispiel das Voronoi-Diagramm \cite{Lee82} und der Sichtbarkeitsgraph \cite{LPAW79} \cite{AOD17}. %todo eine weg
-Das \textit{Potentialfeldverfahren} bietet einen Ansatz, bei dem der Suchraum von Gradienten überspannt wird. Aus den Gradienten werden dann mögliche Bewegungsrichtungen ersichtlich. Die \textit{Zellzerlegung} \cite{Cai09} kann als Hindernisvermeidungsverfahren bezeichnet werden, das den Konfigurationsraum in eine endliche Sammlung nicht überlappender (disjunkter) konvexer Polygone, sogenannter Zellen, zerlegt.
+Das Problem des kürzesten Pfades wird ebenfalls häufig im Kontext der Robotik untersucht. In Automatic Planning of Manipulator Transfer Movements \cite{LP80} wird der Konfigurationsraum beschrieben, in dem ein Roboter als ein Punkt betrachtet wird. Es existieren unterschiedliche Verfahren, die sich mit der Pfadplanung in einem Konfigurationsraum beschäftigen. Diese sind zum Beispiel das Voronoi-Diagramm \cite{Lee82}, der Sichtbarkeitsgraph \cite{LPAW79} und das Zellzerlegungsverfahren \cite{Cai09} .
 \end{sloppypar}
