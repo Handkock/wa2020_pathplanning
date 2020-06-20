@@ -1,17 +1,36 @@
 \chapter{Einleitung und Problemstellung}
 
+%todo Pathfinding Begriff auch einführen
+%todo • definiert / erläutert das Thema
+• Pfadplanung ist ...
+
+%todo • motiviert die Thematik (Aktualität / Relevanz)
+• Pfadplanung findet Anwendung in ...
+
+%todo • stellt die Bedeutung der Arbeit heraus
+• Diese Arbeit erklärt/stellt dar/gibt Einblick/...
+%Mithilfe dieser Arbeit ist es möglich ein Grundverständnis für Funktionsprinzipien und Anwendungsszenarien der Pfadplanungsalgorithmen zu erlangen. Diese kann ausgebaut und zur praktischen Umsetzung oder weiteren Forschung eingesetzt werden kann.%
+
+%todo • liefert interessante/relevante Hintergrundinformationen
+• A* ist bei einem 1024x1024 Raster von Knoten 10.000mal schneller als die Breitensuche ...
+
+%todo • umfassende Literaturrecherche
+• Zur Recherche wurden folgende Quellen hinzugezogen ...
+
+%todo • bindet Thema in einem weiter gefassten Kontext ein
+• andere Graphensuchalgorithmen-Probleme sind ...
+
+%todo • bzw. grenzt es sinnvoll zu anderen Arbeiten ab
+• die Arbeit [...] befasst sich mit [...]. Der Bellman-Ford Algorithmus ...
+
+%todo • formuliert (am Ende) eine Hypothese / Fragestellung
+• Wie funktionieren Algorithmen zur Pfadplanung und wo werden sie angewendet?/...
+
+
+
 Die Pfadplanung ist ein fundamentales Problem in vielen Bereichen %todo komma ?
 wie Computerspiele \cite{Kri09}, Robotik \cite{LB91}, Navigation und Logistik \cite{Botea.2011}. Statische und dynamische Umgebungen stellen unterschiedliche Herausforderungen dar. Weiter gibt es Szenarien, in denen mehrere Akteure gleichzeitig Pfade finden müssen. Um diese Probleme anzugehen, gibt es verschiedene Ansätze, die in dieser Arbeit diskutiert werden. Dafür existieren unterschiedliche Kategorien von Algorithmen. Diese Arbeit definiert die Problemstellung, gibt eine Einführung in die Algorithmen zur Lösung des Problems und führt verschiedene Anwendungsszenarien auf. Es wird grundlegendes Verständnis für die Funktionsprinzipien fundamentaler Pfadplanungsalgorithmen aufgebaut und Ansätze für die umgebungsbedingte Optimierung erläutert. Dazu wird die Effizienz der verschiedenen Pfadplanungsprinzipien beleuchtet.
 
-%todo PAthfinding Begriff auch einführen
 
-%Mithilfe dieser Arbeit ist es möglich ein Grundverständnis für Funktionsprinzipien und Anwendungsszenarien der Pfadplanungsalgorithmen zu erlangen. Diese kann ausgebaut und zur praktischen Umsetzung oder weiteren Forschung eingesetzt werden kann.%
+%Die Suche nach dem kürzesten Pfad stellt in vielen Anwendungsbereichen ein Problem dar. Die Algorithmen zur Lösung des Problems sind Suchalgorithmen, die in Graphen arbeiten. Die meisten von ihnen lösen das \textit{single-source shortest path} Problem, eine spezielle Variante des Problems des kürzesten Pfades. Hierbei wird nach dem schnellsten Weg von einem Startknoten zu allen anderen Knoten in einem Graphen gesucht. Uninformierte Pfadplanungsalgorithmen arbeiten blind und sind in jeder Umgebung anwendbar. Informierte Algorithmen hingegen arbeiten mit heuristischen Informationen, und schätzen den Weg zum Ziel mithilfe verschiedener Metriken. Der informierte Algorithmus A* arbeitet auf Grundlage des Dijkstra Algorithmus, und bietet eine verbesserte Laufzeit. Die hierarchische Optimierung des A* Algorithmus, HPA*, arbeitet mit einem abstrahierten Suchraum, und läuft durchschnittlich zehnmal schneller als A*. Deshalb wird HPA* viel in Videospielen genutzt, wo Pfadplanungsprobleme meist in Echtzeit gelöst werden müssen. Die gleichzeitige Suche nach mehreren, kollisionsfreien Pfaden, stellt eine besondere Herausforderung dar, die mithilfe des Konzepts von Multi-Agent Pathfinding gelöst wird.%
 
-%todo • definiert / erläutert das Thema
-%todo • motiviert die Thematik (Aktualität / Relevanz)
-%todo • stellt die Bedeutung der Arbeit heraus
-%todo • liefert interessante/relevante Hintergrundinformationen
-%todo • umfassende Literaturrecherche
-%todo • bindet Thema in einem weiter gefassten Kontext ein
-%todo • bzw. grenzt es sinnvoll zu anderen Arbeiten ab
-%todo • formuliert (am Ende) eine Hypothese / Fragestellung
