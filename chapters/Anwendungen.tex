@@ -54,8 +54,9 @@ HPA* läuft durchschnittlich zehnmal schneller als der oben beschriebener A*-Alg
 Bisher wurden Lösungen für die Problemstellung mit einem einzelnen Agenten betrachtet. Ein Szenario in dem mehrere Akteure Pfade finden müssen, bei denen keine Kollisionen auftreten dürfen, bezeichnet man als Multi-Agent Pathfinding-Problem (MAPF). Es gibt verschiedene MAPF-Algorithmen, die versuchen mit dieser Problemstellung umzugehen. Darunter gibt es Windowed Hierarchical Cooperative A*, Flow Annotated Replanning und Bounded Multi-Agent A*.
 
 \subsection{Windowed Hierarchical Cooperative A*}
-Bei dem Cooperative A*-Algorithmus sucht jeder Agent in einem dreidimensionalen Graphen %todo 3d graph richtig ?
-mit dem A*-Algorithmus nach seinem Ziel. Das Ergebnis der Suche teilt er den anderen Agenten in einer Reservierungstabelle mit. Auf diese Weise sind die Agenten in der Lage Kollisionen zu vermeiden. Der Hierarchical Cooperative A*-Algorithmus benutzt eine hierarchische Suche (siehe Oben: 4.2.1 Hierarchical Path-Finding A*). Windowed Hierarchical Cooperative A*(WHCA*) begrenzt die Suchtiefe für jeden Agent zu einem Fenster. Sobald der Teilpfad in dem Fenster gefunden wurde folgt der Agent diesem Pfad und fängt mit der Berechnung des nächsten Teilpfades an.
+Bei dem Cooperative A*-Algorithmus sucht jeder Agent in einem dreidimensionalen Graphen - bestehend aus der x- und der y-Koordinatenachse und einer Zeitachse - mit dem A*-Algorithmus nach seinem Ziel. 
+Das Ergebnis der Suche teilt er den anderen Agenten in einer Reservierungstabelle mit. Auf diese Weise sind die Agenten in der Lage Kollisionen zu vermeiden. 
+Der Hierarchical Cooperative A*-Algorithmus benutzt eine hierarchische Suche (siehe Oben: 4.2.1 Hierarchical Path-Finding A*). Windowed Hierarchical Cooperative A*(WHCA*) begrenzt die Suchtiefe für jeden Agent zu einem Fenster. Sobald der Teilpfad in dem Fenster gefunden wurde folgt der Agent diesem Pfad und fängt mit der Berechnung des nächsten Teilpfades an.
 \subsection{Flow Annotated Replanning}
 Ähnlich WHCA* nimmt Flow Annotation Replanning (FAR) die Pläne anderer Agenten in die Berechnung auf. Statt aber, wenn ein Pfad blockiert ist, einen neuen Pfad zu berechnen, wartet ein Agent im FAR-Algorithmus einfach auf dem aktuellen Knoten darauf, dass sein Pfad wieder frei wird und er ihn für sich reservieren kann.
 

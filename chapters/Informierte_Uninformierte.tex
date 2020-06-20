@@ -75,18 +75,17 @@ Für die Distanzabschätzung der heuristischen Methoden gibt es verschiedene Ans
 \item[4.] Es gibt zwei Varianten der \textit{euklidischen Distanz}, die einfache und die quadrierte. Die euklidische Distanz berechnet den Abstand zwischen zwei Knoten als Punkte in einem kartesisches Koordinatensystem. Da die Berechnung der Wurzel für die Abstandsberechnung rechenintensiv ist, wird in der alternativen Variante auf die Ziehung der Wurzel verzichtet und der quadrierte euklidische Abstand verwendet\cite{You19}.
 
 \end{itemize}
-\subsection{A*} %TODO:baut auf dijkstra auf
+\subsection{A*}
 Um den kürzesten Pfad mit dem geringsten Aufwand zu finden, profitiert ein Suchalgorithmus von informierten Entscheidungen für die Untersuchung der Knotenpunkte. Untersucht er Knotenpunkte, die offensichtlich nicht zum Ziel führen können, verschwendet er Ressourcen. Untersucht er andererseits Knoten nicht, welche zum kürzesten Pfad beitragen, führt der Algorithmus nicht zum richtigen Ergebnis. In diesem Zusammenhang wird häufig der A* Algorithmus untersucht.
 
 Es sei ein gewichteter Graph $G$ gegeben, der den Startknoten $s$ und eine nichtleere Menge aus Zielknoten $T$ habe. Das Problem des optimalen Pfades besteht nun darin, den Pfad vom Startknoten $s$ zu einem Knoten aus der Zielmenge $T$ mit den geringsten Kosten zu finden. %todo Wiederholung des Shortest Path Problems, was eigentlich am Anfang richtig definiert werden muss und hier einfach verlinkt
-Die Kosten bestehen aus den Gewichten, die den Kanten zugewiesen sind \cite{RinaDechterandJudeaPearl.1983}. %todo umformulieren
+Die Kosten errechnen sich aus den Gewichten der besuchten Kanten \cite{RinaDechterandJudeaPearl.1983}.
 
 A* benutzt die Funktion $f(n) = g(n) + h(n)$.
 \begin{itemize}
 \item Die Funktion $g(n)$ spiegelt die additiven Kosten des momentanen Pfades von dem Startknoten $s$ zu dem jetzigen Knoten $n$ wieder.
-\item Die Funktion $h(n)$ liefert eine heuristische Einschätzung, welche die Kosten des Restpfades zum Zielknoten schätzt \cite{RinaDechterandJudeaPearl.1983}. %todo wie schon besprochen, die h und g müssen besser aus dem KOntext unterschieden werden können
+\item Die Funktion $h(n)$ liefert eine heuristische Einschätzung, welche die Kosten des Restpfades zum Zielknoten schätzt \cite{RinaDechterandJudeaPearl.1983}.
 \end{itemize}
-%todo ich finde n als einzeln Knoten nicht gut, weil n z.B. für eingabelänge bei Laufzeit bei Fredrik benutzt wird, ist besser hier vlt. x oder u
 
 Der Algorithmus A* hat den folgenden Ablauf:
 \begin{itemize}
