@@ -9,7 +9,7 @@ Algorithmen dieser Gruppe werden verwendet, wenn keine Informationen über die E
 
 \subsection{Breitensuche}
 
-Die Breitensuche (engl. Breadth-First Search, BFS) ist ein simpler Suchalgorithmus, welcher in Graphen angewendet werden kann \cite[S.594]{Cormen.2009}. Der Algorithmus kann den kürzesten Pfad zwischen zwei Punkten bestimmen. Dazu ist er in der Lage einen Pfad zu finden, der möglichst wenig andere Pfade kreuzt, oder bestmöglich Hindernisse vermeidet \cite{Lee.1961}. BFS dient als Grundmuster für Shortest Path Algorithmen in ungerichteten Graphen \cite{Ottmann.2017}. Die Breitensuche kann jedoch sowohl in gerichteten als auch ungerichteten Graphen genutzt werden. Sie hat eine Laufzeit von $O(V + E)$, also die Summe der Anzahl Knoten und Kanten \cite[S.597]{Cormen.2009}.
+Die Breitensuche (engl. Breadth-First Search, BFS) ist ein simpler Suchalgorithmus, welcher in Graphen angewendet werden kann \cite[S.594]{Cormen.2009}. Der Algorithmus kann den kürzesten Pfad zwischen zwei Punkten bestimmen. Dazu ist er in der Lage einen Pfad zu finden, der mit möglichst wenig anderen Pfaden kollidiert, oder bestmöglich Hindernisse vermeidet \cite{Lee.1961}. BFS dient als Grundmuster für Shortest Path Algorithmen in ungerichteten Graphen \cite{Ottmann.2017}. Die Breitensuche kann jedoch sowohl in gerichteten als auch ungerichteten Graphen genutzt werden. Sie hat eine Laufzeit von $O(V + E)$, also die Summe der Anzahl Knoten und Kanten \cite[S.597]{Cormen.2009}.
 
 Die Breitensuche durchläuft einen Graphen systematisch und schrittweise in alle Richtungen. Gegeben ist ein Graph $G = (V, E)$, mit einem festgelegten Startknoten $s$, sowie ein Inkrement $k=1$. Nun werden folgende Schritte in einer Schleife ausgeführt:
 \begin{itemize}
@@ -22,7 +22,7 @@ Die Breitensuche kann bei Pfadplanung in einem Labyrinthspiel verwendet werden. 
 
 \subsection{Tiefensuche}
 
-Die Tiefensuche (engl. Depth-First Search, DFS) stellt das Gegenstück zur Breitensuche dar. Sie untersucht eine Kette von Folgeknoten bis das Ende der Kette erreicht wurde. Grundlegend lässt sich der Algorithmus in zwei Phasen unterteilen, die „Suche nach tieferliegenden Knoten“(1) und das sogenannte „Backtracking“(2) \cite{Tarjan.1972}:
+Die Tiefensuche (engl. Depth-First Search, DFS) stellt das Gegenstück zum Prinzip der Breitensuche dar. Sie untersucht eine Kette von Folgeknoten bis das Ende der Kette erreicht wurde. Grundlegend lässt sich der Algorithmus in zwei Phasen unterteilen, die „Suche nach tieferliegenden Knoten“(1) und das sogenannte „Backtracking“(2) \cite{Tarjan.1972}:
 \begin{itemize}
 	\item[(1)] DFS untersucht den zuletzt gefundenen Knoten auf ausgehende Kanten. Existiert eine unentdeckte Kante, folgt DFS der Kante zum nächsten Knoten. Existiert keine weitere Kante, wechselt der Algorithmus in Phase 2.
 	\item[(2)] DFS setzt zum überliegenden Knoten zurück. Dieser wird auf eine unentdeckte Kante untersucht. Gibt es keine unentdeckte Kante, setzt DFS erneut zurück. Existiert eine weitere Kante, wechselt der Algorithmus zurück in Phase 1.	
