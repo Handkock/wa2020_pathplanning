@@ -9,7 +9,7 @@ Algorithmen dieser Gruppe werden verwendet, wenn keine Informationen über die E
 
 \subsection{Breitensuche}
 
-Die Breitensuche (engl. Breadth-First Search, BFS) ist ein simpler Suchalgorithmus, welcher in Graphen angewendet werden kann \cite[S.594]{Cormen.2009}. Der Algorithmus kann den kürzesten Pfad zwischen zwei Punkten bestimmen. Dazu ist er in der Lage einen Pfad zu finden, der möglichst wenig andere Pfade kreuzt, oder bestmöglich Hindernisse vermeidet \cite{Lee.1961}. BFS dient als Grundmuster für Shortest Path Algorithmen in ungerichteten Graphen \cite{Ottmann.2017}. Die Breitensuche kann jedoch sowohl in gerichteten als auch ungerichteten Graphen genutzt werden. Sie hat eine Laufzeit von $O(V + E)$, also die Summe der Anzahl Knoten und Kanten \cite[S.597]{Cormen.2009}.
+Die Breitensuche (engl. Breadth-First Search, BFS) ist ein simpler Suchalgorithmus, welcher in Graphen angewendet werden kann \cite[S.594]{Cormen.2009}. Der Algorithmus kann den kürzesten Pfad zwischen zwei Punkten bestimmen. Dazu ist er in der Lage einen Pfad zu finden, der mit möglichst wenig anderen Pfaden kollidiert, oder bestmöglich Hindernisse vermeidet \cite{Lee.1961}. BFS dient als Grundmuster für Shortest Path Algorithmen in ungerichteten Graphen \cite{Ottmann.2017}. Die Breitensuche kann jedoch sowohl in gerichteten als auch ungerichteten Graphen genutzt werden. Sie hat eine Laufzeit von $O(V + E)$, also die Summe der Anzahl Knoten und Kanten \cite[S.597]{Cormen.2009}.
 
 Die Breitensuche durchläuft einen Graphen systematisch und schrittweise in alle Richtungen. Gegeben ist ein Graph $G = (V, E)$, mit einem festgelegten Startknoten $s$, sowie ein Inkrement $k=1$. Nun werden folgende Schritte in einer Schleife ausgeführt:
 \begin{itemize}
@@ -22,7 +22,7 @@ Die Breitensuche kann bei Pfadplanung in einem Labyrinthspiel verwendet werden. 
 
 \subsection{Tiefensuche}
 
-Die Tiefensuche (engl. Depth-First Search, DFS) stellt das Gegenstück zur Breitensuche dar. Sie untersucht eine Kette von Folgeknoten bis das Ende der Kette erreicht wurde. Grundlegend lässt sich der Algorithmus in zwei Phasen unterteilen, die „Suche nach tieferliegenden Knoten“(1) und das sogenannte „Backtracking“(2) \cite{Tarjan.1972}:
+Die Tiefensuche (engl. Depth-First Search, DFS) stellt das Gegenstück zum Prinzip der Breitensuche dar. Sie untersucht eine Kette von Folgeknoten bis das Ende der Kette erreicht wurde. Grundlegend lässt sich der Algorithmus in zwei Phasen unterteilen, die „Suche nach tieferliegenden Knoten“(1) und das sogenannte „Backtracking“(2) \cite{Tarjan.1972}:
 \begin{itemize}
 	\item[(1)] DFS untersucht den zuletzt gefundenen Knoten auf ausgehende Kanten. Existiert eine unentdeckte Kante, folgt DFS der Kante zum nächsten Knoten. Existiert keine weitere Kante, wechselt der Algorithmus in Phase 2.
 	\item[(2)] DFS setzt zum überliegenden Knoten zurück. Dieser wird auf eine unentdeckte Kante untersucht. Gibt es keine unentdeckte Kante, setzt DFS erneut zurück. Existiert eine weitere Kante, wechselt der Algorithmus zurück in Phase 1.	
@@ -46,7 +46,7 @@ Zu Beginn des Lösungsprozesses liegen alle Knoten in $C$. Der Startknoten $s$ w
 	\item[2.] Werden für die Knoten $B$ lediglich Verbindungen aus $Alpha$ und $Beta$ betrachtet, besitzt jeder Knoten aus $B$ eine feste Länge zu $s$. Der Knoten aus $B$ mit der kürzesten Distanz zu $s$ wird nach $A$ verschoben und seine Verbindung aus $Beta$ im ersten Zweig des Baums abgelegt.
 \end{itemize}
 Diese Schritte werden so lange wiederholt bis Zielknoten $d$ in $A$ verschoben wurde. \\ \\	
-Der Algorithmus hat eine Komplexität von $O(n^2)$ \cite[S.5]{Madkour.2017}. 1984 schlugen Fredman und Tarjan die Nutzung eines Fibonacci Heaps zur Verbesserung der Laufzeit des Dijkstra Algorithmus vor \cite{Fredman.1987}. Unter Anwendung eines solche F-Heaps stellt der Dijkstra Algorithmus den asymptotisch schnellsten bekannten Algorithmus zur Lösung des Shortest Path Problems in gerichteten Graphen dar \cite{Schmitz.2019}.  Die Komplexität beträgt $O(n\ log\ n + m)$ \cite[S.5]{Madkour.2017}. \\ \\ \\ \\ \\
+Der Algorithmus hat eine Komplexität von $O(n^2)$ \cite[S.5]{Madkour.2017}. 1984 schlugen Fredman und Tarjan die Nutzung eines Fibonacci Heaps zur Verbesserung der Laufzeit des Dijkstra-Algorithmus vor \cite{Fredman.1987}. Unter Anwendung eines solche F-Heaps stellt der Dijkstra-Algorithmus den asymptotisch schnellsten bekannten Algorithmus zur Lösung des Shortest Path Problems in gerichteten Graphen dar \cite{Schmitz.2019}.  Die Komplexität beträgt $O(n\ log\ n + m)$ \cite[S.5]{Madkour.2017}. \\ \\ \\ \\ \\
 Der Suchalgorithmus von Dijkstra und dessen Erweiterungen besitzen ein sehr breites Anwendungsspektrum, zum Beispiel in Transportnetzwerken in sicheren \cite{BAN17} und unsicheren Umgebungen \cite{DCZM12}. Außerdem kann der Algorithmus Verwendung in Satellitennetzwerken \cite{HH15} und in Anwendungsnetzwerken \cite{JYA14} finden.
 
 \section{Informierte Algorithmen}
