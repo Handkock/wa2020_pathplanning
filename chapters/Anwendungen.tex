@@ -4,9 +4,8 @@
 
 Algorithmen zur Pfadplanung finden in verschiedenen Bereichen Anwendung. Reale Pfadplanungsszenarien, zum Beispiel im Zusammenhang mit Navigation und Logistik, sind durch Graphen modellierbar, auf die Suchalgorithmen angewendet werden können \cite{Botea.2011}. In Computerspielen werden Pfadplanungsalgorithmen für die Bewegung computergesteuerter Charaktere genutzt \cite[S.2]{Kri09}. Dieses Gebiet birgt die zusätzliche Herausforderung die Bewegungen der Charaktere realistisch zu simulieren. Auch hat der Computer direkten Zugriff auf Umgebungsinformationen, sodass Schätzungen präzise  vorgenommen werden können.
 
-
-\begin{table}[]
-	\begin{tabular}{|l|l|l|}
+\begin{table}[H]
+	\begin{tabularx}{\linewidth}{|c|c|X|}
 		\hline
 		\textbf{Name}                                          & \textbf{Jahr} & \textbf{Authoren}                                 \\ \hline
 		A*                                            & 1968 & P. Hart, N. Nilsson, B. Raphael          \\ \hline
@@ -27,12 +26,12 @@ Algorithmen zur Pfadplanung finden in verschiedenen Bereichen Anwendung. Reale P
 		GHPA*(Gitterversion von HPA*)                 & 2011 & U. Koch                                  \\ \hline
 		JPS (jump point search)                       & 2013 & A. Patel                                 \\ \hline
 		PHI*                                          & 2013 & A. Nash, S. Koenig                       \\ \hline
-	\end{tabular}
+	\end{tabularx}
 \caption{\label{tab:informed}Informierte Algorithmen, in Anlehnung an \cite[S. 233]{Noo15}}
 \end{table}
 
-\begin{table}[]
-	\begin{tabular}{|l|l|l|}
+\begin{table}[H]
+	\begin{tabularx}{\linewidth}{|c|c|X|}
 		\hline
 		\textbf{Name}                                                    & \textbf{Jahr} & \textbf{Authoren}        \\ \hline
 		Breitensuche (BFS)                                      & 1950 & E.F. Moore      \\ \hline
@@ -40,10 +39,9 @@ Algorithmen zur Pfadplanung finden in verschiedenen Bereichen Anwendung. Reale P
 		Tiefensuche (DFS)                                       & 1882 & C.P. Tremaux    \\ \hline
 		IDDFS (Iterative deepening depth-first search)          & 1985 & R. Korf         \\ \hline
 		BIDDFS(boundary iterative-deepening depth-first search) & 2015 & K.L. Lim et al. \\ \hline
-	\end{tabular}
+	\end{tabularx}
 \caption{\label{tab:uninformed}Uninformierte Algorithmen, in Anlehnung an \cite[S. 233]{Noo15}}
 \end{table}
-
 
 \section{Vergleich von BFS, Dijkstra und A*}
 
