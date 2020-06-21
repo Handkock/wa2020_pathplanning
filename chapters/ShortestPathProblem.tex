@@ -10,26 +10,24 @@ Das Problem des kürzesten Pfades besteht in verschiedenen Varianten. Bei dem Pr
 
 \section{Problemdefinition}
 \label{Kostenfunktion}
-Ein Graph ist eine mathematische Darstellung von Objekten, die aus Punkten und Verbindungen zwischen den Punkten bestehen. 
-Ein Graph ist ein Tupel zwei disjunkter Mengen: $G_{def}= (V,E)$. Die Elemente $v \in V$ heißen Knoten (engl. vertices) und die Elemente $e \in E$ heißen Kanten (engl. edges) \cite[S.15]{Gross.2004}. 
-%todo Abbildung erwähnen und zur Gerichtung
-Graphen können gewichtet oder ungewichtet sein. Bei gewichteten Graphen ist jeder Kante eine Gewichtung zugeordnet. 
+Ein \textit{Graph} ist eine mathematische Darstellung von Objekten, die aus Punkten und Verbindungen zwischen den Punkten bestehen. 
+Ein Graph ist ein Tupel zwei disjunkter Mengen: $G_{def}= (V,E)$. Die Elemente $v \in V$ heißen Knoten (engl. vertices) und die Elemente $e \in E$ heißen Kanten (engl. edges) \cite[S.15]{Gross.2004}. Graphen können auch Objektbeziehungen modellieren, die nicht symmetrisch sind. In diesem Fall haben die Kanten Richtungen und der Graph wird auch als \textit{Digraph} genannt. Der Unterschied bei Darstellung zwischen Graphen und Digraphen ist auf den \ref{fig:dirGraph} und \ref{fig:undirGraph} zu sehen. Außerdem können Graphen gewichtet oder ungewichtet sein. Bei gewichteten Graphen ist jeder Kante eine Gewichtung zugeordnet. 
 Diese Gewichtungen wirken sich auf Pfade durch den Graphen aus \cite[S.18]{Gross.2004}. 
 Ein Pfad in einem Graphen wird als Tupel dargestellt $\left ( x_{0}, x_{1}, x_{2}, ..., x_{n} \right )$, mit $x_{i} \in V$. 
-Im Hinblick auf das Problem des kürzesten Pfades wird ein gewichteter Graph mit einem Startknoten $s \in V$ und den Zielknoten $d \in V$ betrachtet. Wir definieren eine Kostenfunktion $c(s,u)$, die die Kosten des Pfades $ (s, ...., u)$ darstellt. Ziel ist es, den Pfad  $\left ( s, ..., d \right )$ mit dem geringsten Gewicht zu finden, also $c(d)$ zu minimieren. \cite[S.4]{Madkour.2017}.
+Im Hinblick auf das Problem des kürzesten Pfades wird ein gewichteter Graph mit einem Startknoten $s \in V$ und den Zielknoten $d \in V$ betrachtet. Wir definieren eine Kostenfunktion $c(s,u)$, die die Kosten des Pfades $ (s, ...., u)$ darstellt. Ziel ist es, den Pfad  $\left ( s, ..., d \right )$ mit dem geringsten Gewicht zu finden, also $c(s,d)$ zu minimieren. \cite[S.4]{Madkour.2017}.
 
 
 \begin{figure}[!tbp]
 	\centering
-	\begin{minipage}[b]{0.4\textwidth}
+	\begin{minipage}[b]{0.45\textwidth}
 		\includegraphics[width=\linewidth]{images/undirGraph.png}
-		\caption{Ungerichteter Graph}
+		\caption{Ungerichteter gewichteter Graph}
 		\label{fig:undirGraph}
 	\end{minipage}
 	\hfill
-	\begin{minipage}[b]{0.4\textwidth}
+	\begin{minipage}[b]{0.45\textwidth}
 		\includegraphics[width=\linewidth]{images/dirGraph.png}
-		\caption{Gerichteter Graph}
+		\caption{Gerichteter gewichteter Graph}
 		\label{fig:dirGraph}
 	\end{minipage}
 \end{figure}
