@@ -15,9 +15,9 @@ Ein Graph ist ein Tupel zwei disjunkter Mengen: $G_{def}= (V,E)$. Die Elemente $
 Ein Pfad in einem Graphen wird als Tupel dargestellt $\left ( x_{0}, x_{1}, x_{2}, ..., x_{n} \right )$, mit $x_{i} \in V$. 
 Im Hinblick auf das Problem des kürzesten Pfades wird ein gewichteter Graph mit einem Startknoten $s \in V$ und den Zielknoten $d \in V$ betrachtet. Wir definieren eine Kostenfunktion $c(s,u)$, die die Kosten des Pfades $ (s, ...., u)$ darstellt. Ziel ist es, den Pfad  $\left ( s, ..., d \right )$ mit dem geringsten Gewicht zu finden, also $c(s,d)$ zu minimieren. \cite[S.4]{Madkour.2017}.
 
-Zum Lösen des Problems des kürzesten Pfades in einem Graphen werden Suchalgorithmen benutzt. Diese lassen sich in informierte und uninformierte Algorithmen unterteilen. Die beiden Gruppen werden im folgenden Kapitel näher besprochen.
+Als Beispiel für die Graphen auf den Abbildungen wird die Kostenfunktion für den Pfad $(a,c)$ berechnet. Im ungerichteten Graphen (Abb. \ref{fig:undirGraph}) liefert die Kostenfunktion den Wert $7$ als Ergebnis, also $c(a,c) = 7$. Im gerichteten Graphen (Abb. \ref{fig:dirGraph}), andererseits, ergibt sich wegen der Kantenrichtungen das folgende Ergebnis $c(a,c) = 10$.
 
-\begin{figure}[!tbp]
+\begin{figure}[H]
 	\centering
 	\begin{minipage}[b]{0.45\textwidth}
 		\includegraphics[width=\linewidth]{images/undirGraph.png}
@@ -31,3 +31,6 @@ Zum Lösen des Problems des kürzesten Pfades in einem Graphen werden Suchalgori
 		\label{fig:dirGraph}
 	\end{minipage}
 \end{figure}
+
+Zum Lösen des Problems des kürzesten Pfades in einem Graphen werden Suchalgorithmen benutzt. Diese lassen sich in informierte und uninformierte Algorithmen unterteilen. Die beiden Gruppen werden im folgenden Kapitel näher besprochen.
+
