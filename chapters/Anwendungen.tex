@@ -4,47 +4,6 @@
 
 Algorithmen zur Pfadplanung finden in verschiedenen Bereichen Anwendung. Reale Pfadplanungsszenarien, zum Beispiel im Zusammenhang mit Navigation und Logistik, sind durch Graphen modellierbar, auf die Suchalgorithmen angewendet werden können \cite{Botea.2011}. In Computerspielen werden Pfadplanungsalgorithmen für die Bewegung computergesteuerter Charaktere genutzt \cite[S.2]{Kri09}. Dieses Gebiet birgt die zusätzliche Herausforderung die Bewegungen der Charaktere realistisch zu simulieren. Auch hat der Computer direkten Zugriff auf Umgebungsinformationen, sodass Schätzungen präzise  vorgenommen werden können.
 
-\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
-\newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}}
-
-\begin{table}[h]
-	\begin{tabular}[h]{L{8cm}|C{1cm}|L{5cm}}
-		\hline
-		\textbf{Name}                                          & \textbf{Jahr} & \textbf{Authoren}                                 \\ \hline
-		\hyperref[sec:astar]{A*}                                            & 1968 & P. Hart, N. Nilsson, B. Raphael          \\ \hline
-		\hyperref[sec:bestsearch]{Bestensuche}                            & 1984 & J. Pearl                                 \\ \hline
-		IDA*( iterative deepening A*)                 & 1985 & R. Korf                                  \\ \hline
-		LRTA* (Learning Realtime A*)                  & 1990 & R. Korf                                  \\ \hline
-		SMA* (SimplifiedMemory Bounded A*)            & 1992 & S. Russell                               \\ \hline
-		D*(dynamic a*)                                & 1994 & A. Stentz                                \\ \hline
-		HA*(Hierarchical A*)                          & 1996 & R.C. Holte, M.B. Perez, R.M. Zimmer      \\ \hline
-		LPA*( Lifelong Planning A*)                   & 2004 & S. Koenig, M. Lichachev, D. Furcy        \\ \hline
-		\hyperref[sec:hpa]{HPA* (Near Optimal hierarchical Path-finding)} & 2004 & A. Botea, M. Muller, J. Schaffer         \\ \hline
-		PRA*(Partial Refinement A*)                   & 2005 & N. Sturtevant, M. Buro                   \\ \hline
-		TRA*(Triangulation-Based Pathfinding)         & 2006 & D. Demyen, M. Buro                       \\ \hline
-		Theta*                                        & 2007 & A. Nash, K. Daniel, S. Koenig, A. Felner \\ \hline
-		HPA* Verbesserungen                           & 2007 & M. Renee Jansen, M. Buro                 \\ \hline
-		DHPA* und SHPA*                               & 2010 & A. Kring, A.J. Champandard, N. Samarin   \\ \hline
-		Jump point search                             & 2011 & D. Harabor, A. Grastien                  \\ \hline
-		GHPA*(Gitterversion von HPA*)                 & 2011 & U. Koch                                  \\ \hline
-		JPS (jump point search)                       & 2013 & A. Patel                                 \\ \hline
-		PHI*                                          & 2013 & A. Nash, S. Koenig                       \\ \hline
-	\end{tabular}
-\caption{\label{tab:informed}Informierte Algorithmen, in Anlehnung an \cite[S. 233]{Noo15}}
-\end{table}
-
-\begin{table}[h]
-	\begin{tabular}[h]{L{8cm}|C{1cm}|L{5cm}}
-		\hline
-		\textbf{Name}                                                    & \textbf{Jahr} & \textbf{Authoren}        \\ \hline
-		\hyperref[sec:bfs]{Breitensuche (BFS)}                                      & 1950 & E.F. Moore      \\ \hline
-		\hyperref[sec:dijkstra]{Dijkstra}                                                & 1959 & E. Dijkstra     \\ \hline
-		\hyperref[sec:dfs]{Tiefensuche (DFS)}                                       & 1882 & C.P. Tremaux    \\ \hline
-		IDDFS (Iterative deepening depth-first search)          & 1985 & R. Korf         \\ \hline
-		BIDDFS(boundary iterative-deepening depth-first search) & 2015 & K.L. Lim et al. \\ \hline
-	\end{tabular}
-\caption{\label{tab:uninformed}Uninformierte Algorithmen, in Anlehnung an \cite[S. 233]{Noo15}}
-\end{table}
 
 \section{Vergleich von BFS, Dijkstra und A*}
 
@@ -87,6 +46,49 @@ Es wird das Problem einer Reise aus einer Spielstadt in eine andere betrachtet. 
 \begin{sloppypar}
 HPA* läuft durchschnittlich zehnmal schneller als der oben beschriebener A*-Algorithmus \cite[S. 1, 26]{Bot04} und wird daher verbreitet im Spieleinbereich angewendet \cite{LSC08}. ``HPA* ist aber sehr allgemein. In der Praxis kann HPA sowohl für statische Welten, wo die Graphenhierarchie besser vorbereitet werden kann, als auch in typischen dynamischen Welten, um häufige Umgebungsänderungen zu bewältigen, erheblich optimiert werden'' \cite[S. 39]{Kri10}. Aus diesem Grund existieren unterschiedliche HPA*-Erweiterungen wie SHPA* und DHPA*, vorgeschlagen von Kring et al. \cite[40-43]{Kri10}, oder Path Smoothing und Lazy Edge Weight Computation, die im Allgemeinen die Leistung von HPA* erhöhen \cite{JB07}.
 \end{sloppypar}
+
+In den Tabellen \ref{tab:informed} und \ref{tab:uninformed} ist eine Übersicht der wichtigsten Pfadplanungsalgorithmen für Routing in Videospielen zu sehen.
+
+
+\begin{table}[h]
+	\begin{tabular}[h]{L{8cm}|C{1cm}|L{5cm}}
+		\hline
+		\textbf{Name}                                          & \textbf{Jahr} & \textbf{Authoren}                                 \\ \hline
+		\hyperref[sec:astar]{A*}                                            & 1968 & P. Hart, N. Nilsson, B. Raphael          \\ \hline
+		\hyperref[sec:bestsearch]{Bestensuche}                            & 1984 & J. Pearl                                 \\ \hline
+		IDA*( iterative deepening A*)                 & 1985 & R. Korf                                  \\ \hline
+		LRTA* (Learning Realtime A*)                  & 1990 & R. Korf                                  \\ \hline
+		SMA* (SimplifiedMemory Bounded A*)            & 1992 & S. Russell                               \\ \hline
+		D*(dynamic a*)                                & 1994 & A. Stentz                                \\ \hline
+		HA*(Hierarchical A*)                          & 1996 & R.C. Holte, M.B. Perez, R.M. Zimmer      \\ \hline
+		LPA*( Lifelong Planning A*)                   & 2004 & S. Koenig, M. Lichachev, D. Furcy        \\ \hline
+		\hyperref[sec:hpa]{HPA* (Near Optimal hierarchical Path-finding)} & 2004 & A. Botea, M. Muller, J. Schaffer         \\ \hline
+		PRA*(Partial Refinement A*)                   & 2005 & N. Sturtevant, M. Buro                   \\ \hline
+		TRA*(Triangulation-Based Pathfinding)         & 2006 & D. Demyen, M. Buro                       \\ \hline
+		Theta*                                        & 2007 & A. Nash, K. Daniel, S. Koenig, A. Felner \\ \hline
+		HPA* Verbesserungen                           & 2007 & M. Renee Jansen, M. Buro                 \\ \hline
+		DHPA* und SHPA*                               & 2010 & A. Kring, A.J. Champandard, N. Samarin   \\ \hline
+		Jump point search                             & 2011 & D. Harabor, A. Grastien                  \\ \hline
+		GHPA*(Gitterversion von HPA*)                 & 2011 & U. Koch                                  \\ \hline
+		JPS (jump point search)                       & 2013 & A. Patel                                 \\ \hline
+		PHI*                                          & 2013 & A. Nash, S. Koenig                       \\ \hline
+	\end{tabular}
+	\caption{\label{tab:informed}Informierte Algorithmen, in Anlehnung an \cite[S. 233]{Noo15}}
+\end{table}
+
+
+\begin{table}[h]
+	\begin{tabular}[h]{L{8cm}|C{1cm}|L{5cm}}
+		\hline
+		\textbf{Name}                                                    & \textbf{Jahr} & \textbf{Authoren}        \\ \hline
+		\hyperref[sec:bfs]{Breitensuche (BFS)}                                      & 1950 & E.F. Moore      \\ \hline
+		\hyperref[sec:dijkstra]{Dijkstra}                                                & 1959 & E. Dijkstra     \\ \hline
+		\hyperref[sec:dfs]{Tiefensuche (DFS)}                                       & 1882 & C.P. Tremaux    \\ \hline
+		IDDFS (Iterative deepening depth-first search)          & 1985 & R. Korf         \\ \hline
+		BIDDFS(boundary iterative-deepening depth-first search) & 2015 & K.L. Lim et al. \\ \hline
+	\end{tabular}
+	\caption{\label{tab:uninformed}Uninformierte Algorithmen, in Anlehnung an \cite[S. 233]{Noo15}}
+\end{table}
 
 
 
