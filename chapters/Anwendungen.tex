@@ -43,7 +43,7 @@ Es wird das Problem einer Reise aus einer Spielstadt in eine andere betrachtet. 
 3. Vervollständige den Pfad durch den Bereich, der den Zielstandort enthält.\\
 
 \begin{sloppypar}
-HPA* läuft durchschnittlich zehnmal schneller als der oben beschriebener\textit{ A*-Algorithmus} \cite[S. 1, 26]{Bot04} und wird daher verbreitet im Spieleinbereich angewendet \cite{LSC08}. „HPA* ist aber sehr allgemein. In der Praxis kann HPA sowohl für statische Welten, wo die Graphenhierarchie besser vorbereitet werden kann, als auch in typischen dynamischen Welten, um häufige Umgebungsänderungen zu bewältigen, erheblich optimiert werden“ \cite[S.39]{Kri10}. Aus diesem Grund existieren unterschiedliche HPA*-Erweiterungen wie SHPA* und DHPA*, vorgeschlagen von Kring et al. \cite[S.40ff.]{Kri10}, oder \textit{Path Smoothing} und \textit{Lazy Edge Weight Computation}, die im Allgemeinen die Leistung von HPA* erhöhen \cite{JB07}.
+HPA* läuft durchschnittlich zehnmal schneller als der oben beschriebener\textit{ A*-Algorithmus} \cite[S. 1, 26]{Bot04} und wird daher verbreitet im Spielebereich angewendet \cite{LSC08}. „HPA* ist aber sehr allgemein. In der Praxis kann HPA sowohl für statische Welten, wo die Graphenhierarchie besser vorbereitet werden kann, als auch in typischen dynamischen Welten, um häufige Umgebungsänderungen zu bewältigen, erheblich optimiert werden“ \cite[S.39]{Kri10}. Aus diesem Grund existieren unterschiedliche HPA*-Erweiterungen wie SHPA* und DHPA*, vorgeschlagen von Kring et al. \cite[S.40ff.]{Kri10}, oder \textit{Path Smoothing} und \textit{Lazy Edge Weight Computation}, die im Allgemeinen die Leistung von HPA* erhöhen \cite{JB07}.
 \end{sloppypar}
 
 In den Tabellen \ref{tab:informed} und \ref{tab:uninformed} ist eine Übersicht der wichtigsten Pfadplanungsalgorithmen für Routing in Videospielen zu sehen.
@@ -97,7 +97,7 @@ Bisher wurden Lösungen für die Problemstellung mit einem einzelnen Agenten bet
 \subsection{Windowed Hierarchical Cooperative A*}
 Bei dem \textit{Cooperative A*-Algorithmus} sucht jeder Agent in einem dreidimensionalen Graphen - bestehend aus der x- und der y-Koordinatenachse und einer Zeitachse - mit dem \textit{A*-Algorithmus} nach seinem Ziel. 
 Das Ergebnis der Suche teilt er den anderen Agenten in einer Reservierungstabelle mit. Auf diese Weise sind die Agenten in der Lage Kollisionen zu vermeiden. 
-Der \textit{Hierarchical Cooperative A*-Algorithmus} benutzt eine hierarchische Suche (siehe Oben: \hyperref[sec:hpa]{4.2.1 Hierarchical Path-Finding A*}). \textit{Windowed Hierarchical Cooperative A*} (WHCA*) begrenzt die Suchtiefe für jeden Agent zu einem Fenster. Sobald der Teilpfad in dem Fenster gefunden wurde, folgt der Agent diesem Pfad und fängt mit der Berechnung des nächsten Teilpfades an.
+Der \textit{Hierarchical Cooperative A*-Algorithmus} benutzt eine hierarchische Suche (siehe oben: \hyperref[sec:hpa]{4.2.1 Hierarchical Path-Finding A*}). \textit{Windowed Hierarchical Cooperative A*} (WHCA*) begrenzt die Suchtiefe für jeden Agent zu einem Fenster. Sobald der Teilpfad in dem Fenster gefunden wurde, folgt der Agent diesem Pfad und fängt mit der Berechnung des nächsten Teilpfades an.
 \subsection{Flow Annotated Replanning}
 Ähnlich dem WHCA* nimmt \textit{Flow Annotation Replanning} (FAR) die Pläne anderer Agenten in die Berechnung auf. Statt aber, wenn ein Pfad blockiert ist, einen neuen Pfad zu berechnen, wartet ein Agent im FAR-Algorithmus einfach auf dem aktuellen Knoten darauf, dass sein Pfad wieder frei wird und er ihn für sich reservieren kann.
 
