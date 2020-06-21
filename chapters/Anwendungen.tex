@@ -4,8 +4,11 @@
 
 Algorithmen zur Pfadplanung finden in verschiedenen Bereichen Anwendung. Reale Pfadplanungsszenarien, zum Beispiel im Zusammenhang mit Navigation und Logistik, sind durch Graphen modellierbar, auf die Suchalgorithmen angewendet werden können \cite{Botea.2011}. In Computerspielen werden Pfadplanungsalgorithmen für die Bewegung computergesteuerter Charaktere genutzt \cite[S.2]{Kri09}. Dieses Gebiet birgt die zusätzliche Herausforderung die Bewegungen der Charaktere realistisch zu simulieren. Auch hat der Computer direkten Zugriff auf Umgebungsinformationen, sodass Schätzungen präzise  vorgenommen werden können.
 
-\begin{table}[H]
-	\begin{tabularx}{\linewidth}{|c|c|X|}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\begin{table}[h]
+	\begin{tabular}[h]{|L{8cm}|C{1cm}|L{5cm}|}
 		\hline
 		\textbf{Name}                                          & \textbf{Jahr} & \textbf{Authoren}                                 \\ \hline
 		\hyperref[sec:astar]{A*}                                            & 1968 & P. Hart, N. Nilsson, B. Raphael          \\ \hline
@@ -26,12 +29,12 @@ Algorithmen zur Pfadplanung finden in verschiedenen Bereichen Anwendung. Reale P
 		GHPA*(Gitterversion von HPA*)                 & 2011 & U. Koch                                  \\ \hline
 		JPS (jump point search)                       & 2013 & A. Patel                                 \\ \hline
 		PHI*                                          & 2013 & A. Nash, S. Koenig                       \\ \hline
-	\end{tabularx}
+	\end{tabular}
 \caption{\label{tab:informed}Informierte Algorithmen, in Anlehnung an \cite[S. 233]{Noo15}}
 \end{table}
 
-\begin{table}[H]
-	\begin{tabularx}{\linewidth}{|c|c|X|}
+\begin{table}[h]
+	\begin{tabular}[h]{|L{8cm}|C{1cm}|L{5cm}|}
 		\hline
 		\textbf{Name}                                                    & \textbf{Jahr} & \textbf{Authoren}        \\ \hline
 		\hyperref[sec:bfs]{Breitensuche (BFS)}                                      & 1950 & E.F. Moore      \\ \hline
@@ -39,7 +42,7 @@ Algorithmen zur Pfadplanung finden in verschiedenen Bereichen Anwendung. Reale P
 		\hyperref[sec:dfs]{Tiefensuche (DFS)}                                       & 1882 & C.P. Tremaux    \\ \hline
 		IDDFS (Iterative deepening depth-first search)          & 1985 & R. Korf         \\ \hline
 		BIDDFS(boundary iterative-deepening depth-first search) & 2015 & K.L. Lim et al. \\ \hline
-	\end{tabularx}
+	\end{tabular}
 \caption{\label{tab:uninformed}Uninformierte Algorithmen, in Anlehnung an \cite[S. 233]{Noo15}}
 \end{table}
 
@@ -47,7 +50,7 @@ Algorithmen zur Pfadplanung finden in verschiedenen Bereichen Anwendung. Reale P
 
 Der A* Algorithmus wird in vielen Videospielen für die Bewegungskontrolle von Nicht-Spieler-Charakteren (engl. non-player characters, NPCs) genutzt \cite{Stamford.2014}. Der Grund dafür ist die in vielen Fällen schnellere Berechnung des kürzesten Pfades gegenüber uninformierten Algorithmen. In ihrer Arbeit ``Pathfinding Algorithm Efficiency Analysis in 2D Grid'' vergleichen Zarembo und Kodors die Laufzeit der Algorithmen BFS, Dijkstra und A*. Tabelle \ref{tab:comp} zeigt eine Gegenüberstellung der Rechenzeiten der Algorithmen bei verschiedenen Rastergrößen. Die Breitensuche benötigt schon bei sehr kleiner Flächengröße deutlich länger als Dijkstra und A*. Je größe die Fläche wird, desto größer wird auch der Unterschied zwischen Dijkstra und A*. Bei einer Rastergröße von 1024x1024 Knoten braucht A* weniger als die Hälfte der Zeit von Dijkstras Algorithmus. Die Breitensuche benötigt hier die 10.000-fache Zeit von A*. Das sind knapp vier Stunden, im Gegensatz zu gut einer Sekunde.
 
-\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+%\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}%
 \begin{table}[h]
 \centering
 \begin{tabular}[h]{|C{4cm}|C{2cm}|C{2cm}|C{2cm}|} \hline
