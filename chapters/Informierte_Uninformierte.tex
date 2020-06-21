@@ -8,7 +8,7 @@ Pfadplanung im Hinblick auf Graphentheorie kann informiert und uninformiert sein
 Algorithmen dieser Gruppe werden verwendet, wenn keine Informationen über die Entfernung vom Startknoten $s$ zum Zielknoten $d$ bekannt sind. Sie garantieren, dass der kürzeste Pfad gefunden wird, falls ein solcher Pfad existiert. Weil uninformierte Algorithmen über alle möglichen erreichbaren Knoten gehen, gibt es einen großen Bedarf an Speicherplatz und Leistung \cite[S. 232, 235, 236]{Noo15}. Die am meisten verwendeten Algorithmen dieser Gruppe sind die Breitensuche, die Tiefensuche und der Algorithmus von Dijkstra.
 
 \subsection{Breitensuche}
-
+\label{sec:bfs}
 Die Breitensuche (engl. Breadth-First Search, BFS) ist ein simpler Suchalgorithmus, welcher in Graphen angewendet werden kann \cite[S.594]{Cormen.2009}. Der Algorithmus kann den kürzesten Pfad zwischen zwei Punkten bestimmen. Dazu ist er in der Lage einen Pfad zu finden, der mit möglichst wenig anderen Pfaden kollidiert, oder bestmöglich Hindernisse vermeidet \cite{Lee.1961}. BFS dient als Grundmuster für Shortest Path Algorithmen in ungerichteten Graphen \cite{Ottmann.2017}. Die Breitensuche kann jedoch sowohl in gerichteten als auch ungerichteten Graphen genutzt werden. Sie hat eine Laufzeit von $O(V + E)$ \cite[S.597]{Cormen.2009}.
 
 Die Breitensuche durchläuft einen Graphen systematisch und schrittweise in alle Richtungen. Gegeben ist ein Graph $G = (V, E)$, mit einem festgelegten Startknoten $s$, sowie ein Inkrement $k=1$. Nun werden folgende Schritte in einer Schleife ausgeführt:
@@ -21,7 +21,7 @@ Diese Schritte werden so lange wiederholt, bis alle Knoten im Graphen gefunden w
 Die Breitensuche kann bei Pfadplanung in einem Labyrinthspiel verwendet werden \cite[S. 3-6]{PBAS18}. Dieser Algorithmus sichert aber nicht die beste Suche im Hiblick auf Rechenleistung und Geschwindigkeit \cite[S. 6]{PBAS18}. Außerdem können BFS-Algorithmus und seine Hybridversion \cite{HT13} für die Traversierung der Graphen von Graphikprozessoren benutzt werden \cite{MGG12}.
 
 \subsection{Tiefensuche}
-
+\label{sec:dfs}
 Die Tiefensuche (engl. Depth-First Search, DFS) stellt das Gegenstück zum Prinzip der Breitensuche dar. Sie untersucht eine Kette von Folgeknoten bis das Ende der Kette erreicht wurde. Grundlegend lässt sich der Algorithmus in zwei Phasen unterteilen, die „Suche nach tieferliegenden Knoten“(1) und das sogenannte „Backtracking“(2) \cite{Tarjan.1972}:
 \begin{itemize}
 	\item[(1)] DFS untersucht den zuletzt gefundenen Knoten auf ausgehende Kanten. Existiert eine unentdeckte Kante, folgt DFS der Kante zum nächsten Knoten. Existiert keine weitere Kante, wechselt der Algorithmus in Phase 2.
@@ -34,6 +34,7 @@ DFS kann Labyrinthe generieren und einen Weg daraus finden \cite{KB15}. Die Tief
 
 
 \subsection{Dijkstras Algorithmus}
+\label{sec:dijkstra}
 In seiner Arbeit „Two Problems in Connexion with Graphs“ stellt Dijkstra zwei Probleme dar \cite{Dijkstra.1959}. Das erste Problem ist die Konstruktion eines Baums mit den kürzesten Wegen zwischen den Knoten eines Graphen als Zweigen (vergleiche Breitensuchbaum). Das andere ist die Suche nach dem kürzesten Weg zwischen zwei Knoten (vergleiche Problem des kürzesten Pfades). \\
 Zur Lösung des Problems des kürzesten Pfades zwischen zwei Knoten $s$ und $d$ wird eine Menge Knoten $R = \{r_0, r_1, ...\}$ definiert, wobei die Knoten aus $R$ auf dem kürzesten Pfad zwischen $s$ und $d$ liegen. Da ein Knoten $r_i \in R$ Teil des kürzesten Wegs zwischen $s$ und $d$ ist, ist auch der Weg zwischen $s$ und $r_i$ minimal. Es werden kontinuierlich Knoten aus $R$ gesucht, die weiter von $s$ entfernt sind, bis der Zielknoten $d$ erreicht wurde.
 
@@ -51,7 +52,7 @@ Der Algorithmus hat eine Komplexität von $O(n^2)$\footnote{$n = |V|$} \cite[S.5
 Der Suchalgorithmus von Dijkstra und dessen Erweiterungen besitzen ein sehr breites Anwendungsspektrum, zum Beispiel in Transportnetzwerken in sicheren \cite{BAN17} und unsicheren Umgebungen \cite{DCZM12}. Außerdem kann der Algorithmus Verwendung in Satellitennetzwerken \cite{HH15} und in Anwendungsnetzwerken \cite{JYA14} finden.
 
 \section{Informierte Algorithmen}
-
+\label{sec:bestsearch}
 Die sogenannte Bestensuche (engl. informed best-first search)
 ist ein verbreiteter Ansatz, um die Suchzeit nach dem kürzesten Pfad anhand heuristischer Informationen zu verkürzen. Dabei wird versucht jedem Punkt in einem Graphen einen Wert zuzuweisen. Anhand dieser Wertzuweisung wird die Erkundung des Graphen in die Richtung des vielversprechendsten Kandidaten fortgeführt \cite{RinaDechterandJudeaPearl.1983}.
 
@@ -72,6 +73,7 @@ Eine Metrik ist eine Funktion, welche den Abstand zwischen zwei Elementen in dem
 
 \end{itemize}
 \subsection{A*}
+\label{sec:astar}
 Um den kürzesten Pfad mit dem geringsten Aufwand zu finden, profitiert ein Suchalgorithmus von informierten Entscheidungen für die Untersuchung der Knotenpunkte. Untersucht er Knotenpunkte, die offensichtlich nicht zum Ziel führen können, verschwendet er Ressourcen. Untersucht er andererseits Knoten nicht, welche zum kürzesten Pfad beitragen, führt der Algorithmus nicht zum richtigen Ergebnis. In diesem Zusammenhang wird häufig der A* Algorithmus untersucht.
 
 Es sei ein gewichteter Graph $G$ gegeben, der den Startknoten $s$ und eine nichtleere Menge aus Zielknoten $T$ habe. Das Problem des optimalen Pfades besteht nun darin, den Pfad vom Startknoten $s$ zu einem Knoten aus der Zielmenge $T$ mit den geringsten Kosten zu finden. %todo Wiederholung des Shortest Path Problems, was eigentlich am Anfang richtig definiert werden muss und hier einfach verlinkt
