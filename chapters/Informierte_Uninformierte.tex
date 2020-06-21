@@ -9,14 +9,14 @@ Algorithmen dieser Gruppe werden verwendet, wenn keine Informationen über die E
 
 \subsection{Breitensuche}
 \label{sec:bfs}
-Die Breitensuche (engl. Breadth-First Search, BFS) ist ein simpler Suchalgorithmus, welcher in Graphen angewendet werden kann \cite[S.594]{Cormen.2009}. Der Algorithmus kann den kürzesten Pfad zwischen zwei Punkten bestimmen. Dazu ist er in der Lage einen Pfad zu finden, der mit möglichst wenig anderen Pfaden kollidiert, oder bestmöglich Hindernisse vermeidet \cite{Lee.1961}. BFS dient als Grundmuster für Shortest Path Algorithmen in ungerichteten Graphen \cite{Ottmann.2017}. Die Breitensuche kann jedoch sowohl in gerichteten als auch ungerichteten Graphen genutzt werden. Sie hat eine Laufzeit von $O(V + E)$ \cite[S.597]{Cormen.2009}.
+Die Breitensuche (engl. Breadth-First Search, BFS) ist ein simpler Suchalgorithmus, welcher in Graphen angewendet werden kann \cite[S.594]{Cormen.2009}. Der Algorithmus kann den kürzesten Pfad zwischen zwei Punkten bestimmen. Dazu ist er in der Lage einen Pfad zu finden, der mit möglichst wenig anderen Pfaden kollidiert oder bestmöglich Hindernisse vermeidet \cite{Lee.1961}. BFS dient als Grundmuster für Shortest Path Algorithmen in ungerichteten Graphen \cite{Ottmann.2017}. Die Breitensuche kann jedoch sowohl in gerichteten als auch ungerichteten Graphen genutzt werden. Sie hat eine Laufzeit von $O(V + E)$ \cite[S.597]{Cormen.2009}.
 
 Die Breitensuche durchläuft einen Graphen systematisch und schrittweise in alle Richtungen. Gegeben ist ein Graph $G = (V, E)$, mit einem festgelegten Startknoten $s$, sowie ein Inkrement $k=1$. Nun werden folgende Schritte in einer Schleife ausgeführt:
 \begin{itemize}
 \item[1.] Finde alle Knoten, welche $k$ Kanten von $s$ entfernt sind.
 \item[2.] Rechne $k + 1$.
 \end{itemize}
-Diese Schritte werden so lange wiederholt, bis alle Knoten im Graphen gefunden wurden, die von $s$ erreicht werden können. Wird ein Knoten von BFS entdeckt, so wird die Distanz zum Startknoten $s$ berechnet. Anschließend wird der Knoten zu einem speziellen ``Breitensuchbaum'' hinzugefügt, welcher alle vom Startknoten aus erreichbaren Knoten beinhaltet. Die Zweige des Baums stellen den kürzesten Pfad von $s$ zu den Knoten des Baumes dar \cite[S.594]{Cormen.2009}.
+Diese Schritte werden so lange wiederholt, bis alle Knoten im Graphen gefunden wurden, die von $s$ erreicht werden können. Wird ein Knoten von BFS entdeckt, so wird die Distanz zum Startknoten $s$ berechnet. Anschließend wird der Knoten zu einem sogenannten ``Breitensuchbaum'' hinzugefügt, welcher alle vom Startknoten aus erreichbaren Knoten beinhaltet. Die Zweige des Baums stellen den kürzesten Pfad von $s$ zu den Knoten des Baumes dar \cite[S.594]{Cormen.2009}.
 
 Die Breitensuche kann bei Pfadplanung in einem Labyrinthspiel verwendet werden \cite[S. 3ff.]{PBAS18}. Dieser Algorithmus sichert aber nicht die beste Suche im Hinblick auf Rechenleistung und Geschwindigkeit \cite[S. 6]{PBAS18}. Außerdem können BFS-Algorithmus und seine Hybridversion \cite{HT13} für die Traversierung der Graphen von Graphikprozessoren benutzt werden \cite{MGG12}.
 
@@ -77,7 +77,7 @@ Eine Metrik ist eine Funktion, welche den Abstand zwischen zwei Elementen in dem
 Um den kürzesten Pfad mit dem geringsten Aufwand zu finden, profitiert ein Suchalgorithmus von informierten Entscheidungen für die Untersuchung der Knotenpunkte. Untersucht er Knotenpunkte, die offensichtlich nicht zum Ziel führen können, verschwendet er Ressourcen. Untersucht er andererseits Knoten nicht, welche zum kürzesten Pfad beitragen, führt der Algorithmus nicht zum richtigen Ergebnis. In diesem Zusammenhang wird häufig der A* Algorithmus untersucht.
 
 Es sei ein gewichteter Graph  $G = (V, E)$ gegeben, der den Startknoten $s \in V$ und eine nichtleere Menge aus Zielknoten $T \subseteq V$ habe. Das Problem des optimalen Pfades besteht nun darin, den Pfad vom Startknoten $s$ zu einem Knoten $t$ aus der Zielmenge $T$ mit den geringsten Kosten zu finden.
-Die Kosten errechnen sich aus den Gewichten der besuchten Kanten, mit $c(s,t)$ \cite{RinaDechterandJudeaPearl.1983}.
+Die Kosten errechnen sich aus den Gewichten der besuchten Kanten mit $c(s,t)$ \cite{RinaDechterandJudeaPearl.1983}.
 
 A* benutzt die Funktion $f(u) = g(u) + h(u)$.
 \begin{itemize}
