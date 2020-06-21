@@ -4,9 +4,8 @@
 
 Algorithmen zur Pfadplanung finden in verschiedenen Bereichen Anwendung. Reale Pfadplanungsszenarien, zum Beispiel im Zusammenhang mit Navigation und Logistik, sind durch Graphen modellierbar, auf die Suchalgorithmen angewendet werden können \cite{Botea.2011}. In Computerspielen werden Pfadplanungsalgorithmen für die Bewegung computergesteuerter Charaktere genutzt \cite[S.2]{Kri09}. Dieses Gebiet birgt die zusätzliche Herausforderung die Bewegungen der Charaktere realistisch zu simulieren. Auch hat der Computer direkten Zugriff auf Umgebungsinformationen, sodass Schätzungen präzise  vorgenommen werden können.
 
-
-\begin{table}[]
-	\begin{tabular}{|l|l|l|}
+\begin{table}[H]
+	\begin{tabularx}{\linewidth}{|c|c|X|}
 		\hline
 		\textbf{Name}                                          & \textbf{Jahr} & \textbf{Authoren}                                 \\ \hline
 		A*                                            & 1968 & P. Hart, N. Nilsson, B. Raphael          \\ \hline
@@ -27,12 +26,12 @@ Algorithmen zur Pfadplanung finden in verschiedenen Bereichen Anwendung. Reale P
 		GHPA*(Gitterversion von HPA*)                 & 2011 & U. Koch                                  \\ \hline
 		JPS (jump point search)                       & 2013 & A. Patel                                 \\ \hline
 		PHI*                                          & 2013 & A. Nash, S. Koenig                       \\ \hline
-	\end{tabular}
-\caption{\label{tab:informed}Informierte Algorithmen}
+	\end{tabularx}
+\caption{\label{tab:informed}Informierte Algorithmen, in Anlehnung an \cite[S. 233]{Noo15}}
 \end{table}
 
-\begin{table}[]
-	\begin{tabular}{|l|l|l|}
+\begin{table}[H]
+	\begin{tabularx}{\linewidth}{|c|c|X|}
 		\hline
 		\textbf{Name}                                                    & \textbf{Jahr} & \textbf{Authoren}        \\ \hline
 		Breitensuche (BFS)                                      & 1950 & E.F. Moore      \\ \hline
@@ -40,10 +39,9 @@ Algorithmen zur Pfadplanung finden in verschiedenen Bereichen Anwendung. Reale P
 		Tiefensuche (DFS)                                       & 1882 & C.P. Tremaux    \\ \hline
 		IDDFS (Iterative deepening depth-first search)          & 1985 & R. Korf         \\ \hline
 		BIDDFS(boundary iterative-deepening depth-first search) & 2015 & K.L. Lim et al. \\ \hline
-	\end{tabular}
-\caption{\label{tab:uninformed}Uninformierte Algorithmen}
+	\end{tabularx}
+\caption{\label{tab:uninformed}Uninformierte Algorithmen, in Anlehnung an \cite[S. 233]{Noo15}}
 \end{table}
-
 
 \section{Vergleich von BFS, Dijkstra und A*}
 
@@ -67,7 +65,7 @@ Der A* Algorithmus wird in vielen Videospielen für die Bewegungskontrolle von N
 A* überprüft bei der Suche nach dem kürzesten Pfad in vielen Fällen deutlich weniger Knoten als Dijkstra \cite[S.20f]{Kri09}. In einer Umgebung mit vielen Hindernissen kommt A* schneller zu einem Ergebnis als Dijkstra. Die Speicher- und Recheneffizienz von A* hängt von der genutzten heuristischen Funktion ab \cite[S.237]{Noo15}. Es ist sinnvoll den A* Algorithmus an die Umgebung anzupassen, in der er genutzt werden soll.
 
 \section{Erweiterung von A*}
-Pfadplanungsprobleme müssen in modernen Spielen in Echtzeit gelöst werden. Außerdem sind Speicherplatz und Rechenleistung begrenzt. A* hat die gleiche Worst Case-Komplexität wie BFS \cite{You19}. Daher kann die Pfadplanung mit großen Datensätzen zu schwerwiegenden Leistungsengpässen führen.
+Pfadplanungsprobleme müssen in modernen Spielen in Echtzeit gelöst werden. Außerdem sind Speicherplatz und Rechenleistung begrenzt. A* hat die gleiche Worst Case-Komplexität wie BFS \cite[S. 44]{You19}. Daher kann die Pfadplanung mit großen Datensätzen zu schwerwiegenden Leistungsengpässen führen.
 
 
 %todo besserer Einleitungssatz
@@ -84,7 +82,7 @@ Es wird das Problem einer Reise aus einer Spielstadt in eine andere betrachtet. 
 3. Vervollständige den Pfad durch den Bereich, der den Zielstandort enthält.\\
 
 \begin{sloppypar}
-HPA* läuft durchschnittlich zehnmal schneller als der oben beschriebener A*-Algorithmus \cite{Bot04} und wird daher verbreitet im Spieleinbereich angewendet \cite{LSC08}. ``HPA* ist aber sehr allgemein. In der Praxis kann HPA sowohl für statische Welten, wo die Graphenhierarchie besser vorbereitet werden kann, als auch in typischen dynamischen Welten, um häufige Umgebungsänderungen zu bewältigen, erheblich optimiert werden`` \cite{Kri10}. Aus diesem Grund existieren unterschiedliche HPA*-Erweiterungen wie SHPA* und DHPA*, vorgeschlagen von Kring et al. \cite{Kri10}, oder Path Smoothing und Lazy Edge Weight Computation, die im Allgemeinen die Leistung von HPA* erhöhen \cite{JB07}.
+HPA* läuft durchschnittlich zehnmal schneller als der oben beschriebener A*-Algorithmus \cite[S. 1, 26]{Bot04} und wird daher verbreitet im Spieleinbereich angewendet \cite{LSC08}. ``HPA* ist aber sehr allgemein. In der Praxis kann HPA sowohl für statische Welten, wo die Graphenhierarchie besser vorbereitet werden kann, als auch in typischen dynamischen Welten, um häufige Umgebungsänderungen zu bewältigen, erheblich optimiert werden`` \cite[S. 39]{Kri10}. Aus diesem Grund existieren unterschiedliche HPA*-Erweiterungen wie SHPA* und DHPA*, vorgeschlagen von Kring et al. \cite[40-43]{Kri10}, oder Path Smoothing und Lazy Edge Weight Computation, die im Allgemeinen die Leistung von HPA* erhöhen \cite{JB07}.
 \end{sloppypar}
 
 
