@@ -27,7 +27,7 @@ Der A* Algorithmus wird in vielen Videospielen für die Bewegungskontrolle von N
 A* überprüft bei der Suche nach dem kürzesten Pfad in vielen Fällen deutlich weniger Knoten als Dijkstra \cite[S.20f]{Kri09}. In einer Umgebung mit vielen Hindernissen kommt A* schneller zu einem Ergebnis als Dijkstra. Die Speicher- und Recheneffizienz von A* hängt von der genutzten heuristischen Funktion ab \cite[S.237]{Noo15}. Es ist sinnvoll den A* Algorithmus an die Umgebung anzupassen, in der er genutzt werden soll.
 
 \section{Erweiterung von A*}
-Pfadplanungsprobleme müssen in modernen Spielen in Echtzeit gelöst werden. Außerdem sind Speicherplatz und Rechenleistung begrenzt. A* hat die gleiche Worst Case-Komplexität wie BFS \cite[S. 44]{You19}. Daher kann die Pfadplanung mit großen Datensätzen zu schwerwiegenden Leistungsengpässen führen.
+Pfadplanungsprobleme müssen in modernen Spielen in Echtzeit gelöst werden. Außerdem sind Speicherplatz und Rechenleistung begrenzt. A* hat die gleiche Worst Case-Komplexität wie BFS \cite[S.44]{You19}. Daher kann die Pfadplanung mit großen Datensätzen zu schwerwiegenden Leistungsengpässen führen.
 
 
 %todo besserer Einleitungssatz
@@ -44,7 +44,7 @@ Es wird das Problem einer Reise aus einer Spielstadt in eine andere betrachtet. 
 3. Vervollständige den Pfad durch den Bereich, der den Zielstandort enthält.\\
 
 \begin{sloppypar}
-HPA* läuft durchschnittlich zehnmal schneller als der oben beschriebener A*-Algorithmus \cite[S. 1, 26]{Bot04} und wird daher verbreitet im Spieleinbereich angewendet \cite{LSC08}. ``HPA* ist aber sehr allgemein. In der Praxis kann HPA sowohl für statische Welten, wo die Graphenhierarchie besser vorbereitet werden kann, als auch in typischen dynamischen Welten, um häufige Umgebungsänderungen zu bewältigen, erheblich optimiert werden'' \cite[S. 39]{Kri10}. Aus diesem Grund existieren unterschiedliche HPA*-Erweiterungen wie SHPA* und DHPA*, vorgeschlagen von Kring et al. \cite[40-43]{Kri10}, oder Path Smoothing und Lazy Edge Weight Computation, die im Allgemeinen die Leistung von HPA* erhöhen \cite{JB07}.
+HPA* läuft durchschnittlich zehnmal schneller als der oben beschriebener A*-Algorithmus \cite[S. 1, 26]{Bot04} und wird daher verbreitet im Spieleinbereich angewendet \cite{LSC08}. ``HPA* ist aber sehr allgemein. In der Praxis kann HPA sowohl für statische Welten, wo die Graphenhierarchie besser vorbereitet werden kann, als auch in typischen dynamischen Welten, um häufige Umgebungsänderungen zu bewältigen, erheblich optimiert werden'' \cite[S.39]{Kri10}. Aus diesem Grund existieren unterschiedliche HPA*-Erweiterungen wie SHPA* und DHPA*, vorgeschlagen von Kring et al. \cite[S.40ff.]{Kri10}, oder Path Smoothing und Lazy Edge Weight Computation, die im Allgemeinen die Leistung von HPA* erhöhen \cite{JB07}.
 \end{sloppypar}
 
 In den Tabellen \ref{tab:informed} und \ref{tab:uninformed} ist eine Übersicht der wichtigsten Pfadplanungsalgorithmen für Routing in Videospielen zu sehen.
@@ -56,24 +56,24 @@ In den Tabellen \ref{tab:informed} und \ref{tab:uninformed} ist eine Übersicht 
 		\textbf{Name}                                          & \textbf{Jahr} & \textbf{Authoren}                                 \\ \hline
 		\hyperref[sec:astar]{A*}                                            & 1968 & P. Hart, N. Nilsson, B. Raphael          \\ \hline
 		\hyperref[sec:bestsearch]{Bestensuche}                            & 1984 & J. Pearl                                 \\ \hline
-		IDA*( iterative deepening A*)                 & 1985 & R. Korf                                  \\ \hline
+		IDA* (Iterative Deepening A*)                 & 1985 & R. Korf                                  \\ \hline
 		LRTA* (Learning Realtime A*)                  & 1990 & R. Korf                                  \\ \hline
-		SMA* (SimplifiedMemory Bounded A*)            & 1992 & S. Russell                               \\ \hline
-		D*(dynamic a*)                                & 1994 & A. Stentz                                \\ \hline
-		HA*(Hierarchical A*)                          & 1996 & R.C. Holte, M.B. Perez, R.M. Zimmer      \\ \hline
-		LPA*( Lifelong Planning A*)                   & 2004 & S. Koenig, M. Lichachev, D. Furcy        \\ \hline
+		SMA* (Simplified Memory Bounded A*)            & 1992 & S. Russell                               \\ \hline
+		D* (Dynamic A*)                                & 1994 & A. Stentz                                \\ \hline
+		HA* (Hierarchical A*)                          & 1996 & R.C. Holte, M.B. Perez, R.M. Zimmer      \\ \hline
+		LPA* (Lifelong Planning A*)                   & 2004 & S. Koenig, M. Lichachev, D. Furcy        \\ \hline
 		\hyperref[sec:hpa]{HPA* (Near Optimal hierarchical Path-finding)} & 2004 & A. Botea, M. Muller, J. Schaffer         \\ \hline
-		PRA*(Partial Refinement A*)                   & 2005 & N. Sturtevant, M. Buro                   \\ \hline
-		TRA*(Triangulation-Based Pathfinding)         & 2006 & D. Demyen, M. Buro                       \\ \hline
+		PRA* (Partial Refinement A*)                   & 2005 & N. Sturtevant, M. Buro                   \\ \hline
+		TRA* (Triangulation-Based Pathfinding)         & 2006 & D. Demyen, M. Buro                       \\ \hline
 		Theta*                                        & 2007 & A. Nash, K. Daniel, S. Koenig, A. Felner \\ \hline
-		HPA* Verbesserungen                           & 2007 & M. Renee Jansen, M. Buro                 \\ \hline
+		HPA*-Erweiterungen                          & 2007 & M. Renee Jansen, M. Buro                 \\ \hline
 		DHPA* und SHPA*                               & 2010 & A. Kring, A.J. Champandard, N. Samarin   \\ \hline
-		Jump point search                             & 2011 & D. Harabor, A. Grastien                  \\ \hline
-		GHPA*(Gitterversion von HPA*)                 & 2011 & U. Koch                                  \\ \hline
-		JPS (jump point search)                       & 2013 & A. Patel                                 \\ \hline
+		Jump Point Search                             & 2011 & D. Harabor, A. Grastien                  \\ \hline
+		GHPA* (Gitterversion von HPA*)                 & 2011 & U. Koch                                  \\ \hline
+		JPS (Jump Point Search)                       & 2013 & A. Patel                                 \\ \hline
 		PHI*                                          & 2013 & A. Nash, S. Koenig                       \\ \hline
 	\end{tabular}
-	\caption{\label{tab:informed}Informierte Algorithmen, in Anlehnung an \cite[S. 233]{Noo15}}
+	\caption{\label{tab:informed}Informierte Algorithmen, in Anlehnung an \cite[S.233]{Noo15}}
 \end{table}
 
 
@@ -87,13 +87,13 @@ In den Tabellen \ref{tab:informed} und \ref{tab:uninformed} ist eine Übersicht 
 		IDDFS (Iterative deepening depth-first search)          & 1985 & R. Korf         \\ \hline
 		BIDDFS(boundary iterative-deepening depth-first search) & 2015 & K.L. Lim et al. \\ \hline
 	\end{tabular}
-	\caption{\label{tab:uninformed}Uninformierte Algorithmen, in Anlehnung an \cite[S. 233]{Noo15}}
+	\caption{\label{tab:uninformed}Uninformierte Algorithmen, in Anlehnung an \cite[S.233]{Noo15}}
 \end{table}
 
 
 
 \section{Multi-Agent Pathfinding}
-Bisher wurden Lösungen für die Problemstellung mit einem einzelnen Agenten betrachtet. Ein Szenario in dem mehrere Akteure Pfade finden müssen, bei denen keine Kollisionen auftreten dürfen, bezeichnet man als Multi-Agent Pathfinding-Problem (MAPF). Es gibt verschiedene MAPF-Algorithmen, die versuchen mit dieser Problemstellung umzugehen. Darunter gibt es Windowed Hierarchical Cooperative A*, Flow Annotated Replanning und Bounded Multi-Agent A*.
+Bisher wurden Lösungen für die Problemstellung mit einem einzelnen Agenten betrachtet. Ein Szenario in dem mehrere Akteure Pfade finden müssen, bei denen keine Kollisionen auftreten dürfen, bezeichnet man als Multi-Agent Pathfinding-Problem (MAPF). Dies kann beispielweise in Videospielen für Gruppen von Spielcharakteren vorkommen. Es gibt verschiedene MAPF-Algorithmen, die versuchen mit dieser Problemstellung umzugehen. Darunter gibt es Windowed Hierarchical Cooperative A*, Flow Annotated Replanning und Bounded Multi-Agent A*.
 
 \subsection{Windowed Hierarchical Cooperative A*}
 Bei dem Cooperative A*-Algorithmus sucht jeder Agent in einem dreidimensionalen Graphen - bestehend aus der x- und der y-Koordinatenachse und einer Zeitachse - mit dem A*-Algorithmus nach seinem Ziel. 
