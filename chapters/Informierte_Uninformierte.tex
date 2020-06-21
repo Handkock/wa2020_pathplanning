@@ -54,7 +54,7 @@ Der Suchalgorithmus von Dijkstra und dessen Erweiterungen besitzen ein sehr brei
 \section{Informierte Algorithmen}
 \label{sec:bestsearch}
 Die sogenannte Bestensuche (engl. informed best-first search)
-ist ein verbreiteter Ansatz, um die Suchzeit nach dem kürzesten Pfad anhand heuristischer Informationen zu verkürzen. Dabei wird versucht jedem Punkt in einem Graphen einen Wert zuzuweisen. Anhand dieser Wertzuweisung wird die Erkundung des Graphen in die Richtung des vielversprechendsten Kandidaten fortgeführt \cite{RinaDechterandJudeaPearl.1983}.
+ist ein verbreiteter Ansatz, um die Suchzeit nach dem kürzesten Pfad anhand heuristischer Informationen zu verkürzen. Dabei wird versucht jedem Knotenpunkt in einem Graphen einen Wert zuzuweisen. Anhand dieser Wertzuweisung wird die Erkundung des Graphen in die Richtung des vielversprechendsten Kandidaten fortgeführt \cite{RinaDechterandJudeaPearl.1983}.
 
 \subsection{Heuristiken}
 Um die Suche nach einer Lösung effizienter zu machen, werden heuristische Methoden angewendet. Als Heuristik wird die Methodik bezeichnet, mit begrenzetem Wissen eine Lösung zu finden. Dabei werden Schätzwerte angenähert, mit denen die Algorithmen schneller zum Ziel kommen, indem sie nur einen Teil der verfügbaren Pfade untersuchen \cite{RinaDechterandJudeaPearl.1983}.
@@ -69,30 +69,30 @@ Eine Metrik ist eine Funktion, welche den Abstand zwischen zwei Elementen in dem
 
 \item[3.] Der \textit{Chebyshev-Abstand} ist eine Variante der Diagonaldistanz. Bei ihr wird angenommen, dass die Kosten für die diagonale Traversierung der horizontalen und vertikalen entsprechen.
 
-\item[4.] Es gibt zwei Varianten der \textit{euklidischen Distanz}, die einfache und die quadrierte. Die euklidische Distanz berechnet den Abstand zwischen zwei Knoten als Punkte in einem kartesisches Koordinatensystem. Da die Berechnung der Wurzel für die Abstandsberechnung rechenintensiv ist, wird in der alternativen Variante auf die Ziehung der Wurzel verzichtet und der quadrierte euklidische Abstand verwendet\cite{You19}.
+\item[4.] Es gibt zwei Varianten der \textit{euklidischen Distanz}, die einfache und die quadrierte. Die euklidische Distanz berechnet den Abstand zwischen zwei Knoten als Punkte in einem kartesischen Koordinatensystem. Da die Berechnung der Wurzel für die Abstandsberechnung rechenintensiv ist, wird in der alternativen Variante auf die Ziehung der Wurzel verzichtet und der quadrierte euklidische Abstand verwendet\cite{You19}.
 
 \end{itemize}
 \subsection{A*}
 \label{sec:astar}
 Um den kürzesten Pfad mit dem geringsten Aufwand zu finden, profitiert ein Suchalgorithmus von informierten Entscheidungen für die Untersuchung der Knotenpunkte. Untersucht er Knotenpunkte, die offensichtlich nicht zum Ziel führen können, verschwendet er Ressourcen. Untersucht er andererseits Knoten nicht, welche zum kürzesten Pfad beitragen, führt der Algorithmus nicht zum richtigen Ergebnis. In diesem Zusammenhang wird häufig der A* Algorithmus untersucht.
 
-Es sei ein gewichteter Graph $G$ gegeben, der den Startknoten $s$ und eine nichtleere Menge aus Zielknoten $T$ habe. Das Problem des optimalen Pfades besteht nun darin, den Pfad vom Startknoten $s$ zu einem Knoten aus der Zielmenge $T$ mit den geringsten Kosten zu finden. %todo Wiederholung des Shortest Path Problems, was eigentlich am Anfang richtig definiert werden muss und hier einfach verlinkt
-Die Kosten errechnen sich aus den Gewichten der besuchten Kanten \cite{RinaDechterandJudeaPearl.1983}.
+Es sei ein gewichteter Graph  $G = (V, E)$ gegeben, der den Startknoten $s \in V$ und eine nichtleere Menge aus Zielknoten $T \subseteq V$ habe. Das Problem des optimalen Pfades besteht nun darin, den Pfad vom Startknoten $s$ zu einem Knoten $t$ aus der Zielmenge $T$ mit den geringsten Kosten zu finden.
+Die Kosten errechnen sich aus den Gewichten der besuchten Kanten, mit $c(s,t)$ \cite{RinaDechterandJudeaPearl.1983}.
 
-A* benutzt die Funktion $f(n) = g(n) + h(n)$.
+A* benutzt die Funktion $f(u) = g(u) + h(u)$.
 \begin{itemize}
-\item Die Funktion $g(n)$ spiegelt die additiven Kosten des momentanen Pfades von dem Startknoten $s$ zu dem jetzigen Knoten $n$ wieder.
-\item Die Funktion $h(n)$ liefert eine heuristische Einschätzung, welche die Kosten des Restpfades zum Zielknoten schätzt \cite{RinaDechterandJudeaPearl.1983}.
+\item Die Funktion $g(u)$ spiegelt die additiven Kosten des momentanen Pfades von dem Startknoten $s$ zu dem jetzigen Knoten $u$ wieder, also $c(s,u)$.
+\item Die Funktion $h(u)$ liefert eine heuristische Einschätzung, welche die Kosten des Restpfades zum Zielknoten schätzt \cite{RinaDechterandJudeaPearl.1983}.
 \end{itemize}
 
 Der Algorithmus A* hat den folgenden Ablauf:
 \begin{itemize}
-\item[1.] Der Startknoten $s$ wird als \textit{offen} markiert und die Funktion $f(n)$ berechnet. Als \textit{offen} werden die Knoten bezeichnet, die von dem Algorithmus besucht und für die Untersuchung freigeschaltet worden sind.
-\item[2.] Derjenige offene Knoten $n$ wird ausgewählt, für den die Funktion $f(n)$
+\item[1.] Der Startknoten $s$ wird als \textit{offen} markiert und die Funktion $f(s)$ berechnet. Als \textit{offen} werden die Knoten bezeichnet, die von dem Algorithmus besucht und für die Untersuchung freigeschaltet worden sind.
+\item[2.] Derjenige offene Knoten $u$ wird ausgewählt, für den die Funktion $f(u)$
 den geringsten Wert liefert. Anschließend werden beliebige angrenzende Knoten ausgewählt, aber immer zugunsten jedes Knotens aus der Zielmenge $T$.
-\item[3.] Es wird überprüft, ob sich der aktuelle Knoten $n$ in der Zielmenge befindet. Ist das der Fall, wird er als \textit{geschlossen} markiert und der Algorithmus terminiert. Ein Knoten $n$ gilt als \textit{geschlossen} sobald die Berechnung der Funktion $f(n)$ für ihn durchgeführt wurde.
+\item[3.] Es wird überprüft, ob sich der aktuelle Knoten $u$ in der Zielmenge befindet. Ist das der Fall, wird er als \textit{geschlossen} markiert und der Algorithmus terminiert. Ein Knoten $u$ gilt als \textit{geschlossen} sobald die Berechnung der Funktion $f(u)$ für ihn durchgeführt wurde.
 \item[4.]
-Andernfalls wird der Knoten $n$ als \textit{geschlossen} markiert und es werden alle Nachfolger von $n$ erkundet. Dann wird $f(n)$ für jeden Nachfolger berechnet und jeder Nachfolger als \textit{offen} markiert, der nicht als \textit{geschlossen} markiert wurde. Gibt es nun Nachfolgeknoten die als \textit{geschlossen} markiert sind, für welche die Funktion $f$ einen geringeren Wert liefert, werden diese Knoten als \textit{offen} markiert. Daraufhin wird Schritt zwei wieder ausgeführt. Solange, bis der Algorithmus terminiert und der kürzeste Pfad durch den Graphen gefunden wurde \cite{HartNilssonandRaphael.1968}.
+Falls der Knoten $u$ sich nicht in der Zielmenge befindet, wird er als \textit{geschlossen} markiert und alle Nachfolger von $u$ erkundet. Dann wird $f(u)$ für jeden Nachfolger berechnet und jeder Nachfolger als \textit{offen} markiert, der nicht als \textit{geschlossen} markiert wurde. Gibt es nun Nachfolgeknoten die als \textit{geschlossen} markiert sind, für welche die Funktion $f$ einen geringeren Wert liefert, werden diese Knoten als \textit{offen} markiert. Daraufhin wird Schritt zwei wieder ausgeführt. Solange, bis der Algorithmus terminiert und der kürzeste Pfad durch den Graphen gefunden wurde \cite{HartNilssonandRaphael.1968}.
 \end{itemize}
 
 A* sei laut Hart et al. \cite{HartNilssonandRaphael.1968} als optimal anzusehen, da der Algorthmus nicht mehr Knotenpunkte als andere Algorithmen untersuchen muss, um auf eine Lösung zu kommen. In ihrer Arbeit "The optimality of A* revisited" können Dechter et al. aber zeigen, dass die Optimalität des A*-Algorithmus nicht bewiesen werden kann \cite{RinaDechterandJudeaPearl.1983}.
