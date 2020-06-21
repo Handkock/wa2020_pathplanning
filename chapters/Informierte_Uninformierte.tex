@@ -75,7 +75,7 @@ Eine Metrik ist eine Funktion, welche den Abstand zwischen zwei Elementen in dem
 Um den kürzesten Pfad mit dem geringsten Aufwand zu finden, profitiert ein Suchalgorithmus von informierten Entscheidungen für die Untersuchung der Knotenpunkte. Untersucht er Knotenpunkte, die offensichtlich nicht zum Ziel führen können, verschwendet er Ressourcen. Untersucht er andererseits Knoten nicht, welche zum kürzesten Pfad beitragen, führt der Algorithmus nicht zum richtigen Ergebnis. In diesem Zusammenhang wird häufig der \textit{A*-Algorithmus} untersucht.
 
 Es sei ein gewichteter Graph  $G = (V, E)$ gegeben, der den Startknoten $s \in V$ und eine nichtleere Menge aus Zielknoten $T \subseteq V$ habe. Das Problem des optimalen Pfades besteht nun darin, den Pfad vom Startknoten $s$ zu einem Knoten $t$ aus der Zielmenge $T$ mit den geringsten Kosten zu finden.
-Die Kosten errechnen sich aus den Gewichten der besuchten Kanten mit $c(s,t)$ \cite{RinaDechterandJudeaPearl.1983}.
+Die Kosten errechnen sich aus den Gewichten der besuchten Kanten mit $c(s,t)$ \cite[S.95]{RinaDechterandJudeaPearl.1983}.
 
 \textit{A*} benutzt die Funktion $f(u) = g(u) + h(u)$, wobei
 \begin{itemize}
