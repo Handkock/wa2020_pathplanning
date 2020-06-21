@@ -7,7 +7,7 @@ Algorithmen zur Pfadplanung finden in verschiedenen Bereichen Anwendung. Reale P
 
 \section{Vergleich von BFS, Dijkstra und A*}
 
-Der A* Algorithmus wird in vielen Videospielen für die Bewegungskontrolle von Nicht-Spieler-Charakteren (engl. non-player characters, NPCs) genutzt \cite{Stamford.2014}. Der Grund dafür ist die in vielen Fällen schnellere Berechnung des kürzesten Pfades gegenüber uninformierten Algorithmen. In ihrer Arbeit ``Pathfinding Algorithm Efficiency Analysis in 2D Grid'' vergleichen Zarembo und Kodors die Laufzeit der Algorithmen BFS, Dijkstra und A*. Tabelle \ref{tab:comp} zeigt eine Gegenüberstellung der Rechenzeiten der Algorithmen bei verschiedenen Rastergrößen. Die Breitensuche benötigt schon bei sehr kleiner Flächengröße deutlich länger als Dijkstra und A*. Je größe die Fläche wird, desto größer wird auch der Unterschied zwischen Dijkstra und A*. Bei einer Rastergröße von 1024x1024 Knoten braucht A* weniger als die Hälfte der Zeit von Dijkstras Algorithmus. Die Breitensuche benötigt hier die 10.000-fache Zeit von A*. Das sind knapp vier Stunden, im Gegensatz zu gut einer Sekunde.
+Der\textit{ A*-Algorithmus} wird in vielen Videospielen für die Bewegungskontrolle von Nicht-Spieler-Charakteren (engl. \textit{non-player characters}, NPCs) genutzt \cite{Stamford.2014}. Der Grund dafür ist die in vielen Fällen schnellere Berechnung des kürzesten Pfades gegenüber uninformierten Algorithmen. In ihrer Arbeit „Pathfinding Algorithm Efficiency Analysis in 2D Grid“ vergleichen Zarembo und Kodors die Laufzeit der Algorithmen von Dijkstra, BFS und \textit{A*}. Tabelle \ref{tab:comp} zeigt eine Gegenüberstellung der Rechenzeiten der Algorithmen bei verschiedenen Rastergrößen. Die Breitensuche benötigt schon bei sehr kleiner Flächengröße deutlich länger als Dijkstras Algorithmus und \textit{A*}. Je größe die Fläche wird, desto größer wird auch der Unterschied zwischen \textit{Dijkstra} und \textit{A*}. Bei einer Rastergröße von 1024x1024 Knoten braucht \textit{A*} weniger als die Hälfte der Zeit von Dijkstras Algorithmus. Die \textit{Breitensuche} benötigt hier die zehntausendfache Zeit von \textit{A*}. Das sind knapp vier Stunden, im Gegensatz zu ca. einer Sekunde.
 
 %\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}%
 \begin{table}[h]
@@ -24,27 +24,26 @@ Der A* Algorithmus wird in vielen Videospielen für die Bewegungskontrolle von N
 \label{tab:comp}
 \end{table}
 
-A* überprüft bei der Suche nach dem kürzesten Pfad in vielen Fällen deutlich weniger Knoten als Dijkstra \cite[S.20f]{Kri09}. In einer Umgebung mit vielen Hindernissen kommt A* schneller zu einem Ergebnis als Dijkstra. Die Speicher- und Recheneffizienz von A* hängt von der genutzten heuristischen Funktion ab \cite[S.237]{Noo15}. Es ist sinnvoll den A* Algorithmus an die Umgebung anzupassen, in der er genutzt werden soll.
+\textit{A*} überprüft bei der Suche nach dem kürzesten Pfad in vielen Fällen deutlich weniger Knoten als Dijkstra \cite[S.20f]{Kri09}. In einer Umgebung mit vielen Hindernissen kommt \textit{A*} schneller zu einem Ergebnis als Dijkstra. Die Speicher- und Recheneffizienz von \textit{A*} hängt von der genutzten heuristischen Funktion ab \cite[S.237]{Noo15}. Es ist sinnvoll den \textit{A*-Algorithmus} an die Umgebung anzupassen, in der er genutzt werden soll.
 
 \section{Erweiterung von A*}
-Pfadplanungsprobleme müssen in modernen Spielen in Echtzeit gelöst werden. Außerdem sind Speicherplatz und Rechenleistung begrenzt. A* hat die gleiche Worst Case-Komplexität wie BFS \cite[S.44]{You19}. Daher kann die Pfadplanung mit großen Datensätzen zu schwerwiegenden Leistungsengpässen führen.
+Pfadplanungsprobleme müssen in modernen Spielen in Echtzeit gelöst werden. Außerdem sind Speicherplatz und Rechenleistung begrenzt. \textit{A*} hat die gleiche Worst Case-Komplexität wie BFS \cite[S.44]{You19}. Daher kann die Pfadplanung mit großen Datensätzen zu schwerwiegenden Leistungsengpässen führen.
 
 
-%todo besserer Einleitungssatz
 \subsection{Hierarchical Path-Finding A*}
 \label{sec:hpa}
-Hierarchical Path-Finding A* (HPA*) ist eine Erweiterung von A*, welche diesen durch die Abstraktion des Suchraums optimiert \cite{Bot04}. Es wird eine bessere Laufzeit erreicht, indem die Spielwelt hierarchisch aufgeteilt wird.
+\textit{Hierarchical Path-Finding A*} (HPA*) ist eine Erweiterung von \textit{A*}, welche diesen durch die Abstraktion des Suchraums optimiert \cite{Bot04}. Es wird eine bessere Laufzeit erreicht, indem die Spielwelt hierarchisch aufgeteilt wird.
 
-Es wird das Problem einer Reise aus einer Spielstadt in eine andere betrachtet. Gegeben sei ein detaillierte Karte mit allen Fahrstrecken in und zwischen den Städten, sowie deren Längen. Der A*-Algorithmus kann den optimalen Pfad berechnen, dies kann jedoch aufgrund der Kartengröße viele Rechenressourcen verbrauchen. Das Problem kann effizienter gelöst werden, indem zuerst der Pfad auf der Stadtebene gesucht wird und erst dann die Zwischenpfade in jeder Stadt durchlaufen werden. HPA* arbeitet auf eine höhere Abstraktionsstufe und vernachlässigt einzelne interne Stadtpfade. Die Hierarchie kann auf mehrere Ebene erweitert werden, wodurch diese Lösung für größere Problembereiche skalierbar wird. HPA* funktioniert wie folgt:\\
+Es wird das Problem einer Reise aus einer Spielstadt in eine andere betrachtet. Gegeben sei ein detaillierte Karte mit allen Fahrstrecken in und zwischen den Städten, sowie deren Längen. Der \textit{A*-Algorithmus} kann den optimalen Pfad berechnen, dies kann jedoch aufgrund der Kartengröße viele Rechenressourcen verbrauchen. Das Problem kann effizienter gelöst werden, indem zuerst der Pfad auf der Stadtebene gesucht wird und erst dann die Zwischenpfade in jeder Stadt durchlaufen werden. HPA* arbeitet auf eine höhere Abstraktionsstufe und vernachlässigt einzelne interne Stadtpfade. Die Hierarchie kann auf mehrere Ebene erweitert werden, wodurch diese Lösung für größere Problembereiche skalierbar wird. HPA* funktioniert wie folgt:\\
 
-1. Fahre zur Grenze des Bereichs, der den Standort enthält
+1. Fahre zur Grenze des Bereichs, der den Standort enthält.
 
 2. Suche den Pfad vom Start- zum Zielbereich. Dies geschieht auf einer höheren Abstraktionsebene, auf der die Suche schneller ist.
 
 3. Vervollständige den Pfad durch den Bereich, der den Zielstandort enthält.\\
 
 \begin{sloppypar}
-HPA* läuft durchschnittlich zehnmal schneller als der oben beschriebener A*-Algorithmus \cite[S. 1, 26]{Bot04} und wird daher verbreitet im Spieleinbereich angewendet \cite{LSC08}. ``HPA* ist aber sehr allgemein. In der Praxis kann HPA sowohl für statische Welten, wo die Graphenhierarchie besser vorbereitet werden kann, als auch in typischen dynamischen Welten, um häufige Umgebungsänderungen zu bewältigen, erheblich optimiert werden'' \cite[S.39]{Kri10}. Aus diesem Grund existieren unterschiedliche HPA*-Erweiterungen wie SHPA* und DHPA*, vorgeschlagen von Kring et al. \cite[S.40ff.]{Kri10}, oder Path Smoothing und Lazy Edge Weight Computation, die im Allgemeinen die Leistung von HPA* erhöhen \cite{JB07}.
+HPA* läuft durchschnittlich zehnmal schneller als der oben beschriebener\textit{ A*-Algorithmus} \cite[S. 1, 26]{Bot04} und wird daher verbreitet im Spieleinbereich angewendet \cite{LSC08}. „HPA* ist aber sehr allgemein. In der Praxis kann HPA sowohl für statische Welten, wo die Graphenhierarchie besser vorbereitet werden kann, als auch in typischen dynamischen Welten, um häufige Umgebungsänderungen zu bewältigen, erheblich optimiert werden“ \cite[S.39]{Kri10}. Aus diesem Grund existieren unterschiedliche HPA*-Erweiterungen wie SHPA* und DHPA*, vorgeschlagen von Kring et al. \cite[S.40ff.]{Kri10}, oder \textit{Path Smoothing} und \textit{Lazy Edge Weight Computation}, die im Allgemeinen die Leistung von HPA* erhöhen \cite{JB07}.
 \end{sloppypar}
 
 In den Tabellen \ref{tab:informed} und \ref{tab:uninformed} ist eine Übersicht der wichtigsten Pfadplanungsalgorithmen für Routing in Videospielen zu sehen.
@@ -93,22 +92,22 @@ In den Tabellen \ref{tab:informed} und \ref{tab:uninformed} ist eine Übersicht 
 
 
 \section{Multi-Agent Pathfinding}
-Bisher wurden Lösungen für die Problemstellung mit einem einzelnen Agenten betrachtet. Ein Szenario in dem mehrere Akteure Pfade finden müssen, bei denen keine Kollisionen auftreten dürfen, bezeichnet man als Multi-Agent Pathfinding-Problem (MAPF). Dies kann beispielweise in Videospielen für Gruppen von Spielcharakteren vorkommen. Es gibt verschiedene MAPF-Algorithmen, die versuchen mit dieser Problemstellung umzugehen. Darunter gibt es Windowed Hierarchical Cooperative A*, Flow Annotated Replanning und Bounded Multi-Agent A*.
+Bisher wurden Lösungen für die Problemstellung mit einem einzelnen Agenten betrachtet. Ein Szenario in dem mehrere Akteure Pfade finden müssen, bei denen keine Kollisionen auftreten dürfen, bezeichnet man als \textit{Multi-Agent Pathfinding-Problem} (MAPF). Dies kann beispielweise in Videospielen für Gruppen von Spielcharakteren vorkommen. Es gibt verschiedene MAPF-Algorithmen, die versuchen mit dieser Problemstellung umzugehen. Darunter gibt es \textit{Windowed Hierarchical Cooperative A*}, \textit{Flow Annotated Replanning} und \textit{Bounded Multi-Agent A*}.
 
 \subsection{Windowed Hierarchical Cooperative A*}
-Bei dem Cooperative A*-Algorithmus sucht jeder Agent in einem dreidimensionalen Graphen - bestehend aus der x- und der y-Koordinatenachse und einer Zeitachse - mit dem A*-Algorithmus nach seinem Ziel. 
+Bei dem \textit{Cooperative A*-Algorithmus} sucht jeder Agent in einem dreidimensionalen Graphen - bestehend aus der x- und der y-Koordinatenachse und einer Zeitachse - mit dem \textit{A*-Algorithmus} nach seinem Ziel. 
 Das Ergebnis der Suche teilt er den anderen Agenten in einer Reservierungstabelle mit. Auf diese Weise sind die Agenten in der Lage Kollisionen zu vermeiden. 
-Der Hierarchical Cooperative A*-Algorithmus benutzt eine hierarchische Suche (siehe Oben: \hyperref[sec:hpa]{4.2.1 Hierarchical Path-Finding A*}). Windowed Hierarchical Cooperative A*(WHCA*) begrenzt die Suchtiefe für jeden Agent zu einem Fenster. Sobald der Teilpfad in dem Fenster gefunden wurde, folgt der Agent diesem Pfad und fängt mit der Berechnung des nächsten Teilpfades an.
+Der \textit{Hierarchical Cooperative A*-Algorithmus} benutzt eine hierarchische Suche (siehe Oben: \hyperref[sec:hpa]{4.2.1 Hierarchical Path-Finding A*}). \textit{Windowed Hierarchical Cooperative A*} (WHCA*) begrenzt die Suchtiefe für jeden Agent zu einem Fenster. Sobald der Teilpfad in dem Fenster gefunden wurde, folgt der Agent diesem Pfad und fängt mit der Berechnung des nächsten Teilpfades an.
 \subsection{Flow Annotated Replanning}
-Ähnlich dem WHCA* nimmt Flow Annotation Replanning (FAR) die Pläne anderer Agenten in die Berechnung auf. Statt aber, wenn ein Pfad blockiert ist, einen neuen Pfad zu berechnen, wartet ein Agent im FAR-Algorithmus einfach auf dem aktuellen Knoten darauf, dass sein Pfad wieder frei wird und er ihn für sich reservieren kann.
+Ähnlich dem WHCA* nimmt \textit{Flow Annotation Replanning} (FAR) die Pläne anderer Agenten in die Berechnung auf. Statt aber, wenn ein Pfad blockiert ist, einen neuen Pfad zu berechnen, wartet ein Agent im FAR-Algorithmus einfach auf dem aktuellen Knoten darauf, dass sein Pfad wieder frei wird und er ihn für sich reservieren kann.
 
 \subsection{Bounded Multi-Agent A*}
-Bounded Mulit-Agent A* basiert auf Real-time Adaptive A*(RTAA*). RTAA* wird für ein Multiagenten-Setting erweitert. Andere Agenten werden während der Suche als sich bewegende Hindernisse betrachtet. Außerdem haben Agenten die Möglichkeit andere Agenten aufzufordern Zellen frei zu machen. Der aufgeforderte Agent wird zu einer freien benachbarten Zelle wandern und seine reguläre Suche von dort aus fortführen\cite{Sigurdson.2019}.
+\textit{Bounded Multi-Agent A*} basiert auf \textit{Real-time Adaptive A*} (RTAA*). RTAA* wird für ein \textit{Multiagenten-Setting} erweitert. Andere Agenten werden während der Suche als sich bewegende Hindernisse betrachtet. Außerdem haben Agenten die Möglichkeit andere Agenten aufzufordern Zellen frei zu machen. Der aufgeforderte Agent wird zu einer freien benachbarten Zelle wandern und seine reguläre Suche von dort aus fortführen \cite{Sigurdson.2019}.
 
 \section{Verwandte Arbeiten}
 
 \begin{sloppypar}
 	
-Der Bellman-Ford-Algorithmus ist ein weiterer Pfadplanungsalgorithmus, der, im Gegensatz zu Dijkstra-Algorithmus, den kürzesten Pfad in einem Graphen mit negativen Kantenkosten finden kann \cite{Bel58}. Er wird beispielsweise in Routing-Protokollen wie Routing Information Protocol (RIP) benutzt \cite{Hed88}.
-Das Problem des kürzesten Pfades wird ebenfalls häufig im Kontext der Robotik untersucht. In Automatic Planning of Manipulator Transfer Movements \cite{LP80} wird der Konfigurationsraum beschrieben, in dem ein Roboter als ein Punkt betrachtet wird. Es existieren unterschiedliche Verfahren, die sich mit der Pfadplanung in einem Konfigurationsraum beschäftigen. Diese sind zum Beispiel das Voronoi-Diagramm \cite{Lee82}, der Sichtbarkeitsgraph \cite{LPAW79} und das Zellzerlegungsverfahren \cite{Cai09} .
+Der \textit{Bellman-Ford-Algorithmus} ist ein weiterer Pfadplanungsalgorithmus, der, im Gegensatz zu \textit{Dijkstra-Algorithmus}, den kürzesten Pfad in einem Graphen mit negativen Kantenkosten finden kann \cite{Bel58}. Er wird beispielsweise in Routing-Protokollen wie \textit{Routing Information Protocol} (RIP) benutzt \cite{Hed88}.
+Das Problem des kürzesten Pfades wird ebenfalls häufig im Kontext der Robotik untersucht. In „Automatic Planning of Manipulator Transfer Movements“ \cite{LP80} wird der Konfigurationsraum beschrieben, in dem ein Roboter als ein Punkt betrachtet wird. Es existieren unterschiedliche Verfahren, die sich mit der Pfadplanung in einem Konfigurationsraum beschäftigen. Diese sind zum Beispiel das Voronoi-Diagramm \cite{Lee82}, der Sichtbarkeitsgraph \cite{LPAW79} und das Zellzerlegungsverfahren \cite{Cai09} .
 \end{sloppypar}
