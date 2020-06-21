@@ -2,10 +2,10 @@
 
 \chapter{Funktionsprizipien von Pfadplanungsalgorithmen}
 
-Pfadplanung im Hinblick auf Graphentheorie kann informiert und uninformiert sein. Uninformierte Pfadplanung, auch ``Blindsuche`` genannt, wird in alle Richtungen durchgeführt. Im Gegensatz dazu wird in der informierten Pfadplanung die Richtung zum Ziel geschätzt und in diese Richtung weitergesucht \cite{Man18}. %todo klingt gut ?
+Pfadplanung im Hinblick auf Graphentheorie kann informiert und uninformiert sein. Uninformierte Pfadplanung, auch ``Blindsuche`` genannt, wird in alle Richtungen durchgeführt. Im Gegensatz dazu wird in der informierten Pfadplanung die Richtung zum Ziel geschätzt und in diese Richtung weitergesucht \cite[S.38]{Man18}.
 
 \section{Uninformierte Algorithmen}
-Algorithmen dieser Gruppe werden verwendet, wenn keine Informationen über die Entfernung vom Startknoten $s$ zum Zielknoten $d$ bekannt sind. Sie garantieren, dass der kürzeste Pfad gefunden wird, falls ein solcher Pfad existiert. Weil uninformierte Algorithmen über alle möglichen erreichbaren Knoten gehen, gibt es einen großen Bedarf an Speicherplatz und Leistung \cite{Noo15}. Die am meisten verwendeten Algorithmen dieser Gruppe sind die Breitensuche, die Tiefensuche und der Algorithmus von Dijkstra.
+Algorithmen dieser Gruppe werden verwendet, wenn keine Informationen über die Entfernung vom Startknoten $s$ zum Zielknoten $d$ bekannt sind. Sie garantieren, dass der kürzeste Pfad gefunden wird, falls ein solcher Pfad existiert. Weil uninformierte Algorithmen über alle möglichen erreichbaren Knoten gehen, gibt es einen großen Bedarf an Speicherplatz und Leistung \cite[S. 232, 235, 236]{Noo15}. Die am meisten verwendeten Algorithmen dieser Gruppe sind die Breitensuche, die Tiefensuche und der Algorithmus von Dijkstra.
 
 \subsection{Breitensuche}
 
@@ -18,7 +18,7 @@ Die Breitensuche durchläuft einen Graphen systematisch und schrittweise in alle
 \end{itemize}
 Diese Schritte werden so lange wiederholt, bis alle Knoten im Graphen gefunden wurden, die von $s$ erreicht werden können. Wird ein Knoten von BFS entdeckt, so wird die Distanz zum Startknoten $s$ berechnet. Anschließend wird der Knoten zu einem speziellen „Breitensuchbaum“ hinzugefügt, welcher alle vom Startknoten aus erreichbaren Knoten beinhaltet. Die Zweige des Baums stellen den kürzesten Pfad von $s$ zu den Knoten des Baumes dar \cite[S.594]{Cormen.2009}.
 
-Die Breitensuche kann bei Pfadplanung in einem Labyrinthspiel verwendet werden. Dieser Algorithmus sichert aber nicht die schnellste Suche \cite{PBAS18}. Außerdem können BFS-Algorithmus und seine Hybridversion \cite{HT13} für die Traversierung der Graphen von Graphikprozessoren benutzt werden \cite{MGG12}.
+Die Breitensuche kann bei Pfadplanung in einem Labyrinthspiel verwendet werden \cite[S. 3-6]{PBAS18}. Dieser Algorithmus sichert aber nicht die beste Suche im Hiblick auf Rechenleistung und Geschwindigkeit \cite[S. 6]{PBAS18}. Außerdem können BFS-Algorithmus und seine Hybridversion \cite{HT13} für die Traversierung der Graphen von Graphikprozessoren benutzt werden \cite{MGG12}.
 
 \subsection{Tiefensuche}
 
