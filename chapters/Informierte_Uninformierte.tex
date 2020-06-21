@@ -55,11 +55,10 @@ Die sogenannte Bestensuche (engl. informed best-first search)
 ist ein verbreiteter Ansatz, um die Suchzeit nach dem kürzesten Pfad anhand heuristischer Informationen zu verkürzen. Dabei wird versucht jedem Punkt in einem Graphen einen Wert zuzuweisen. Anhand dieser Wertzuweisung wird die Erkundung des Graphen in die Richtung des vielversprechendsten Kandidaten fortgeführt \cite{RinaDechterandJudeaPearl.1983}.
 
 \subsection{Heuristiken}
-Um die Suche nach einer Lösung effizienter zu machen, werden heuristische Methoden in Verbindung mit unterschiedlichen Metriken %todo was ist eine metirk ?
-angewendet. Dabei werden Schätzwerte angenähert, mit denen die Algorithmen schneller zum Ziel kommen, indem sie nur einen Teil der verfügbaren Pfade untersuchen \cite{RinaDechterandJudeaPearl.1983}.
+Um die Suche nach einer Lösung effizienter zu machen, werden heuristische Methoden angewendet. Als Heuristik wird die Methodik bezeichnet, mit begrenzetem Wissen eine Lösung zu finden. Dabei werden Schätzwerte angenähert, mit denen die Algorithmen schneller zum Ziel kommen, indem sie nur einen Teil der verfügbaren Pfade untersuchen \cite{RinaDechterandJudeaPearl.1983}.
 
 \subsubsection{Metriken}
-Für die Distanzabschätzung der heuristischen Methoden gibt es verschiedene Ansätze. Verwendet werden hauptsächlich folgende Metriken.
+Eine Metrik ist eine Funktion, welche den Abstand zwischen zwei Elementen in dem von ihr untersuchten Raum bestimmt. Für die Distanzabschätzung der heuristischen Methoden gibt es verschiedene Ansätze. Verwendet werden hauptsächlich folgende Metriken.
 
 \begin{itemize}
 \item[1.] Die \textit{Manhattendistanz} misst den Abstand zwischen zwei Knotenpunkten in einem Raster, indem sie die horizontale und vertikale Distanz aufeinander addiert.

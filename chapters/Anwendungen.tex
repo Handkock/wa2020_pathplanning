@@ -62,7 +62,7 @@ Der Hierarchical Cooperative A*-Algorithmus benutzt eine hierarchische Suche (si
 Ähnlich WHCA* nimmt Flow Annotation Replanning (FAR) die Pläne anderer Agenten in die Berechnung auf. Statt aber, wenn ein Pfad blockiert ist, einen neuen Pfad zu berechnen, wartet ein Agent im FAR-Algorithmus einfach auf dem aktuellen Knoten darauf, dass sein Pfad wieder frei wird und er ihn für sich reservieren kann.
 
 \subsection{Bounded Multi-Agent A*}
-Bounded Mulit-Agent A* basiert auf Real-time Adaptive A*(RTAA*). RTAA* wird für ein Multiagenten-Setting erweitert. Andere Agenten werden während der Suche als sich bewegende Hindernisse betrachtet. Außerdem haben Agenten die Möglichkeit andere Agenten dazu aufzufordern Zellen frei zu machen. Der aufgeforderte Agent wird zu einer freien benachbarten Zelle wandern und seine reguläre Suche von dort aus fortführen\cite{Sigurdson.2019}.
+Bounded Mulit-Agent A* basiert auf Real-time Adaptive A*(RTAA*). RTAA* wird für ein Multiagenten-Setting erweitert. Andere Agenten werden während der Suche als sich bewegende Hindernisse betrachtet. Außerdem haben Agenten die Möglichkeit andere Agenten aufzufordern Zellen frei zu machen. Der aufgeforderte Agent wird zu einer freien benachbarten Zelle wandern und seine reguläre Suche von dort aus fortführen\cite{Sigurdson.2019}.
 
 \section{Verwandte Arbeiten}
 
@@ -71,6 +71,6 @@ Das Problem des kürzesten Pfades wird ebenfalls häufig im Kontext der Robotik 
 existieren folgende Ansätze für Pfadplanung in einem Konfigurationsraum: Wegkartenverfahren, Zellunterteilungsverfahren und Potentialfelderverfahren.
 %todo umformulieren
 
-Bei \textit{Wegkartenverfahren} wird der Konfigurationsraum in Kurven unterteilt. Einige Versionen davon sind zum Beispiel das Voronoi-Diagramm \cite{Lee82} und der Sichtbarkeitsgraph \cite{LPAW79} \cite{AOD17}. %todo eine weg
+Bei \textit{Wegkartenverfahren} wird der Konfigurationsraum in Kurven unterteilt. Einige Versionen davon sind zum Beispiel das Voronoi-Diagramm \cite{Lee82} und der Sichtbarkeitsgraph \cite{LPAW79} \cite{AOD17}. %todo eine weg!!!
 Das \textit{Potentialfeldverfahren} bietet einen Ansatz, bei dem der Suchraum von Gradienten überspannt wird. Aus den Gradienten werden dann mögliche Bewegungsrichtungen ersichtlich. Die \textit{Zellzerlegung} \cite{Cai09} kann als Hindernisvermeidungsverfahren bezeichnet werden, das den Konfigurationsraum in eine endliche Sammlung nicht überlappender (disjunkter) konvexer Polygone, sogenannter Zellen, zerlegt.
 \end{sloppypar}
