@@ -2,10 +2,10 @@
 
 \chapter{Funktionsprizipien von Pfadplanungsalgorithmen}
 
-Pfadplanung im Hinblick auf Graphentheorie kann informiert und uninformiert sein. Uninformierte Pfadplanung, auch ``Blindsuche`` genannt, wird in alle Richtungen durchgeführt. Im Gegensatz dazu wird in der informierten Pfadplanung die Richtung zum Ziel geschätzt und in diese Richtung weitergesucht \cite[S.38]{Man18}.
+Pfadplanung im Hinblick auf Graphentheorie kann informiert und uninformiert sein. Uninformierte Pfadplanung, auch ``Blindsuche'' genannt, wird in alle Richtungen durchgeführt. Im Gegensatz dazu wird in der informierten Pfadplanung die Richtung zum Ziel geschätzt und in diese Richtung weitergesucht \cite[S.38]{Man18}.
 
 \section{Uninformierte Algorithmen}
-Algorithmen dieser Gruppe werden verwendet, wenn keine Informationen über die Entfernung vom Startknoten $s$ zum Zielknoten $d$ bekannt sind. Sie garantieren, dass der kürzeste Pfad gefunden wird, falls ein solcher Pfad existiert. Weil uninformierte Algorithmen über alle möglichen erreichbaren Knoten gehen, gibt es einen großen Bedarf an Speicherplatz und Leistung \cite[S. 232, 235, 236]{Noo15}. Die am meisten verwendeten Algorithmen dieser Gruppe sind die Breitensuche, die Tiefensuche und der Algorithmus von Dijkstra.
+Algorithmen dieser Gruppe werden verwendet, wenn keine Informationen über die Entfernung vom Startknoten $s$ zum Zielknoten $d$ bekannt sind. Sie garantieren, dass der kürzeste Pfad gefunden wird, falls ein solcher Pfad existiert. Weil uninformierte Algorithmen über alle möglichen erreichbaren Knoten gehen, gibt es einen großen Bedarf an Speicherplatz und Leistung \cite[S. 232, 235f.]{Noo15}. Die am meisten verwendeten Algorithmen dieser Gruppe sind die Breitensuche, die Tiefensuche und der Algorithmus von Dijkstra.
 
 \subsection{Breitensuche}
 \label{sec:bfs}
@@ -16,26 +16,26 @@ Die Breitensuche durchläuft einen Graphen systematisch und schrittweise in alle
 \item[1.] Finde alle Knoten, welche $k$ Kanten von $s$ entfernt sind.
 \item[2.] Rechne $k + 1$.
 \end{itemize}
-Diese Schritte werden so lange wiederholt, bis alle Knoten im Graphen gefunden wurden, die von $s$ erreicht werden können. Wird ein Knoten von BFS entdeckt, so wird die Distanz zum Startknoten $s$ berechnet. Anschließend wird der Knoten zu einem speziellen „Breitensuchbaum“ hinzugefügt, welcher alle vom Startknoten aus erreichbaren Knoten beinhaltet. Die Zweige des Baums stellen den kürzesten Pfad von $s$ zu den Knoten des Baumes dar \cite[S.594]{Cormen.2009}.
+Diese Schritte werden so lange wiederholt, bis alle Knoten im Graphen gefunden wurden, die von $s$ erreicht werden können. Wird ein Knoten von BFS entdeckt, so wird die Distanz zum Startknoten $s$ berechnet. Anschließend wird der Knoten zu einem speziellen ``Breitensuchbaum'' hinzugefügt, welcher alle vom Startknoten aus erreichbaren Knoten beinhaltet. Die Zweige des Baums stellen den kürzesten Pfad von $s$ zu den Knoten des Baumes dar \cite[S.594]{Cormen.2009}.
 
-Die Breitensuche kann bei Pfadplanung in einem Labyrinthspiel verwendet werden \cite[S. 3-6]{PBAS18}. Dieser Algorithmus sichert aber nicht die beste Suche im Hiblick auf Rechenleistung und Geschwindigkeit \cite[S. 6]{PBAS18}. Außerdem können BFS-Algorithmus und seine Hybridversion \cite{HT13} für die Traversierung der Graphen von Graphikprozessoren benutzt werden \cite{MGG12}.
+Die Breitensuche kann bei Pfadplanung in einem Labyrinthspiel verwendet werden \cite[S. 3ff.]{PBAS18}. Dieser Algorithmus sichert aber nicht die beste Suche im Hinblick auf Rechenleistung und Geschwindigkeit \cite[S. 6]{PBAS18}. Außerdem können BFS-Algorithmus und seine Hybridversion \cite{HT13} für die Traversierung der Graphen von Graphikprozessoren benutzt werden \cite{MGG12}.
 
 \subsection{Tiefensuche}
 \label{sec:dfs}
-Die Tiefensuche (engl. Depth-First Search, DFS) stellt das Gegenstück zum Prinzip der Breitensuche dar. Sie untersucht eine Kette von Folgeknoten bis das Ende der Kette erreicht wurde. Grundlegend lässt sich der Algorithmus in zwei Phasen unterteilen, die „Suche nach tieferliegenden Knoten“(1) und das sogenannte „Backtracking“(2) \cite{Tarjan.1972}:
+Die Tiefensuche (engl. Depth-First Search, DFS) stellt das Gegenstück zum Prinzip der Breitensuche dar. Sie untersucht eine Kette von Folgeknoten bis das Ende der Kette erreicht wurde. Grundlegend lässt sich der Algorithmus in zwei Phasen unterteilen, die ``Suche nach tieferliegenden Knoten''(1) und das ``sogenannte „Backtracking''(2) \cite{Tarjan.1972}:
 \begin{itemize}
 	\item[(1)] DFS untersucht den zuletzt gefundenen Knoten auf ausgehende Kanten. Existiert eine unentdeckte Kante, folgt DFS der Kante zum nächsten Knoten. Existiert keine weitere Kante, wechselt der Algorithmus in Phase 2.
 	\item[(2)] DFS setzt zum überliegenden Knoten zurück. Dieser wird auf eine unentdeckte Kante untersucht. Gibt es keine unentdeckte Kante, setzt DFS erneut zurück. Existiert eine weitere Kante, wechselt der Algorithmus zurück in Phase 1.	
 \end{itemize}
-Das Verfahren der Tiefensuche endet sobald der Algorithmus zum Startknoten $s$ zurückgesetzt hat und bei $s$ keine unentdeckten Kanten verbleiben. Beim Entdecken eines Knoten wird die Distanz zu $s$ berechnet, und der kürzeste Pfad zu $s$ in einen „Tiefensuchbaum“ eingepflegt (vergleiche Breitensuchbaum). Bei der Tiefensuche können jedoch mehrere Bäume entstehen, welche dann einen sogenannten „Tiefensuchwald“ formen \cite[S.603]{Cormen.2009}.
-Für das Zwischenspeichern der gefundenen Knoten bietet sich ein Stack an, da der Algorithmus selbst nach dem Prinzip „Last In - First Out“ funktioniert \cite{Tarjan.1972}. Die Tiefensuche hat eine Laufzeit von $\Theta(V + E)$ \cite[S.606]{Cormen.2009}.
+Das Verfahren der Tiefensuche endet sobald der Algorithmus zum Startknoten $s$ zurückgesetzt hat und bei $s$ keine unentdeckten Kanten verbleiben. Beim Entdecken eines Knoten wird die Distanz zu $s$ berechnet, und der kürzeste Pfad zu $s$ in einen ``Tiefensuchbaum'' eingepflegt (vergleiche Breitensuchbaum). Bei der Tiefensuche können jedoch mehrere Bäume entstehen, welche dann einen sogenannten ``Tiefensuchwald'' formen \cite[S.603]{Cormen.2009}.
+Für das Zwischenspeichern der gefundenen Knoten bietet sich ein Stack an, da der Algorithmus selbst nach dem Prinzip ``Last In - First Out'' funktioniert \cite{Tarjan.1972}. Die Tiefensuche hat eine Laufzeit von $\Theta(V + E)$ \cite[S.606]{Cormen.2009}.
 
 DFS kann Labyrinthe generieren und einen Weg daraus finden \cite{KB15}. Die Tiefensuche wird jedoch aufgrund ihres blinden Prinzips selten für Pfadplanung angewendet.
 
 
 \subsection{Dijkstras Algorithmus}
 \label{sec:dijkstra}
-In seiner Arbeit „Two Problems in Connexion with Graphs“ stellt Dijkstra zwei Probleme dar \cite{Dijkstra.1959}. Das erste Problem ist die Konstruktion eines Baums mit den kürzesten Wegen zwischen den Knoten eines Graphen als Zweigen (vergleiche Breitensuchbaum). Das andere ist die Suche nach dem kürzesten Weg zwischen zwei Knoten (vergleiche Problem des kürzesten Pfades). \\
+In seiner Arbeit ``Two Problems in Connexion with Graphs'' stellt Dijkstra zwei Probleme dar \cite{Dijkstra.1959}. Das erste Problem ist die Konstruktion eines Baums mit den kürzesten Wegen zwischen den Knoten eines Graphen als Zweigen (vergleiche Breitensuchbaum). Das andere ist die Suche nach dem kürzesten Weg zwischen zwei Knoten (vergleiche Problem des kürzesten Pfades). \\
 Zur Lösung des Problems des kürzesten Pfades zwischen zwei Knoten $s$ und $d$ wird eine Menge Knoten $R = \{r_0, r_1, ...\}$ definiert, wobei die Knoten aus $R$ auf dem kürzesten Pfad zwischen $s$ und $d$ liegen. Da ein Knoten $r_i \in R$ Teil des kürzesten Wegs zwischen $s$ und $d$ ist, ist auch der Weg zwischen $s$ und $r_i$ minimal. Es werden kontinuierlich Knoten aus $R$ gesucht, die weiter von $s$ entfernt sind, bis der Zielknoten $d$ erreicht wurde.
 
 Zur schrittweisen Lösung nutzt der Algorithmus drei verschiedene Mengen von Knoten. Menge $A = \{a_0, a_1, ...\}$ sind die Knoten, für die die minimale Distanz vom Startknoten $s$ aus bekannt ist. Menge $B = \{b_0, b_1, ...\}$ sind jene Knoten, die direkt mit einem Knoten aus $A$ verbunden sind, aber nicht Teil von $A$ sind. In $C = \{c_0, c_1, ...\}$ befinden sich alle übrigen Knoten.
@@ -95,4 +95,4 @@ den geringsten Wert liefert. Anschließend werden beliebige angrenzende Knoten a
 Falls der Knoten $u$ sich nicht in der Zielmenge befindet, wird er als \textit{geschlossen} markiert und alle Nachfolger von $u$ erkundet. Dann wird $f(u)$ für jeden Nachfolger berechnet und jeder Nachfolger als \textit{offen} markiert, der nicht als \textit{geschlossen} markiert wurde. Gibt es nun Nachfolgeknoten die als \textit{geschlossen} markiert sind, für welche die Funktion $f$ einen geringeren Wert liefert, werden diese Knoten als \textit{offen} markiert. Daraufhin wird Schritt zwei wieder ausgeführt. Solange, bis der Algorithmus terminiert und der kürzeste Pfad durch den Graphen gefunden wurde \cite{HartNilssonandRaphael.1968}.
 \end{itemize}
 
-A* sei laut Hart et al. \cite{HartNilssonandRaphael.1968} als optimal anzusehen, da der Algorthmus nicht mehr Knotenpunkte als andere Algorithmen untersuchen muss, um auf eine Lösung zu kommen. In ihrer Arbeit "The optimality of A* revisited" können Dechter et al. aber zeigen, dass die Optimalität des A*-Algorithmus nicht bewiesen werden kann \cite{RinaDechterandJudeaPearl.1983}.
+A* sei laut Hart et al. \cite{HartNilssonandRaphael.1968} als optimal anzusehen, da der Algorthmus nicht mehr Knotenpunkte als andere Algorithmen untersuchen muss, um auf eine Lösung zu kommen. In ihrer Arbeit ``The optimality of A* revisited'' können Dechter et al. aber zeigen, dass die Optimalität des A*-Algorithmus nicht bewiesen werden kann \cite{RinaDechterandJudeaPearl.1983}.
