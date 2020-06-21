@@ -52,10 +52,10 @@ Der Suchalgorithmus von Dijkstra und dessen Erweiterungen besitzen ein sehr brei
 \section{Informierte Algorithmen}
 \label{sec:bestsearch}
 Die sogenannte \textit{Bestensuche} (engl. \textit{informed best-first search})
-ist ein verbreiteter Ansatz, um die Suchzeit nach dem kürzesten Pfad anhand heuristischer Informationen zu verkürzen. Dabei wird versucht jedem Knotenpunkt in einem Graphen einen Wert zuzuweisen. Anhand dieser Wertzuweisung wird die Erkundung des Graphen in die Richtung des vielversprechendsten Kandidaten fortgeführt \cite{RinaDechterandJudeaPearl.1983}.
+ist ein verbreiteter Ansatz, um die Suchzeit nach dem kürzesten Pfad anhand heuristischer Informationen zu verkürzen. Dabei wird versucht jedem Knotenpunkt in einem Graphen einen Wert zuzuweisen. Anhand dieser Wertzuweisung wird die Erkundung des Graphen in die Richtung des vielversprechendsten Kandidaten fortgeführt \cite[S.95]{RinaDechterandJudeaPearl.1983}.
 
 \subsection{Heuristiken}
-Um die Suche nach einer Lösung effizienter zu machen, werden heuristische Methoden angewendet. Als Heuristik wird die Methodik bezeichnet, mit begrenztem Wissen eine Lösung zu finden. Dabei werden Schätzwerte angenähert, mit denen die Algorithmen schneller zum Ziel kommen, indem sie nur einen Teil der verfügbaren Pfade untersuchen \cite{RinaDechterandJudeaPearl.1983}. Um diese Werte zu berechnen, verwenden heuristische Methoden Metriken.
+Um die Suche nach einer Lösung effizienter zu machen, werden heuristische Methoden angewendet. Als Heuristik wird die Methodik bezeichnet, mit begrenztem Wissen eine Lösung zu finden. Dabei werden Schätzwerte angenähert, mit denen die Algorithmen schneller zum Ziel kommen, indem sie nur einen Teil der verfügbaren Pfade untersuchen \cite[S.95]{RinaDechterandJudeaPearl.1983}. Um diese Werte zu berechnen, verwenden heuristische Methoden Metriken.
 
 \subsection{Metriken}
 Eine Metrik ist eine Funktion, welche den Abstand zwischen zwei Elementen in dem von ihr untersuchten Raum bestimmt. Für die Distanzabschätzung der heuristischen Methoden gibt es verschiedene Ansätze. Verwendet werden hauptsächlich folgende Metriken.

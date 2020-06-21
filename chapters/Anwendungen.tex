@@ -20,7 +20,7 @@ Der\textit{ A*-Algorithmus} wird in vielen Videospielen für die Bewegungskontro
 	512x512 & 821598 & 515 & 265 \\ \hline
 	1024x1024 & 13962457 & 2362 & 1148 \\ \hline
 \end{tabular}
-\caption{Rechenzeit in ms, in Anlehnung an \cite{Zarembo.2013}}
+\caption{Rechenzeit in ms, in Anlehnung an \cite[S.48]{Zarembo.2013}}
 \label{tab:comp}
 \end{table}
 
@@ -43,7 +43,7 @@ Es wird das Problem einer Reise aus einer Spielstadt in eine andere betrachtet. 
 3. Vervollständige den Pfad durch den Bereich, der den Zielstandort enthält.\\
 
 \begin{sloppypar}
-HPA* läuft durchschnittlich zehnmal schneller als der oben beschriebener\textit{ A*-Algorithmus} \cite[S. 1, 26]{Bot04} und wird daher verbreitet im Spielebereich angewendet \cite{LSC08}. „HPA* ist aber sehr allgemein. In der Praxis kann HPA sowohl für statische Welten, wo die Graphenhierarchie besser vorbereitet werden kann, als auch in typischen dynamischen Welten, um häufige Umgebungsänderungen zu bewältigen, erheblich optimiert werden“ \cite[S.39]{Kri10}. Aus diesem Grund existieren unterschiedliche HPA*-Erweiterungen wie SHPA* und DHPA*, vorgeschlagen von Kring et al. \cite[S.40ff.]{Kri10}, oder \textit{Path Smoothing} und \textit{Lazy Edge Weight Computation}, die im Allgemeinen die Leistung von HPA* erhöhen \cite{JB07}.
+HPA* läuft durchschnittlich zehnmal schneller als der oben beschriebener\textit{ A*-Algorithmus} \cite[S.1, 26]{Bot04} und wird daher verbreitet im Spielebereich angewendet \cite{LSC08}. „HPA* passt gut für Videospiele, ist aber sehr allgemein. In der Praxis kann HPA sowohl für statische Welten, wo die Graphenhierarchie besser vorbereitet werden kann, als auch für typischen dynamischen Welten, um häufige Umgebungsänderungen zu bewältigen, erheblich optimiert werden“ \cite[S.39]{Kri10}. Aus diesem Grund existieren unterschiedliche HPA*-Erweiterungen wie SHPA* und DHPA*, vorgeschlagen von Kring et al. \cite[S.40ff.]{Kri10}, oder \textit{Path Smoothing} und \textit{Lazy Edge Weight Computation}, die im Allgemeinen die Leistung von HPA* erhöhen \cite{JB07}.
 \end{sloppypar}
 
 In den Tabellen \ref{tab:informed} und \ref{tab:uninformed} ist eine Übersicht der wichtigsten Pfadplanungsalgorithmen für Routing in Videospielen zu sehen.
@@ -97,13 +97,14 @@ Bisher wurden Lösungen für die Problemstellung mit einem einzelnen Agenten bet
 \subsection{Windowed Hierarchical Cooperative A*}
 Bei dem \textit{Cooperative A*-Algorithmus} sucht jeder Agent in einem dreidimensionalen Graphen - bestehend aus der x- und der y-Koordinatenachse und einer Zeitachse - mit dem \textit{A*-Algorithmus} nach seinem Ziel. 
 Das Ergebnis der Suche teilt er den anderen Agenten in einer Reservierungstabelle mit. Auf diese Weise sind die Agenten in der Lage Kollisionen zu vermeiden. 
-Der \textit{Hierarchical Cooperative A*-Algorithmus} benutzt eine hierarchische Suche (siehe oben: \hyperref[sec:hpa]{4.2.1 Hierarchical Path-Finding A*}). \textit{Windowed Hierarchical Cooperative A*} (WHCA*) begrenzt die Suchtiefe für jeden Agent zu einem Fenster. Sobald der Teilpfad in dem Fenster gefunden wurde, folgt der Agent diesem Pfad und fängt mit der Berechnung des nächsten Teilpfades an.
+Der \textit{Hierarchical Cooperative A*-Algorithmus} benutzt eine hierarchische Suche (siehe oben: \hyperref[sec:hpa]{4.2.1 Hierarchical Path-Finding A*}). \textit{Windowed Hierarchical Cooperative A*} (WHCA*) begrenzt die Suchtiefe für jeden Agent zu einem Fenster. Sobald der Teilpfad in dem Fenster gefunden wurde, folgt der Agent diesem Pfad und fängt mit der Berechnung des nächsten Teilpfades an \cite[S.2]{Sigurdson.2019}.
 \subsection{Flow Annotated Replanning}
-Ähnlich dem WHCA* nimmt \textit{Flow Annotation Replanning} (FAR) die Pläne anderer Agenten in die Berechnung auf. Statt aber, wenn ein Pfad blockiert ist, einen neuen Pfad zu berechnen, wartet ein Agent im FAR-Algorithmus einfach auf dem aktuellen Knoten darauf, dass sein Pfad wieder frei wird und er ihn für sich reservieren kann.
+Ähnlich dem WHCA* nimmt \textit{Flow Annotation Replanning} (FAR) die Pläne anderer Agenten in die Berechnung auf. Statt aber, wenn ein Pfad blockiert ist, einen neuen Pfad zu berechnen, wartet ein Agent im FAR-Algorithmus einfach auf dem aktuellen Knoten darauf, dass sein Pfad wieder frei wird und er ihn für sich reservieren kann \cite[S.3]{Sigurdson.2019}.
 
 \subsection{Bounded Multi-Agent A*}
-\textit{Bounded Multi-Agent A*} basiert auf \textit{Real-time Adaptive A*} (RTAA*). RTAA* wird für ein \textit{Multiagenten-Setting} erweitert. Andere Agenten werden während der Suche als sich bewegende Hindernisse betrachtet. Außerdem haben Agenten die Möglichkeit andere Agenten aufzufordern Zellen frei zu machen. Der aufgeforderte Agent wird zu einer freien benachbarten Zelle wandern und seine reguläre Suche von dort aus fortführen \cite{Sigurdson.2019}.
+\textit{Bounded Multi-Agent A*} basiert auf \textit{Real-time Adaptive A*} (RTAA*). RTAA* wird für ein \textit{Multiagenten-Setting} erweitert. Andere Agenten werden während der Suche als sich bewegende Hindernisse betrachtet. Außerdem haben Agenten die Möglichkeit andere Agenten aufzufordern Zellen frei zu machen. Der aufgeforderte Agent wird zu einer freien benachbarten Zelle wandern und seine reguläre Suche von dort aus fortführen \cite[S.3]{Sigurdson.2019}.
 
+\newpage
 \section{Verwandte Arbeiten}
 
 \begin{sloppypar}
